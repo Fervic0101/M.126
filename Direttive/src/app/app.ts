@@ -4,7 +4,7 @@ import { Mydirettive } from './direttive/mydirettive';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,Mydirettive],
+  imports: [Mydirettive],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
