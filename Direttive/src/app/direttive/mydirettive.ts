@@ -5,6 +5,7 @@ import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 })
 export class Mydirettive {
   @Input() appMydirettive = '';
+  clickCount = 0; //variabili vanno dichiarate prima del costruttore 
   constructor(private htmlElement: ElementRef) 
   { 
     this.htmlElement.nativeElement.style.color = this.appMydirettive || 'yellow';
@@ -29,6 +30,13 @@ export class Mydirettive {
       testo.style.color = num > 10 ? 'green' : 'red';
       
       }
-
   }
+  //Conta quante volte un elemento è stato cliccato e logga in console il numero di click. Usare HostListener('click').
+  @HostListener('click')  onClick(){
+    this.clickCount++;
+    console.log(`Elemento cliccato ${this.clickCount} volte`);
+  }
+
+
+
 }
