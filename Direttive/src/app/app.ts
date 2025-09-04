@@ -1,10 +1,10 @@
-import { Component, signal } from '@angular/core';
+import { Component, Directive, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Mydirettive } from './direttive/mydirettive';
+import { Mydirettive, UppercaseDirettiva, CambiaColoreDirettiva, ContatoreDirettiva, PasswordEfficienzaDirettiva } from './direttive/mydirettive';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,Mydirettive],
+  imports: [Mydirettive, UppercaseDirettiva, CambiaColoreDirettiva, ContatoreDirettiva, PasswordEfficienzaDirettiva],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -16,3 +16,4 @@ export class App  {
   }
 
 }
+
