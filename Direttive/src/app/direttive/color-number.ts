@@ -1,21 +1,17 @@
 import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 
 @Directive({
-  selector: '[appAppUppercase]'
+  selector: '[appColorNumber]'
 })
-export class AppUppercase {
+export class ColorNumber {
 
   constructor(private htmlElement: ElementRef) {
 
-    this.htmlElement.nativeElement.value=this.htmlElement.nativeElement.value.toUpperCase() ?? "";
    }
 
    @HostListener('input') onInputChange() {
     console.log(this.htmlElement.nativeElement.value);
-    this.htmlElement.nativeElement.value?.toUpperCase() ?? "";
+    this.htmlElement.nativeElement.style.color = this.htmlElement.nativeElement.value < 10 ? "red" : "green";
   }
 
 }
-
-
-  
