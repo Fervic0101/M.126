@@ -19,4 +19,9 @@ export class Mydirettive {
     this.htmlElement.nativeElement.value =
       this.htmlElement.nativeElement.value.toUpperCase();
   }
+  @HostListener('input') onInput() {
+    const number = this.htmlElement.nativeElement.value;
+    if (number > 10) this.htmlElement.nativeElement.style.color = 'green';
+    else this.htmlElement.nativeElement.style.color = 'red';
+  }
 }
