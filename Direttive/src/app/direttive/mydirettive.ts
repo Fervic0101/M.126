@@ -25,6 +25,7 @@ export class Mydirettive {
     
   }
  */
+/*
   @HostListener('input') OnChange() {
  
     if(this.htmlElement.nativeElement.value>10){
@@ -34,12 +35,27 @@ export class Mydirettive {
     }
 
   }
+*/
     
    @HostListener('click') ClickCounter() 
    {
     counter++;
     console.log(counter);
       
+  }
+   @HostListener('input') CampioPassword() {
+ 
+    if(this.htmlElement.nativeElement.value.length<6){
+      console.log("Password Debole")
+      this.htmlElement.nativeElement.style.color =  this.appMydirettive || 'red'
+  }else if(this.htmlElement.nativeElement.value.length>6 && this.htmlElement.nativeElement.value.length<10 ){
+      console.log("Password Media")
+      this.htmlElement.nativeElement.style.color =  this.appMydirettive || 'yellow'
+    }else if( this.htmlElement.nativeElement.value.length>10){
+         console.log("Password Forte")
+        this.htmlElement.nativeElement.style.color =  this.appMydirettive || 'green'
+    }
+
   }
 }
 
