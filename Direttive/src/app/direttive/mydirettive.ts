@@ -4,6 +4,7 @@ import { Directive, ElementRef, HostListener, Input } from '@angular/core';
   selector: '[appMydirettive]',
 })
 export class Mydirettive {
+  private clickCounter = 0;
   @Input() appMydirettive = '';
   constructor(private htmlElement: ElementRef) {
     this.htmlElement.nativeElement.style.color = this.appMydirettive;
@@ -23,5 +24,9 @@ export class Mydirettive {
     const number = this.htmlElement.nativeElement.value;
     if (number > 10) this.htmlElement.nativeElement.style.color = 'green';
     else this.htmlElement.nativeElement.style.color = 'red';
+  }
+  @HostListener('click') onClick() {
+    this.clickCounter++;
+    console.log(this.clickCounter);
   }
 }
