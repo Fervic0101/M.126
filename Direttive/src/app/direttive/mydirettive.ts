@@ -6,8 +6,7 @@ import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 export class Mydirettive {
   @Input() appMydirettive = '';
   constructor(private htmlElement: ElementRef) {
-    this.htmlElement.nativeElement.style.color =
-      this.appMydirettive || 'yellow';
+    this.htmlElement.nativeElement.style.color = this.appMydirettive;
   }
   @HostListener('mouseenter') onMouseEnter() {
     console.log(this.appMydirettive);
@@ -15,5 +14,9 @@ export class Mydirettive {
   }
   @HostListener('mouseleave') onMouseLeave() {
     this.htmlElement.nativeElement.style.backgroundColor;
+  }
+  @HostListener('input') onInputChange() {
+    this.htmlElement.nativeElement.value =
+      this.htmlElement.nativeElement.value.toUpperCase();
   }
 }
