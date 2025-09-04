@@ -7,17 +7,16 @@ export class AppUppercase {
   constructor(private htmlElement: ElementRef) {}
 
   @HostListener('input') onInput() {
-    this.htmlElement.nativeElement.style.textTransform = 'uppercase';
-  }
-
-  @HostListener('input') numberColor() {
+    const input = this.htmlElement.nativeElement;
+    input.style.textTransform = 'uppercase';
     if (this.htmlElement.nativeElement.id === 'number') {
       const value = this.htmlElement.nativeElement.value;
       if (value > 10) {
-        this.htmlElement.nativeElement.style.color = 'green';
+        input.style.color = 'green';
       } else {
-        this.htmlElement.nativeElement.style.color = 'red';
+        input.style.color = 'red';
       }
+      console.log(value);
     }
   }
 }
