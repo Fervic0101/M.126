@@ -15,7 +15,9 @@ export class Mydirettive {
       this.appMydirettive || 'blue';
   }
   @HostListener('click') onClick() {
-    this.clickCount++;
-    console.log(this.clickCount);
+    if (this.htmlElement.nativeElement.id === 'bottone') {
+      this.clickCount++;
+      console.log(this.clickCount);
+    }
   }
 }
