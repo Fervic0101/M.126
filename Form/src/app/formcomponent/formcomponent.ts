@@ -8,15 +8,15 @@ import { FormsModule, NgForm, NgModel } from '@angular/forms';
   styleUrl: './formcomponent.css'
 })
 export class Formcomponent {
-  @ViewChild('loginForm') formlogin!: ElementRef<any>;
   onSubmit(form : NgForm) {
-  console.log(form.valid);
-    if(form.valid) {
-
+    if(form.valid) 
+    {
       console.log(form.value.email);
       console.log(form.value.password);
+      console.log(form.value.nome)
     }
-    else{
+    else
+    {
       alert("Formulario non valido ");
     }
   }
