@@ -16,7 +16,7 @@ export class Mydirettive {
   @HostListener('mouseleave') onMouseLeave() {
     this.htmlElement.nativeElement.style.backgroundColor;
   }
-  @HostListener('input') onInputChange() {
+  /*@HostListener('input') onInputChange() {
     this.htmlElement.nativeElement.value =
       this.htmlElement.nativeElement.value.toUpperCase();
   }
@@ -24,9 +24,26 @@ export class Mydirettive {
     const number = this.htmlElement.nativeElement.value;
     if (number > 10) this.htmlElement.nativeElement.style.color = 'green';
     else this.htmlElement.nativeElement.style.color = 'red';
-  }
+  }commentato perchè non possono esserci due listener dello stesso evento*/
   @HostListener('click') onClick() {
     this.clickCounter++;
     console.log(this.clickCounter);
+  }
+  @HostListener('input') onInputChange() {
+    const length = this.htmlElement.nativeElement.value.length; // CORRETTO
+    const label = document.getElementById('labelPassword');
+
+    if (label) {
+      if (length < 6) {
+        label.style.borderColor = 'red';
+        console.log('Debole');
+      } else if (length < 10) {
+        label.style.borderColor = 'orange';
+        console.log('Media');
+      } else {
+        label.style.borderColor = 'green';
+        console.log('Forte');
+      }
+    }
   }
 }
