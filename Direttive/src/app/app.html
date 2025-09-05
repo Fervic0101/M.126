@@ -1,2 +1,32 @@
+<h1>Test Direttive Angular</h1>
 
+<<<<<<< Updated upstream
 <p appMydirettive >testo</p>
+=======
+<div>
+  <h2>1. Evidenzia testo</h2>
+  <p [appMydirettive]="colore">Passa il mouse su di me!</p>
+</div>
+
+<div>
+  <h2>2. Testo in maiuscole</h2>
+  <input type="text" appUppercase placeholder="Scrivi qui (diventerà maiuscolo)">
+</div>
+
+<div>
+  <h2>3. Colore dinamico in base al numero</h2>
+  <input type="number" appColorNumber placeholder="Inserisci un numero">
+</div>
+
+<div>
+  <h2>4. Click Counter</h2>
+  <button appClickCounter>Cliccami e guarda la console</button>
+</div>
+
+<div>
+  <h2>5. Password Strength</h2>
+  <input type="password" appPasswordStrength placeholder="Inserisci password">
+</div>
+<!-- Router outlet per il routing -->
+<router-outlet></router-outlet>
+>>>>>>> Stashed changes
