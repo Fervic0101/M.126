@@ -1,15 +1,17 @@
-<mat-card [appCardDir]="item.convenient" class="example-card" appearance="outlined" *ngFor="let item of Lista">
+<mat-card
+  [appCardDir]="item.convenient"
+  class="example-card"
+  appearance="outlined"
+  *ngFor="let item of Lista"
+>
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
     <mat-card-title>{{ item.name }}</mat-card-title>
   </mat-card-header>
 
-  <img mat-card-image src="{{ item.image }}" alt="Photo">
+  <img mat-card-image src="{{ item.image }}" alt="Photo" />
 
   <mat-card-content>
-    <p>
-      {{ item.price }}
-    </p>
+    <p>{{ item.price }}€</p>
   </mat-card-content>
 </mat-card>
-

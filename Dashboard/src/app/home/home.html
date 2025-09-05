@@ -1,17 +1,15 @@
 <h1 appTitleElement>Spessa Intelligente</h1>
 <div appContainer>
-    <div>
-        <label> COOP</label>
-        <app-prodotti [supermarket]=0></app-prodotti>
-        <app-prodotti [supermarket]=0></app-prodotti>
-        <app-prodotti [supermarket]=0></app-prodotti>
-    </div>
-    <div>
-        <label>Esselunga</label>
-         <app-prodotti [supermarket]=1></app-prodotti>
-    </div>
-    <div>
-        <label>Carrefour</label> 
-         <app-prodotti [supermarket]=2></app-prodotti>   
-    </div>
+  <div>
+    <label> COOP</label>
+    <app-prodotti [supermarket]="0"></app-prodotti>
+  </div>
+  <div>
+    <label>Esselunga</label>
+    <app-prodotti [supermarket]="1"></app-prodotti>
+  </div>
+  <div>
+    <label>Carrefour</label>
+    <app-prodotti [supermarket]="2"></app-prodotti>
+  </div>
 </div>
