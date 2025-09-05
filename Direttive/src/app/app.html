@@ -11,3 +11,23 @@
 <p appHoverColor="pink"> sfondo rosa</p>
 <p appHoverColor> sfondo giallo </p>
 
+<p [appMydirettive] = "'black'" >testo</p>
+<div>
+  <h2>Test della direttiva su paragrafi</h2>
+
+  <p appMydirettive>
+    testo giallo
+  </p>
+
+  <p [appMydirettive]="'pink'">
+    sfondo rosa!
+  </p>
+
+  <h2>Test  su input</h2>
+
+  <input type="text" appMydirettive placeholder="Scrivi qualcosa..." />
+
+  <br><br>
+
+  <input type="number" appMydirettive placeholder="Inserisci un numero" />
+</div>
