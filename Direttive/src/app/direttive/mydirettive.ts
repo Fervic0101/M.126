@@ -17,10 +17,12 @@ export class Mydirettive {
   { 
     this.htmlElement.nativeElement.style.color = this.appMydirettive || 'blue';
   }
+
   @HostListener('mouseenter') onMouseEnter() {
     console.log(this.appMydirettive)
     this.htmlElement.nativeElement.style.backgroundColor = this.appMydirettive || 'green';
   }
+
   @HostListener('mouseleave') onMouseLeave() {
     this.htmlElement.nativeElement.style.backgroundColor = 'lightblue';
   }
