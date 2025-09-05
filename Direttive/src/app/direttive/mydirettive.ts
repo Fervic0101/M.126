@@ -28,8 +28,8 @@ export class Mydirettive {
     this.htmlElement.nativeElement.style.textTransform = this.appUppercase || 'uppercase';
   }
   @HostListener('input') onInputNumber() {
-    const inputEl = this.htmlElement.nativeElement as HTMLInputElement;
-    const nValue = Number(inputEl.value);
+    const inputE = this.htmlElement.nativeElement as HTMLInputElement;
+    const nValue = Number(inputE.value);
     if (!isNaN(nValue) && nValue > 10) {
       this.htmlElement.nativeElement.style.backgroundColor = 'green';
     } else {
@@ -46,8 +46,8 @@ export class Mydirettive {
   }
 
   @HostListener('input') onInputPassword() {
-    const inputEl = this.htmlElement.nativeElement as HTMLInputElement;
-    const password = inputEl.value.length;
+    const input = this.htmlElement.nativeElement as HTMLInputElement;
+    const password = input.value.length;
     console.log(password);
     if(password >= 6) {
       this.htmlElement.nativeElement.style.border = '10px solid green';
