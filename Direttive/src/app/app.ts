@@ -1,10 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Mydirettive } from './direttive/mydirettive';
+import { AppPasswordStrengthDirective, AppHighlightDirective, AppUppercaseDirective, AppColorNumberDirective } from './direttive/mydirettive';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,Mydirettive],
+  imports: [AppPasswordStrengthDirective, AppHighlightDirective, AppUppercaseDirective, AppColorNumberDirective],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
