@@ -99,8 +99,12 @@ Loggare anche un messaggio in console (“Debole”, “Media”, “Forte”).
   @HostListener('input')
   onInput() {
     const value = this.htmlElement.nativeElement.value;
+
     let strength = 'Debole';
     let borderColor = 'red';
+    let borderWidth = '6px';
+
+    this.htmlElement.nativeElement.style.borderColor = borderColor;
     if (value.length > 10) {
       strength = 'Forte';
       borderColor = 'green';
@@ -109,6 +113,7 @@ Loggare anche un messaggio in console (“Debole”, “Media”, “Forte”).
       borderColor = 'orange';
     }
     this.htmlElement.nativeElement.style.borderColor = borderColor;
+    this.htmlElement.nativeElement.style.borderWidth = borderWidth;
     console.log(strength);
   }
 }
