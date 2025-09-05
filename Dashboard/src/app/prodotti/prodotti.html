@@ -1,2 +1,10 @@
-<p>{{Lista[0].name}}</p>
-<p>{{Lista[0].price}}</p>
+<div id="lista" appElementiStile>
+    <li *ngFor="let elemento of Lista" style="list-style: none">
+
+        <h1>{{ elemento.name }}</h1>
+        <h2>{{ elemento.description }}</h2>
+        <h3>{{ elemento.price }}€</h3>
+        <br>
+
+    </li>
+</div>
