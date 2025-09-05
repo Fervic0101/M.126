@@ -8,7 +8,7 @@ export class Mydirettive {
 
   constructor(private htmlElement: ElementRef<HTMLInputElement>) { 
  
-    this.htmlElement.nativeElement.style.color = this.appMydirettive || 'yellow';
+    this.htmlElement.nativeElement.style.color = this.appMydirettive || 'black';
    
   }
 
