@@ -1,1 +1,62 @@
-<p>login works!</p>
+<form class="login-form-container" (ngSubmit)="onSubmit()" novalidate>
+  <!-- EMAIL -->
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <input
+      matInput
+      type="email"
+      placeholder="pat@example.com"
+      [formControl]="email"
+      required
+    />
+
+    @if ((email.touched || submitted) && email.hasError('required')) {
+    <mat-error>L'email è obbligatoria</mat-error>
+    } @else if ((email.touched || submitted) && email.hasError('email')) {
+    <mat-error>Email non valida</mat-error>
+    }
+  </mat-form-field>
+
+  <!-- PASSWORD -->
+  <mat-form-field appearance="fill">
+    <mat-label>Password</mat-label>
+
+    <input
+      matInput
+      [type]="hide() ? 'password' : 'text'"
+      [formControl]="password"
+      required
+      minlength="6"
+    />
+
+    <button
+      type="button"
+      mat-icon-button
+      matSuffix
+      (click)="toggleHide($event)"
+      [attr.aria-label]="hide() ? 'Mostra password' : 'Nascondi password'"
+      [attr.aria-pressed]="!hide()"
+    >
+      <mat-icon>{{ hide() ? "visibility" : "visibility_off" }}</mat-icon>
+    </button>
+
+    @if ((password.touched || submitted) && password.hasError('required')) {
+    <mat-error>La password è obbligatoria</mat-error>
+    } @else if ((password.touched || submitted) &&
+    password.hasError('minlength')) {
+    <mat-error>Minimo 6 caratteri</mat-error>
+    }
+  </mat-form-field>
+
+  <!-- SUBMIT -->
+  <div class="actions">
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="email.invalid || password.invalid"
+    >
+      Accedi
+    </button>
+  </div>
+</form>
