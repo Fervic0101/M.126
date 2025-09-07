@@ -1,1 +1,18 @@
-<p>accedi works!</p>
+<div name="login" appLoginStile>
+    <form  [formGroup]="mioForm" (ngSubmit)="onSubmit()">
+    <h1>Accedi</h1>
+    <h3>Email:</h3>
+    <mat-form-field appearance="fill">
+        <mat-label>Insersci E-mail</mat-label>
+        <input type="text" name="email" matInput  formControlName="email" >
+    </mat-form-field>
+    <h3>Password:</h3>
+    <mat-form-field appearance="fill">
+         <mat-label>Insersci Password</mat-label>
+         <input type="password" name="password" matInput  formControlName="password" >
+    </mat-form-field>
+    <br>
+    <br>
+    <button matButton="filled">Login</button>
+    </form>
+</div>

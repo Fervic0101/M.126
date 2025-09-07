@@ -35,7 +35,7 @@ export class ElementiStile  {
   {
     const h2Modicare = this.item.nativeElement.querySelectorAll('h2') as NodeListOf<HTMLHeadingElement>;
     h2Modicare.forEach((h2) => {
-      h2.style.color = '#33333'
+     
       h2.style.fontSize = '16px';
       h2.style.textAlign= 'start';
       });

@@ -15,8 +15,10 @@ export class Container implements AfterViewInit {
     this.item.nativeElement.style.alignItems = 'center';
     this.item.nativeElement.style.width = '100%';
     this.item.nativeElement.style.textAlign = 'center';
-
-
+    this.item.nativeElement.style.fontFamily = 'Roboto'
+    this.item.nativeElement.style.fontSize = '30px'
+    this.item.nativeElement.style.fontWeight = 'bold'
+    
    }
   ngAfterViewInit() {
     this.size = 100/this.item.nativeElement.children.length;
