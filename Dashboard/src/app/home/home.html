@@ -1,17 +1,54 @@
-<!-- <h1 appTitleElement>Spessa Intelligente</h1>
-<div appContainer>
-    <div>
-        <label> COOP</label>
-        <app-prodotti [supermarket]=0></app-prodotti>
-        <app-prodotti [supermarket]=0></app-prodotti>
-        <app-prodotti [supermarket]=0></app-prodotti>
-    </div>
-    <div>
-        <label>Esselunga</label>
-         <app-prodotti [supermarket]=1></app-prodotti>
-    </div>
-    <div>
-        <label>Carrefour</label> 
-         <app-prodotti [supermarket]=2></app-prodotti>   
-    </div>
-</div> -->
+<div>
+  <h2>Searchbar:</h2>
+  <div class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Inserisci il nome del prodotto:</mat-label>
+      <input
+        matInput
+        placeholder="Inserisci nome..."
+        type="text"
+        [(ngModel)]="searchTerm"
+        (input)="onSearchChange()"
+        name="search"
+      />
+    </mat-form-field>
+  </div>
+</div>
+
+@if (searchTerm && searchTerm.trim() !== '') {
+<div class="results">
+  <h3>Risultati ricerca: ({{ filteredProducts.length }} prodotti trovati)</h3>
+
+  @if (filteredProducts.length === 0) {
+  <div class="no-results">
+    <p>Nessun prodotto trovato per "{{ searchTerm }}"</p>
+  </div>
+  <!-- Ho deciso di mettere track poiché mi dava errore se no -->
+  } @for (prodotto of filteredProducts; track prodotto.name) {
+  <mat-card class="example-card" appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>{{ prodotto.name }}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image [src]="prodotto.image" />
+    <mat-card-content>
+      <p>
+        {{ prodotto.description }}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button matButton>{{ prodotto.price }}€</button>
+      <button matButton></button>
+    </mat-card-actions>
+  </mat-card>
+  }
+</div>
+}
+
+<footer class="footer">
+  <p>© 2045 Spesa un po' Intelligente</p>
+  <nav class="footer-links">
+    <a href="#">Home</a>
+    <a href="#">Chi Siamo</a>
+    <a href="#">Contatti</a>
+  </nav>
+</footer>

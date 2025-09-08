@@ -1,14 +1,63 @@
 import { Component } from '@angular/core';
-import { TitleElement } from '../Direttive/title-element';
-import { Container } from '../Direttive/container';
-import { Prodotti } from '../prodotti/prodotti';
+import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import prodottiData from '../prodotti.json';
 
 @Component({
   selector: 'app-home',
-  imports: [TitleElement,Container,Prodotti],
+  standalone: true,
+  imports: [
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    MatButtonModule,
+    MatCardModule,
+  ],
   templateUrl: './home.html',
-  styleUrl: './home.css'
+  styleUrls: ['./home.css'],
 })
 export class Home {
+  searchTerm: string = '';
+  prodotti: any[] = [];
+  filteredProducts: any[] = [];
+  hasSearched: boolean = false;
 
+  constructor() {
+    const coop = prodottiData.coop;
+    const esselunga = prodottiData.esselunga;
+    const carrefour = prodottiData.carrefour;
+
+    this.prodotti = [...coop, ...esselunga, ...carrefour]; //Unisco in un unico prodotto anche se non è il massimo
+  }
+
+  onSearchChange() {
+    if (this.searchTerm && this.searchTerm.trim() !== '') {
+      this.hasSearched = true; //controllo se l'input non è vuoto
+      this.filterProducts(); //filtro i prodotti
+    } else {
+      this.hasSearched = false;
+      this.filteredProducts = []; //se l'input è vuoto resetto i prodotti filtrati (non so se è un metodo efficente ma funziona)
+    }
+  }
+
+  filterProducts() {
+    if (!this.searchTerm || this.searchTerm.trim() === '') {
+      this.filteredProducts = []; //checko se l'input è vuoto anche se penso ci siano metodi migliori
+      return;
+    }
+
+    const term = this.searchTerm.toLowerCase().trim(); //case insensitive search
+
+    this.filteredProducts = this.prodotti.filter(
+      //checko se il termine è contenuto nel nome o nella descrizione (la descrizione non è necessaria ma è servito per testare e ho deciso di tenerla per comodità)
+      (prodotto) =>
+        prodotto.name.toLowerCase().includes(term) ||
+        prodotto.description.toLowerCase().includes(term)
+    );
+  }
 }
