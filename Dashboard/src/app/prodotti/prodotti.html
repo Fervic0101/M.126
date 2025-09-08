@@ -1,2 +1,40 @@
-<p>{{Lista[0].name}}</p>
-<p>{{Lista[0].price}}</p>
+<div class="container">
+  <h2>Tabella comparativa prodotti</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Prodotto</th>
+        <th>Coop</th>
+        <th>Esselunga</th>
+        <th>Carrefour</th>
+      </tr>
+
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of Lista">
+        <td>
+          <img [src]="p.image" alt="{{p.name}}" class="logo">
+          <div>
+            <b>{{ p.name }}</b><br>
+            <small>{{ p.description }}</small>
+          </div>
+        </td>
+        <!-- Coop -->
+        <td [appHighlightMinDirective]="p" prezzo="coopPrice">
+          {{ p.coopPrice }} €
+        </td>
+
+        <!-- Esselunga -->
+        <td [appHighlightMinDirective]="p" prezzo="esselungaPrice">
+          {{ p.esselungaPrice }} €
+        </td>
+
+        <!-- Carrefour -->
+        <td [appHighlightMinDirective]="p" prezzo="carrefourPrice">
+          {{ p.carrefourPrice }} €
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

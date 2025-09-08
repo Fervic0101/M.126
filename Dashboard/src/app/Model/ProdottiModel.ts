@@ -1,16 +1,22 @@
 export class ProdottiModel {
-    public name: string;
-    public price: number;
-    public image: string;
-    public description: string;
-    public available: boolean;
-    constructor( name : string , price: number ,image: string,description:string,available:boolean) 
-    {
-      this.name = name || '';
-      this.price = price || 0;
-      this.image = image || '';
-      this.description = description || '';
-      this.available = available || false;
-    }
-}
+  public name: string;
+  public image: string;
+  public description: string;
+  public available: boolean;
 
+  public coopPrice: number;
+  public esselungaPrice: number;
+  public carrefourPrice: number;
+
+  constructor(name: string, image: string, description: string, available: boolean,
+              coopPrice: number, esselungaPrice: number, carrefourPrice: number) {
+    this.name = name;
+    this.image = image;
+    this.description = description;
+    this.available = available;
+
+    this.coopPrice = coopPrice;
+    this.esselungaPrice = esselungaPrice;
+    this.carrefourPrice = carrefourPrice;
+  }
+}

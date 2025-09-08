@@ -1,0 +1,32 @@
+.container {
+  margin: 20px auto;
+  max-width: 800px;
+  font-family: Arial, sans-serif;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+.logo {
+  width: 40px;
+  height: auto;
+  margin-right: 8px;
+}
+
+td.highlight {
+  background-color: #e0ffe0;
+  font-weight: bold;
+  border: 2px solid green;
+}
