@@ -9,10 +9,10 @@ export class ProdottiModel {
     {
       this.name = name || '';
       this.price = price || 0;
-      this.convenient= convenient || false;
       this.image = image || '';
       this.description = description || '';
       this.available = available || false;
+      this.convenient= convenient || false;
     }
 }
 

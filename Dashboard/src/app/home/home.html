@@ -1,15 +1,19 @@
-<h1 appTitleElement>Spessa Intelligente</h1>
+<h1 appTitleElement>Spesa Intelligente</h1>
+
+
+<input [(ngModel)]="query" placeholder="Cerca prodotti..." />
+
 <div appContainer>
   <div>
-    <label> COOP</label>
-    <app-prodotti [supermarket]="0"></app-prodotti>
+    <label>COOP</label>
+    <app-prodotti [title]="'COOP'" [products]="filter(Coop)"></app-prodotti>
   </div>
   <div>
     <label>Esselunga</label>
-    <app-prodotti [supermarket]="1"></app-prodotti>
+    <app-prodotti [title]="'Esselunga'" [products]="filter(Esselunga)"></app-prodotti>
   </div>
   <div>
     <label>Carrefour</label>
-    <app-prodotti [supermarket]="2"></app-prodotti>
+    <app-prodotti [title]="'Carrefour'" [products]="filter(Carrefour)"></app-prodotti>
   </div>
 </div>
