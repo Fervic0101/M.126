@@ -9,23 +9,23 @@ export class ElementiStile  {
   { 
       this.item = item;
 
-
   }
 
   ngOnInit() {
-   // console.log("ok")
+ 
   }
    ngAfterViewInit()
    {
+    
       this.modifcaH1();
       this.modifcaH2();
       this.modifcaH3();
       this.item.nativeElement.style.padding='15px';
-      
     }
   private modifcaH1() 
   {
-    const h1Modicare = this.item.nativeElement.querySelectorAll('h1') as NodeListOf<HTMLHeadingElement>;
+    const  h1Modicare = this.item.nativeElement.querySelectorAll('h1') as NodeListOf<HTMLElement>;
+    console.log(h1Modicare)
     h1Modicare.forEach((h1) => {
       h1.style.color = '#FFA500'
       h1.style.fontSize = '25px';
@@ -33,11 +33,11 @@ export class ElementiStile  {
   }
    private modifcaH2() 
   {
-    const h2Modicare = this.item.nativeElement.querySelectorAll('h2') as NodeListOf<HTMLHeadingElement>;
+    const  h2Modicare = this.item.nativeElement.querySelectorAll('h2') as NodeListOf<HTMLHeadingElement>;
     h2Modicare.forEach((h2) => {
      
       h2.style.fontSize = '16px';
-      h2.style.textAlign= 'start';
+      h2.style.textAlign= 'center';
       });
   }
 
