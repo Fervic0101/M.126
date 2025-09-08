@@ -1,17 +1,81 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ProdottiModel } from '../Model/ProdottiModel';
 import { Prodotti } from '../prodotti/prodotti';  
 import {Container} from '../Direttive/container';
+import { HttpClient, HttpClientModule } from '@angular/common/http';  
+import { CommonModule } from '@angular/common';
+
+type ProductsByMarket = Record<string, ProdottiModel[]>;
+
 
 @Component({
   selector: 'app-parent',
   standalone: true,
-  imports: [FormsModule, Prodotti,],
+  imports: [FormsModule, Prodotti, HttpClientModule, CommonModule],
   templateUrl: './home.html'
 })
-export class Home {
+export class Home implements OnInit{
   query = '';
+  
+  entries: Array<[string, ProdottiModel[]]> = [];
+  convenients: Array<Array<Boolean>>=[];
+
+  // http: HttpClient = new HttpClient... ;   NON SI FA . LE COSE PER DI NON NE HANNO BISOGNO ( ? sicuro? guardare bene)
+  // => si fa nel costructor o con inject (  http = inject(HttpClient);  )
+
+  constructor(private http: HttpClient) {}
+
+  ngOnInit(){
+    this.http.get<ProductsByMarket>('assets/prodotti.json')
+      .subscribe(data => {
+        // es: [['coop', [...]], ['esselunga', [...]], ['carrefour', [...]]]  //ma perchè non è un oggetto di key value ? informarsi
+        this.entries = Object.entries(data);
+      });
+  }
+
+  /*FATTO:
+  per farlo adattabile a piu supermercati fai array di oggetti nomeMarket : array e un sempliice ngFor , come abbiamo già fatto per le card in prodotti . ce l hai già l oggetto, è il json. guarda solo come gettare i nomi delle prop (i nomi dei supermercati a cui ad ognuno sta un array) */
+  
+  /* così no con for in . vede prodotto come stringa. continua spiegazione in chat>ANGULAR 1
+    ci sono vari modi di sfruttare sia il for che la destruttur . 
+
+  fillConvenients(){
+    for(var supermercato in this.entries){
+      for(var prodotto in this.entries[supermercato]){
+
+      }
+    }
+  }
+    */
+
+  fillConvenients() {
+  const temp: string[];
+  // entries: [string, ProdottiModel[]][]
+  for (const [market, products] of this.entries) {
+    for (const product of products) {
+      // product è ProdottiModel
+      // es: product.convenient = decideQualcosa(product);
+      
+
+    }
+  }
+}
+
+
+
+  filter(list: ProdottiModel[]) {
+    const q = this.query.trim().toLowerCase();
+    if (!q) return list;
+    return list.filter(p =>
+      p.name.toLowerCase().includes(q) ||
+      (p.description ?? '').toLowerCase().includes(q)
+    );
+  }
+
+
+  trackByMarket = (_: number, e: [string, ProdottiModel[]]) => e[0];  //leggi spiegazione nel tempate. _: alias come un altro , ussato per dire fregaNNiente
+
 
   /*
   Coop: ProdottiModel[] = [new ProdottiModel(
@@ -76,12 +140,4 @@ export class Home {
         true
       )];*/
 
-  filter(list: ProdottiModel[]) {
-    const q = this.query.trim().toLowerCase();
-    if (!q) return list;
-    return list.filter(p =>
-      p.name.toLowerCase().includes(q) ||
-      (p.description ?? '').toLowerCase().includes(q)
-    );
-  }
 }

@@ -14,6 +14,7 @@ import { CardDir } from '../Direttive/card-dir';
 })
 export class Prodotti {
   @Input() products: Array<ProdottiModel> = [];
+  @Input() convenients: Array<number> = [];
 /*
 import { Component, Input } from '@angular/core';
 import { ProdottiModel } from '../Model/ProdottiModel';

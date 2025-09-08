@@ -4,16 +4,11 @@
 <input [(ngModel)]="query" placeholder="Cerca prodotti..." />
 
 <div appContainer>
-  <div>
-    <label>COOP</label>
-    <app-prodotti [title]="'COOP'" [products]="filter(Coop)"></app-prodotti>
-  </div>
-  <div>
-    <label>Esselunga</label>
-    <app-prodotti [title]="'Esselunga'" [products]="filter(Esselunga)"></app-prodotti>
-  </div>
-  <div>
-    <label>Carrefour</label>
-    <app-prodotti [title]="'Carrefour'" [products]="filter(Carrefour)"></app-prodotti>
-  </div>
+  <section *ngFor="let e of entries; trackBy: trackByMarket">
+    <h3>{{ e[0] | titlecase }}</h3>
+    <app-prodotti [products]="filter(e[1])"></app-prodotti>
+  </section>
 </div>
+
+<!-- titlecase si usa così : | titlecase ; e rende maiuscola la prima lettera della parola. Le serve CommonModule.Anche a ngFor serve common module.-->
+<!--trackBy è direttiva magica di angular ma di fatto è come il key in React. ti basta usarla e definire nel ts una funzione con firma firma: (index, item) => id  in questo caso e[0] è il nome del supermercato, stabile e unico → perfetto come chiave.-->
