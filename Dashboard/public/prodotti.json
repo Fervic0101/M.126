@@ -65,4 +65,8 @@
     { "name": "Sapone Liquido 250ml", "price": 1.10, "image": "https://example.com/images/sapone-lidl.jpg", "description": "Sapone igienizzante Lidl", "available": true },
     { "name": "Batterie D 2pz", "price": 4.20, "image": "https://example.com/images/batterie-d.jpg", "description": "Batterie formato D", "available": true }
   ]
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes
