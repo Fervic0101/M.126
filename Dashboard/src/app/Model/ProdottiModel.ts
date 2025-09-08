@@ -4,12 +4,12 @@ export class ProdottiModel {
   public description: string;
   public available: boolean;
 
-  public coopPrice: number;
-  public esselungaPrice: number;
-  public carrefourPrice: number;
+  public coopPrice: number | null;
+  public esselungaPrice: number | null;
+  public carrefourPrice: number| null;
 
   constructor(name: string, image: string, description: string, available: boolean,
-              coopPrice: number, esselungaPrice: number, carrefourPrice: number) {
+              coopPrice: number | null, esselungaPrice: number |null, carrefourPrice: number|null) {
     this.name = name;
     this.image = image;
     this.description = description;

@@ -9,31 +9,26 @@
         <th>Esselunga</th>
         <th>Carrefour</th>
       </tr>
-
     </thead>
     <tbody>
       <tr *ngFor="let p of Lista">
         <td>
-          <img alt="{{p.name}}">
-          <div>
-            <b>{{ p.name }}</b><br>
-            <small>{{ p.description }}</small>
-          </div>
+          <b>{{ p.name }}</b><br>
+          <small>{{ p.description }}</small>
         </td>
-        <!-- Coop -->
-        <td [appHighlightMinDirective]="p" prezzo="coopPrice">
-          {{ p.coopPrice }} €
-        </td>
+<td [appHighlightMinDirective]="p" prezzo="coopPrice">
+  {{ p.coopPrice != null ? (p.coopPrice | number:'1.2-2') + ' €' : 'N/A' }}
+</td>
 
-        <!-- Esselunga -->
-        <td [appHighlightMinDirective]="p" prezzo="esselungaPrice">
-          {{ p.esselungaPrice }} €
-        </td>
+<td [appHighlightMinDirective]="p" prezzo="esselungaPrice">
+  {{ p.esselungaPrice != null ? (p.esselungaPrice | number:'1.2-2') + ' €' : 'N/A' }}
+</td>
 
-        <!-- Carrefour -->
-        <td [appHighlightMinDirective]="p" prezzo="carrefourPrice">
-          {{ p.carrefourPrice }} €
-        </td>
+<td [appHighlightMinDirective]="p" prezzo="carrefourPrice">
+  {{ p.carrefourPrice != null ? (p.carrefourPrice | number:'1.2-2') + ' €' : 'N/A' }}
+</td>
+
+       
       </tr>
     </tbody>
   </table>
