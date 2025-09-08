@@ -1,0 +1,10 @@
+.tables-container {
+  display: flex; /* affianca i figli */
+  flex-wrap: wrap; /* se non ci stanno tutte, vanno a capo */
+  gap: 20px; /* spazio tra le tabelle */
+}
+
+.tables-container table {
+  border-collapse: collapse;
+  min-width: 200px; /* larghezza minima per ciascuna tabella */
+}

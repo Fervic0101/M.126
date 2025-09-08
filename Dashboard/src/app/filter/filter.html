@@ -1,0 +1,80 @@
+<div class="filters">
+  <input
+    type="text"
+    [(ngModel)]="searchText"
+    (input)="filterCoopProducts()"
+    placeholder="Cerca per nome"
+  />
+
+  <input
+    type="number"
+    [(ngModel)]="minPrice"
+    (input)="filterCoopProducts()"
+    placeholder="Prezzo minimo"
+  />
+  <input
+    type="number"
+    [(ngModel)]="maxPrice"
+    (input)="filterCoopProducts()"
+    placeholder="Prezzo massimo"
+  />
+</div>
+
+<div class="tables-container">
+  <table border="1" cellspacing="0" cellpadding="8">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Prezzo</th>
+        <th>Disponibile</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of filteredCoopProducts">
+        <td>{{ product.name }}</td>
+        <td [appMinPrezzo]="product.price === minCoopPrice">
+          {{ product.price }}
+        </td>
+        <td>{{ isAviable(product) }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table border="1" cellspacing="0" cellpadding="8">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Prezzo</th>
+        <th>Disponibile</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of filteredEsselungaProducts">
+        <td>{{ product.name }}</td>
+        <td [appMinPrezzo]="product.price === minCoopPrice">
+          {{ product.price }}
+        </td>
+        <td>{{ isAviable(product) }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table border="1" cellspacing="0" cellpadding="8">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Prezzo</th>
+        <th>Disponibile</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of filteredCarrefourProducts">
+        <td>{{ product.name }}</td>
+        <td [appMinPrezzo]="product.price === minCoopPrice">
+          {{ product.price }}
+        </td>
+        <td>{{ isAviable(product) }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
