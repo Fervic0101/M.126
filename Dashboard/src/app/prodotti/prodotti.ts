@@ -51,11 +51,11 @@ export class Prodotti {
     if (this.Lista.length === 0) return;
     
     this.ListaFiltrata = this.Lista.filter(p => {
-      // Name filter - if filtroNome is empty, show all products
+  
       const matchNome = !this.filtroNome.trim() || 
         p.name.toLowerCase().includes(this.filtroNome.toLowerCase().trim());
       
-      // Price filter
+      
       const matchPrezzo = (isNaN(this.prezzoMin) || p.price >= this.prezzoMin) && 
                          (isNaN(this.prezzoMax) || p.price <= this.prezzoMax);
       
