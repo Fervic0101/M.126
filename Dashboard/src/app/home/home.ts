@@ -13,7 +13,7 @@ import {Container} from '../Direttive/container';
 export class Home {
   query = '';
 
-  
+  /*
   Coop: ProdottiModel[] = [new ProdottiModel(
         'Patate Hermosa',
         2.99,
@@ -74,7 +74,7 @@ export class Home {
         'https://primochef.it/wp-content/uploads/2015/07/SH_taralli_pugliesi-768x512.jpg.webp',
         '',
         true
-      )];
+      )];*/
 
   filter(list: ProdottiModel[]) {
     const q = this.query.trim().toLowerCase();
