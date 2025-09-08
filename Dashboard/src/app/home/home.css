@@ -1,0 +1,39 @@
+.supermarket-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding: 20px 0;
+}
+
+.tab-button {
+  background: linear-gradient(45deg, #f0f2f5, #e1e8ed);
+  border: 2px solid #ddd;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #666;
+}
+
+.tab-button:hover {
+  background: linear-gradient(45deg, #e1e8ed, #d0d7de);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.tab-button.active {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  color: white;
+  border-color: #667eea;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.current-supermarket {
+  color: #333;
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 700;
+}

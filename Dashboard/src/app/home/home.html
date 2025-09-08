@@ -1,17 +1,30 @@
-<h1 appTitleElement>Spessa Intelligente</h1>
+<h1 appTitleElement>Spesa Intelligente</h1>
 <div appContainer>
-    <div>
-        <label> COOP</label>
-        <app-prodotti [supermarket]=0></app-prodotti>
-        <app-prodotti [supermarket]=0></app-prodotti>
-        <app-prodotti [supermarket]=0></app-prodotti>
-    </div>
-    <div>
-        <label>Esselunga</label>
-         <app-prodotti [supermarket]=1></app-prodotti>
-    </div>
-    <div>
-        <label>Carrefour</label> 
-         <app-prodotti [supermarket]=2></app-prodotti>   
-    </div>
+ 
+  <div class="supermarket-tabs">
+    <button 
+      (click)="selectSupermarket(0)" 
+      [class.active]="selectedSupermarket === 0"
+      class="tab-button">
+      COOP
+    </button>
+    <button 
+      (click)="selectSupermarket(1)" 
+      [class.active]="selectedSupermarket === 1"
+      class="tab-button">
+      Esselunga
+    </button>
+    <button 
+      (click)="selectSupermarket(2)" 
+      [class.active]="selectedSupermarket === 2"
+      class="tab-button">
+      Carrefour
+    </button>
+  </div>
+  
+  
+  <h2 class="current-supermarket">{{ getSupermarketName() }}</h2>
+  
+  
+  <app-prodotti [supermarket]="selectedSupermarket"></app-prodotti>
 </div>
