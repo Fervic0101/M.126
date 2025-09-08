@@ -8,10 +8,10 @@ import { MinPrezzo } from '../Direttive/min-prezzo';
 @Component({
   selector: 'app-filter',
   imports: [FormsModule, CommonModule, MinPrezzo],
-  templateUrl: './filter.html',
-  styleUrl: './filter.css',
+  templateUrl: './filtri.html',
+  styleUrl: './filtri.css',
 })
-export class Filter implements OnInit {
+export class Filtri implements OnInit {
   searchText: string = '';
   minPrice?: number;
   maxPrice?: number;
