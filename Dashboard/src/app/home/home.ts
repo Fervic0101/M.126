@@ -6,6 +6,7 @@ import { Prodotti } from '../prodotti/prodotti';
 @Component({
   selector: 'app-home',
   imports: [TitleElement,Container,Prodotti],
+  standalone: true,
   templateUrl: './home.html',
   styleUrl: './home.css'
 })

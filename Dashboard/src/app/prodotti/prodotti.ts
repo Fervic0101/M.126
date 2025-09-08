@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, } from '@angular/core';
+import { CommonModule } from '@angular/common';  
 import { ProdottiModel } from '../Model/ProdottiModel';
 import { HighlightMinDirective } from '../Direttive/highlight-min-directive';
 
@@ -8,7 +9,7 @@ import { HighlightMinDirective } from '../Direttive/highlight-min-directive';
   standalone: true,
   templateUrl: './prodotti.html',
   styleUrls: ['./prodotti.css'], 
-  imports: [HighlightMinDirective]  // senza questo, non funziona
+  imports: [CommonModule, HighlightMinDirective]  // senza questo, non funziona
 })
 
 export class Prodotti {
