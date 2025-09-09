@@ -5,7 +5,7 @@ import { MatToolbar } from '@angular/material/toolbar';
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [MatToolbar, MatIcon],
+  imports: [MatToolbar],
   templateUrl: './footer.html',
   styleUrl: './footer.css',
 })

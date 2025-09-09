@@ -12,7 +12,7 @@ import { MinPrezzo } from '../Direttive/min-prezzo';
   styleUrl: './filtri.css',
 })
 export class Filtri implements OnInit {
-  searchText: string = '';
+  searchText = '';
   minPrice?: number;
   maxPrice?: number;
 
@@ -24,93 +24,89 @@ export class Filtri implements OnInit {
   filteredEsselungaProducts: ProdottiModel[] = [];
   filteredCarrefourProducts: ProdottiModel[] = [];
 
-  minPriceGlobal: number | null = null;
-  minCoopPrice: number | null = null;
-  minEsselungaPrice: number | null = null;
-  minCarrefourPrice: number | null = null;
+  minPriceMap: { [productName: string]: number } = {};
 
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.initCoopProducts();
-    this.initEsselungaProducts();
-    this.initCarrefourProducts();
-  }
-
-  initCoopProducts() {
     this.http.get<any>('/prodotti.json').subscribe((data) => {
       this.coopProducts = data.coop;
-      const prices = this.coopProducts
-        .map((p) => p.price)
-        .filter((p) => p != null);
-      this.minCoopPrice = Math.min(...data.coop.map((p: any) => p.price));
-      this.filteredCoopProducts = this.coopProducts;
-    });
-  }
-
-  initEsselungaProducts() {
-    this.http.get<any>('/prodotti.json').subscribe((data) => {
       this.esselungaProducts = data.esselunga;
-      const prices = this.esselungaProducts
-        .map((p) => p.price)
-        .filter((p) => p != null);
-      this.minCoopPrice = Math.min(...data.esselunga.map((p: any) => p.price));
-      this.filteredEsselungaProducts = this.esselungaProducts;
-    });
-  }
-
-  initCarrefourProducts() {
-    this.http.get<any>('/prodotti.json').subscribe((data) => {
       this.carrefourProducts = data.carrefour;
-      const prices = this.carrefourProducts
-        .map((p) => p.price)
-        .filter((p) => p != null);
-      this.minCoopPrice = Math.min(...data.carrefour.map((p: any) => p.price));
-      this.filteredCarrefourProducts = this.carrefourProducts;
+
+      this.applyFilters();
     });
   }
 
-  filterCoopProducts() {
-    if (!Array.isArray(this.filteredCoopProducts)) return;
-
+  applyFilters() {
     const name = this.searchText.trim().toLowerCase();
-    this.filteredCoopProducts = this.coopProducts.filter((p) => {
-      const matchesName = !name || p.name.toLowerCase().includes(name);
-      const matchesMin = this.minPrice == null || p.price >= this.minPrice;
-      const matchesMax = this.maxPrice == null || p.price <= this.maxPrice;
-      return matchesName && matchesMin && matchesMax;
-    });
+    const min = this.minPrice ?? -Infinity;
+    const max = this.maxPrice ?? Infinity;
+
+    this.filteredCoopProducts = this.coopProducts.filter(
+      (p) =>
+        (!name || p.name.toLowerCase().includes(name)) &&
+        p.price >= min &&
+        p.price <= max
+    );
+    this.filteredEsselungaProducts = this.esselungaProducts.filter(
+      (p) =>
+        (!name || p.name.toLowerCase().includes(name)) &&
+        p.price >= min &&
+        p.price <= max
+    );
+    this.filteredCarrefourProducts = this.carrefourProducts.filter(
+      (p) =>
+        (!name || p.name.toLowerCase().includes(name)) &&
+        p.price >= min &&
+        p.price <= max
+    );
+
+    this.updateMinPriceMap();
   }
 
-  filterEsselungaProducts() {
-    if (!Array.isArray(this.filteredEsselungaProducts)) return;
+  updateMinPriceMap() {
+    this.minPriceMap = {};
 
-    const name = this.searchText.trim().toLowerCase();
-    this.filteredEsselungaProducts = this.esselungaProducts.filter((p) => {
-      const matchesName = !name || p.name.toLowerCase().includes(name);
-      const matchesMin = this.minPrice == null || p.price >= this.minPrice;
-      const matchesMax = this.maxPrice == null || p.price <= this.maxPrice;
-      return matchesName && matchesMin && matchesMax;
-    });
+    const maxLength = Math.max(
+      this.filteredCoopProducts.length,
+      this.filteredCarrefourProducts.length,
+      this.filteredEsselungaProducts.length
+    );
+
+    for (let i = 0; i < maxLength; i++) {
+      const coopProduct = this.filteredCoopProducts[i];
+      const carrefourProduct = this.filteredCarrefourProducts[i];
+      const esselungaProduct = this.filteredEsselungaProducts[i];
+
+      const availableProducts = [];
+      if (coopProduct) availableProducts.push(coopProduct);
+      if (carrefourProduct) availableProducts.push(carrefourProduct);
+      if (esselungaProduct) availableProducts.push(esselungaProduct);
+
+      if (availableProducts.length > 0) {
+        const minPrice = Math.min(...availableProducts.map((p) => p.price));
+
+        availableProducts.forEach((product) => {
+          const productName = product.name.trim().toLowerCase();
+          this.minPriceMap[productName] = minPrice;
+        });
+      }
+    }
   }
 
-  filterCarrefourProducts() {
-    if (!Array.isArray(this.filteredCarrefourProducts)) return;
+  isMinPrice(product: ProdottiModel): boolean {
+    if (!product || !product.name) return false;
 
-    const name = this.searchText.trim().toLowerCase();
-    this.filteredCarrefourProducts = this.carrefourProducts.filter((p) => {
-      const matchesName = !name || p.name.toLowerCase().includes(name);
-      const matchesMin = this.minPrice == null || p.price >= this.minPrice;
-      const matchesMax = this.maxPrice == null || p.price <= this.maxPrice;
-      return matchesName && matchesMin && matchesMax;
-    });
+    const productName = product.name.trim().toLowerCase();
+    return this.minPriceMap[productName] === product.price;
   }
 
   isAviable(product: ProdottiModel): string {
-    if (product.available) {
-      return 'Available';
-    } else {
-      return 'N/A';
-    }
+    return product.available ? 'Available' : 'N/A';
+  }
+
+  toNumber(value: any): number {
+    return Number(value);
   }
 }
