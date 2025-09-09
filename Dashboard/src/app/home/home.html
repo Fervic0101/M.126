@@ -1,5 +1,50 @@
-<h1 appTitleElement>Spessa Intelligente</h1>
+<div class="app-container">
+  <h1 appTitleElement>Spessa Intelligente</h1>
 
-<div appContainer>
-  <app-prodotti></app-prodotti>
+  <div class="content">
+    <div class="main-content">
+      <!-- Tabella prodotti -->
+      <div class="prodotti-table">
+        <app-prodotti></app-prodotti>
+      </div>
+
+      <!-- Searchbar e risultati -->
+      <div class="search-container">
+        <h3>Searchbar:</h3>
+        <mat-form-field style="width: 300px;">
+          <mat-label>Inserisci il nome del prodotto:</mat-label>
+          <input matInput placeholder="Inserisci nome..."
+                 type="text"
+                 [(ngModel)]="searchTerm"
+                 (input)="onSearchChange()"
+                 name="search" />
+        </mat-form-field>
+
+        <div *ngIf="hasSearched" class="results">
+          <div *ngIf="filteredProducts.length === 0" class="no-results">
+            <p>Nessun prodotto trovato per "{{ searchTerm }}"</p>
+          </div>
+
+          <div *ngFor="let prodotto of filteredProducts; trackBy: trackByName">
+            <mat-card class="example-card" appearance="outlined">
+                <mat-card-title>{{ prodotto.name }}</mat-card-title>
+              <mat-card-content>
+                <p>{{ prodotto.description }}</p>
+              </mat-card-content>
+            </mat-card>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>SPESSA INTELLIGENTE src</p>
+    <nav class="footer-links">
+      <a href="#">Home</a>
+      <a href="#">Chi Siamo</a>
+      <a href="#">Contatti</a>
+    </nav>
+  </footer>
 </div>
