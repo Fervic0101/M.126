@@ -25,3 +25,19 @@
 .footer-links a:hover {
   color: #0056b3;
 }
+
+.lowest-price {
+  color: #4caf50;
+  font-weight: bold;
+}
+
+.grid-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.example-card {
+  width: 100%;
+}

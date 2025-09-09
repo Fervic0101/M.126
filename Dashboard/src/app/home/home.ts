@@ -5,6 +5,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { NgClass } from '@angular/common';
 import prodottiData from '../prodotti.json';
 
 @Component({
@@ -17,6 +18,7 @@ import prodottiData from '../prodotti.json';
     MatIconModule,
     MatButtonModule,
     MatCardModule,
+    NgClass,
   ],
   templateUrl: './home.html',
   styleUrls: ['./home.css'],
@@ -26,6 +28,7 @@ export class Home {
   prodotti: any[] = [];
   filteredProducts: any[] = [];
   hasSearched: boolean = false;
+  lowestPriceProduct: any = null;
 
   constructor() {
     const coop = prodottiData.coop;
@@ -59,5 +62,20 @@ export class Home {
         prodotto.name.toLowerCase().includes(term) ||
         prodotto.description.toLowerCase().includes(term)
     );
+
+    if (this.filteredProducts.length > 0) {
+      let cheapest = this.filteredProducts[0]; //inizializzo il primo prodotto come economico
+
+      for (let i = 1; i < this.filteredProducts.length; i++) {
+        if (this.filteredProducts[i].price < cheapest.price) {
+          //filtro finché non trovo il più economico
+          cheapest = this.filteredProducts[i];
+        }
+      }
+
+      this.lowestPriceProduct = cheapest;
+    } else {
+      this.lowestPriceProduct = null; //pulisco per sicurezza
+    }
   }
 }
