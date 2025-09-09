@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LoginStile } from '../Direttive/login-stile';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -19,10 +19,13 @@ import { MatInputModule } from '@angular/material/input';
 export class Accedi {
   emailRegistrazione: string = '';
   passwordRegistrazione: string = '';
-  constructor(private route: ActivatedRoute) {}
+  utenteRegistrazione: string = '';
+  constructor(private route: ActivatedRoute,private router: Router) {}
+
    mioForm = new FormGroup({
     email: new FormControl(''),
     password: new FormControl(''),
+    utente: new FormControl(''),
   });
 
   ngOnInit(): void {
@@ -44,6 +47,14 @@ export class Accedi {
     } else {
       this.passwordRegistrazione = localStorage.getItem('passwordRegistrazione') || '';
     }
+    if (params['ruoloUtente']) {
+      this.utenteRegistrazione = params['ruoloUtente'];
+     
+      localStorage.setItem('utenteRegistrazione', this.utenteRegistrazione)
+    } else {
+      
+      this.utenteRegistrazione = localStorage.getItem('utenteRegistrazione') || '';
+    }
 
     
   });
@@ -57,12 +68,16 @@ export class Accedi {
    //console.log(this.passwordRegistrazione);
      var mail = this.mioForm.get('email');
     var pass = this.mioForm.get('password');
+
+    var uten = this.mioForm.get('utente');
+    //console.log(this.utenteRegistrazione)
     //console.log(mail?.value);
     //console.log(pass?.value);
     
-    if(this.mioForm.valid && String(mail?.value) == this.emailRegistrazione && String(pass?.value) == this.passwordRegistrazione){
+    if(this.mioForm.valid && String(mail?.value) == this.emailRegistrazione && String(pass?.value) == this.passwordRegistrazione && String(uten?.value) == this.utenteRegistrazione){
      
       alert("Login Effettuato");
+      this.router.navigate(['/cliente'])
       
     }else{
       alert("Login non Effetuato");

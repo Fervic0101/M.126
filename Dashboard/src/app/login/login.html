@@ -11,6 +11,15 @@
          <mat-label>Insersci Password</mat-label>
          <input type="password" name="password" matInput  formControlName="password" >
     </mat-form-field>
+    <h3>Seleziona Tipologia Utente:</h3>
+    <mat-form-field>
+    <mat-label>Utente</mat-label>
+    <select matNativeControl required  formControlName="ruoloUtente">
+        <option value="cliente">Cliente</option>
+        <option value="supermercato">Supermercato</option>
+
+    </select>
+    </mat-form-field>
     <br>
     <br>
     <button matButton="filled">Login</button>

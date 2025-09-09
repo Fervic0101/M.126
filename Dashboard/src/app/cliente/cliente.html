@@ -1,0 +1,44 @@
+<div id="spesa">
+        <h1 style="text-align: center;">Spesa</h1>
+        <h2>Spesa Totale: {{this.spesaTotale}}</h2>
+        <h2>Supermercato dove vai di più: {{this.superUsato.nome}}</h2>
+        <li *ngFor="let elemento of this.Prodotti" style="list-style: none">
+            <h2>{{elemento.name}}</h2> 
+            <h3 style="color: green;">{{elemento.price}}</h3>
+        </li>
+</div>
+<div name="cliente" appLoginStile>
+    <form  [formGroup]="prodottoForm" (ngSubmit)="onSubmit()">
+    <h1>Inserisci Prodotto</h1>
+    <h3>Nome Prodotto:</h3>
+    <mat-form-field appearance="fill">
+        <mat-label>Insersci Nome Prodotto</mat-label>
+        <input type="text" name="prodotto" matInput  formControlName="prodotto" >
+    </mat-form-field>
+    <h3>Prezzo:</h3>
+    <mat-form-field class="example-full-width">
+    <input matInput  placeholder="Ex. 4.50"  formControlName="prezzo">
+    </mat-form-field>
+    <h3>Inserisci Supermercato</h3>
+    <mat-form-field>
+    <mat-label>Supermercati</mat-label>
+    <select matNativeControl formControlName="supermercato" >
+        <option value="coop">Coop</option>
+        <option value="esselunga">Esselunga</option>
+        <option value="carrefour">Carrefour</option>
+
+    </select>
+    </mat-form-field>
+    <br>
+    <br>
+    
+    <button matButton="filled">Inserisci</button>
+
+    </form>
+
+</div>
+
+
+
+
+

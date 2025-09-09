@@ -1,4 +1,4 @@
-<div name="login" appLoginStile>
+<div name="accedi" appLoginStile>
     <form  [formGroup]="mioForm" (ngSubmit)="onSubmit()">
     <h1>Accedi</h1>
     <h3>Email:</h3>
@@ -10,6 +10,15 @@
     <mat-form-field appearance="fill">
          <mat-label>Insersci Password</mat-label>
          <input type="password" name="password" matInput  formControlName="password" >
+    </mat-form-field>
+    <h3>Seleziona Tipologia Utente:</h3>
+    <mat-form-field>
+    <mat-label>Utente</mat-label>
+    <select matNativeControl formControlName="utente" >
+        <option value="cliente">Cliente</option>
+        <option value="supermercato">Supermercato</option>
+
+    </select>
     </mat-form-field>
     <br>
     <br>

@@ -23,20 +23,22 @@ export class Login {
 
   mioForm = new FormGroup({
     email: new FormControl('',[Validators.required, Validators.minLength(3),Validators.email]),
-    password: new FormControl('',[Validators.required, Validators.minLength(3)])
+    password: new FormControl('',[Validators.required, Validators.minLength(3)]),
+    ruoloUtente: new FormControl('',[Validators.required])
   });
   onSubmit()
   {
    
     var mail = this.mioForm.get('email');
     var pass = this.mioForm.get('password');
-    
+    var utente = this.mioForm.get('ruoloUtente')
+   console.log(this.mioForm)
     if(this.mioForm.valid){
       this.router.navigate(['/accedi'], {
-      queryParams: { email: String(mail?.value),password : String(pass?.value) }
+      queryParams: { email: String(mail?.value),password : String(pass?.value), ruoloUtente: String(utente?.value)}
       //Consapevole che non sia per niente sicuro!
     });
-      alert("Registrazione Effettuata");
+      alert("Registrazione Effettuata!\nEffettua il login!");
       
     }else{
       alert("Registrazione non Effetuata");
