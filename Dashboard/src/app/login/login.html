@@ -1,11 +1,20 @@
- <div class="form-container">
-      <p class="title">Login</p>
-      <form class="form">
-        <input type="email" class="input" placeholder="Email">
-        <input type="password" class="input" placeholder="Password">
-        <button class="form-btn">Log in</button>
-      </form>
-      <p class="sign-up-label">
-        Registrati<span class="sign-up-link">Registrati</span>
-      </p>
-    </div>
+<div class="form-container">
+  <p class="title">Login</p>
+  <form class="form" (ngSubmit)="login(username.value, password.value, userType.value)">
+    <input #username type="text" class="input" placeholder="Username">
+    <input #password type="password" class="input" placeholder="Password">
+    
+    <mat-form-field class="full-width">
+      <mat-label>Tipo utente</mat-label>
+      <mat-select #userType>
+        <mat-option value="cliente">Cliente</mat-option>
+        <mat-option value="admin">Amministratore</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">Log in</button>
+  </form>
+  <p class="sign-up-label">
+    Registrati <span class="sign-up-link">Registrati</span>
+  </p>
+</div>
