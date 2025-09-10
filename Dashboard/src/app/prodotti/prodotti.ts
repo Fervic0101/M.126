@@ -1,19 +1,27 @@
+
 import { Component, Input } from '@angular/core';
 import { ProdottiModel } from '../Model/ProdottiModel';
 import { HttpClient } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-prodotti',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule, FormsModule],
   templateUrl: './prodotti.html',
   styleUrl: './prodotti.css'
 })
 export class Prodotti {
   @Input() supermarket: number = 0;
-  Lista : Array<ProdottiModel> = [];
-Coop : Array<ProdottiModel> = [];
-Esselunga : Array<ProdottiModel> = [];
-   constructor(private http: HttpClient) {}
+  Lista: Array<ProdottiModel> = [];
+  ListaFiltrata: Array<ProdottiModel> = [];
+  filtroNome: string = '';
+  prezzoMin: number = 1;
+  prezzoMax: number = 10;
+
+  constructor(private http: HttpClient) {}
+
   ngOnInit() {
     this.http.get<any>('/prodotti.json').subscribe(data => {
       console.log(data);
@@ -34,6 +42,31 @@ Esselunga : Array<ProdottiModel> = [];
           );
           break;
       }
+     
+      this.ListaFiltrata = [...this.Lista];
     });
+  }
+
+  filtraLista() {
+    if (this.Lista.length === 0) return;
+    
+    this.ListaFiltrata = this.Lista.filter(p => {
+  
+      const matchNome = !this.filtroNome.trim() || 
+        p.name.toLowerCase().includes(this.filtroNome.toLowerCase().trim());
+      
+      
+      const matchPrezzo = (isNaN(this.prezzoMin) || p.price >= this.prezzoMin) && 
+                         (isNaN(this.prezzoMax) || p.price <= this.prezzoMax);
+      
+      return matchNome && matchPrezzo;
+    });
+  }
+
+  resetFiltri() {
+    this.filtroNome = '';
+    this.prezzoMin = 0;
+    this.prezzoMax = 1000;
+    this.ListaFiltrata = [...this.Lista];
   }
 }

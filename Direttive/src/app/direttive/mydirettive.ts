@@ -9,7 +9,6 @@ export class Mydirettive {
   constructor(private htmlElement: ElementRef<HTMLInputElement>) { 
  
     this.htmlElement.nativeElement.style.color = this.appMydirettive || 'black';
-   
   }
 
   @HostListener('mouseenter') onMouseEnter() {
@@ -27,7 +26,6 @@ export class Mydirettive {
   
     input.value = input.value.toUpperCase();
 
-   
     const value = Number(input.value);
     if (!isNaN(value)) {
       if (value > 10) {

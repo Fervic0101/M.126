@@ -1,2 +1,36 @@
-<p>{{Lista[0].name}}</p>
-<p>{{Lista[0].price}}</p>
+<div class="filtro-bar">
+  <input 
+    type="text" 
+    placeholder="Nome prodotto" 
+    [(ngModel)]="filtroNome" 
+    (input)="filtraLista()" 
+  />
+  <input 
+    type="number" 
+    placeholder="Prezzo min" 
+    [(ngModel)]="prezzoMin" 
+    (input)="filtraLista()" 
+    min="0"
+  />
+  <input 
+    type="number" 
+    placeholder="Prezzo max" 
+    [(ngModel)]="prezzoMax" 
+    (input)="filtraLista()" 
+    min="0"
+  />
+  <button (click)="resetFiltri()" class="reset-btn">Reset Filtri</button>
+</div>
+
+<div class="prodotti-container">
+  <div *ngFor="let prodotto of ListaFiltrata" class="prodotto-card">
+    <img [src]="prodotto.image" [alt]="prodotto.name" class="prodotto-image" />
+    <h2 class="prodotto-name">{{ prodotto.name }}</h2>
+    <p class="prodotto-price">Prezzo: €{{ prodotto.price }}</p>
+    <p class="prodotto-description">{{ prodotto.description }}</p>
+  </div>
+</div>
+
+<div *ngIf="ListaFiltrata.length === 0 && Lista.length > 0" class="no-results">
+  <p>Nessun prodotto trovato con i filtri selezionati.</p>
+</div>

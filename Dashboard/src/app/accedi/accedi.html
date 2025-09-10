@@ -1,1 +1,107 @@
-<p>accedi works!</p>
+<div class="dashboard-container">
+  <!-- Header -->
+  <header class="dashboard-header">
+    <h1>La Tua Area Personale</h1>
+    <div class="user-info">
+      <div class="user-greeting">
+        <h2>Benvenuto, {{ userName }}</h2>
+        <p>{{ userSince }}</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Summary Cards -->
+  <div class="summary-cards">
+    <div class="card">
+      <div class="card-icon">€</div>
+      <div class="card-content">
+        <h3>Spesa Totale</h3>
+        <p class="amount">{{ totalSpent }} €</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">M</div>
+      <div class="card-content">
+        <h3>Spesa Media Mensile</h3>
+        <p class="amount">{{ averageMonthly }} €</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">T</div>
+      <div class="card-content">
+        <h3>Transazioni</h3>
+        <p class="amount">{{ transactions }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="dashboard-content">
+    <!-- Products Section -->
+    <div class="content-section">
+      <h3>Prodotti più acquistati</h3>
+      <div class="products-list">
+        <div *ngFor="let product of purchasedProducts" class="product-item">
+          <div class="product-info">
+            <span class="product-name">{{ product.name }}</span>
+            <span class="product-quantity">{{ product.quantity }} acquisti</span>
+          </div>
+          <div class="product-bar">
+            <div class="bar-fill" [style.width.%]="product.percentage"></div>
+            <span class="percentage">{{ product.percentage }}%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Supermarkets Section -->
+    <div class="content-section">
+      <h3>Supermercati più frequentati</h3>
+      <div class="supermarkets-list">
+        <div *ngFor="let supermarket of supermarkets" class="supermarket-item">
+          <div class="supermarket-info">
+            <span class="supermarket-name">{{ supermarket.name }}</span>
+            <span class="supermarket-visits">{{ supermarket.visits }} visite</span>
+          </div>
+          <div class="supermarket-details">
+            <div class="supermarket-bar">
+              <div class="bar-fill" [style.width.%]="supermarket.percentage"></div>
+              <span class="percentage">{{ supermarket.percentage }}%</span>
+            </div>
+            <span class="supermarket-amount">{{ supermarket.amount }} €</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Charts Section -->
+  <div class="charts-section">
+    <div class="content-section">
+      <h3>Andamento della spesa mensile</h3>
+      <div class="chart-container">
+        <div class="chart-bars">
+          <div *ngFor="let month of monthlySpending" class="chart-bar">
+            <div class="bar" [style.height]="(month.amount / 400 * 100) + 'px'"></div>
+            <span class="month-label">{{ month.month }}</span>
+            <span class="amount-label">{{ month.amount }} €</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Transactions -->
+    <div class="content-section">
+      <h3>Transazioni recenti</h3>
+      <div class="transactions-list">
+        <div *ngFor="let transaction of recentTransactions" class="transaction-item">
+          <div class="transaction-date">{{ transaction.date }}</div>
+          <div class="transaction-supermarket">{{ transaction.supermarket }}</div>
+          <div class="transaction-amount">{{ transaction.amount }} €</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
