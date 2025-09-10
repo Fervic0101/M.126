@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
   styleUrl: './login.css'
 })
 export class Login {
+  showAzienda = false;
   constructor(private router: Router) {}
 
   onLogin(event: Event) {

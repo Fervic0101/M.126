@@ -1,0 +1,81 @@
+/* Stili base per la sezione Chi Siamo */
+.chi-siamo-section {
+  background: #fff;
+  border-radius: 12px;
+  padding: 2.5rem 2rem;
+  margin: 2rem auto;
+  max-width: 700px;
+  box-shadow: 0 4px 16px rgba(44, 62, 80, 0.08);
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+.chi-siamo-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.logo-azienda {
+  width: 48px;
+  height: 48px;
+}
+.chi-siamo-section h2 {
+  color: #2e7d32;
+  font-size: 2rem;
+  margin: 0;
+}
+.chi-siamo-content {
+  margin-top: 1rem;
+}
+.timeline {
+  background: #e8f5e9;
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1.5rem 0;
+}
+.timeline h3 {
+  color: #388e3c;
+  margin-bottom: 0.5rem;
+}
+.timeline ul {
+  list-style: none;
+  padding: 0;
+}
+.timeline li {
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+.year {
+  background: #388e3c;
+  color: #fff;
+  border-radius: 4px;
+  padding: 0.2rem 0.6rem;
+  margin-right: 0.7rem;
+  font-size: 0.95rem;
+}
+.contatti {
+  margin-top: 1.5rem;
+}
+.contatti h3 {
+  color: #1976d2;
+  margin-bottom: 0.5rem;
+}
+.contatti ul {
+  list-style: none;
+  padding: 0;
+}
+.contatti li {
+  margin-bottom: 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.contatti img {
+  vertical-align: middle;
+}
+.copyright {
+  margin-top: 2rem;
+  text-align: right;
+  color: #888;
+  font-size: 0.95rem;
+}
