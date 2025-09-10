@@ -1,0 +1,35 @@
+<div class="cliente-area"></div>
+  <h2>Area Personale Cliente</h2>
+  <section class="statistiche">
+    <h3>Statistiche Acquisti</h3>
+    <ul>
+      <li><strong>Prodotti acquistati:</strong> <span>{{prodottiAcquistati}}</span></li>
+      <li><strong>Supermercato più usato:</strong> <span>{{supermercatoPreferito}}</span></li>
+      <li><strong>Spesa media:</strong> <span>{{spesaMedia}} €</span></li>
+    </ul>
+  </section>
+  <section class="storico">
+    <h3>Storico Acquisti</h3>
+    <div *ngIf="storicoAcquisti.length === 0">
+      <p style="color: red;">Nessun prodotto trovato o errore nel caricamento dati.</p>
+      <p>Debug: prodotti caricati = {{prodotti | json}}</p>
+    </div>
+    <table *ngIf="storicoAcquisti.length > 0">
+      <thead>
+        <tr>
+          <th>Prodotto</th>
+          <th>Supermercato</th>
+          <th>Prezzo</th>
+          <th>Data</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let acquisto of storicoAcquisti">
+          <td>{{acquisto.prodotto}}</td>
+          <td>{{acquisto.supermercato}}</td>
+          <td>{{acquisto.prezzo}} €</td>
+          <td>{{acquisto.data}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>

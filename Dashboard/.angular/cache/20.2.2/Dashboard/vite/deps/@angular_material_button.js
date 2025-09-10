@@ -3,7 +3,8 @@ import {
 } from "./chunk-AYVZEZAM.js";
 import {
   isPlatformBrowser
-} from "./chunk-KAVEVGUG.js";
+} from "./chunk-BAP6PV7K.js";
+import "./chunk-OUSM42MY.js";
 import {
   ANIMATION_MODULE_TYPE,
   APP_ID,

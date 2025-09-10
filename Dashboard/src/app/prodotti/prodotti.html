@@ -1,2 +1,6 @@
-<p>{{Lista[0].name}}</p>
-<p>{{Lista[0].price}}</p>
+<div *ngFor="let prodotto of Lista">
+	<div [class.prodotto-economico]="prodotto.evidenziaMinimo">
+		<p>{{prodotto.name}}</p>
+		<p>{{prodotto.price}} €</p>
+	</div>
+</div>

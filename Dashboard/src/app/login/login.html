@@ -1,1 +1,19 @@
-<p>login works!</p>
+<div class="login-container">
+	<h2>Accedi</h2>
+	<form (submit)="onLogin($event)">
+		<label for="username">Username</label>
+		<input type="text" id="username" name="username" required>
+
+		<label for="password">Password</label>
+		<input type="password" id="password" name="password" required>
+
+		<label for="userType">Tipo utente</label>
+		<select id="userType" name="userType" required>
+			<option value="cliente">Cliente</option>
+			<option value="amministratore">Amministratore</option>
+			<option value="operatore">Operatore</option>
+		</select>
+
+		<button type="submit">Login</button>
+	</form>
+</div>

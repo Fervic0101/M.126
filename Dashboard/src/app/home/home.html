@@ -1,17 +1,43 @@
 <h1 appTitleElement>Spessa Intelligente</h1>
+<pre>{{prodotti | json}}</pre>
+<div *ngIf="!prodotti.coop && !prodotti.esselunga && !prodotti.carrefour">
+    <p style="color: red;">Errore: prodotti non caricati dal JSON. Controlla percorso e server.</p>
+</div>
 <div appContainer>
-    <div>
-        <label> COOP</label>
-        <app-prodotti [supermarket]=0></app-prodotti>
-        <app-prodotti [supermarket]=0></app-prodotti>
-        <app-prodotti [supermarket]=0></app-prodotti>
-    </div>
-    <div>
-        <label>Esselunga</label>
-         <app-prodotti [supermarket]=1></app-prodotti>
-    </div>
-    <div>
-        <label>Carrefour</label> 
-         <app-prodotti [supermarket]=2></app-prodotti>   
-    </div>
+        <div>
+            <label>COOP</label>
+            <ul *ngIf="prodotti.coop && prodotti.coop.length > 0; else noCoop">
+                <li *ngFor="let prodotto of prodotti.coop">
+                    <strong>{{prodotto.name}}</strong> - {{prodotto.price}} €<br>
+                    <small>{{prodotto.description}}</small>
+                </li>
+            </ul>
+            <ng-template #noCoop>
+                <span>Non disponibile</span>
+            </ng-template>
+        </div>
+        <div>
+            <label>Esselunga</label>
+            <ul *ngIf="prodotti.esselunga && prodotti.esselunga.length > 0; else noEsselunga">
+                <li *ngFor="let prodotto of prodotti.esselunga">
+                    <strong>{{prodotto.name}}</strong> - {{prodotto.price}} €<br>
+                    <small>{{prodotto.description}}</small>
+                </li>
+            </ul>
+            <ng-template #noEsselunga>
+                <span>Non disponibile</span>
+            </ng-template>
+        </div>
+        <div>
+            <label>Carrefour</label>
+            <ul *ngIf="prodotti.carrefour && prodotti.carrefour.length > 0; else noCarrefour">
+                <li *ngFor="let prodotto of prodotti.carrefour">
+                    <strong>{{prodotto.name}}</strong> - {{prodotto.price}} €<br>
+                    <small>{{prodotto.description}}</small>
+                </li>
+            </ul>
+            <ng-template #noCarrefour>
+                <span>Non disponibile</span>
+            </ng-template>
+        </div>
 </div>

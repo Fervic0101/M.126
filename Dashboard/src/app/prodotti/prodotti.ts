@@ -1,9 +1,10 @@
 import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { ProdottiModel } from '../Model/ProdottiModel';
 
 @Component({
   selector: 'app-prodotti',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './prodotti.html',
   styleUrl: './prodotti.css'
 })
@@ -13,6 +14,7 @@ export class Prodotti {
   Coop : Array<ProdottiModel> = [];;
   Esselunga : Array<ProdottiModel> = [];;
   Carrefour : Array<ProdottiModel> = [];;
+  minPrice: number = 0;
   constructor()
   {
     this.Coop.push(new ProdottiModel('Puma',75,'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Puma_AG.svg/2560px-Puma_AG.svg.png','Scarpe da ginnastica di alta qualità',true));
@@ -20,6 +22,13 @@ export class Prodotti {
     this.Carrefour.push( new ProdottiModel('Adidas',50,'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Adidas_Logo.svg/2560px-Adidas_Logo.svg.png','Scarpe da ginnastica di alta qualità',false));
   }
   ngOnInit(){
+    // Calcola il prezzo minimo tra tutti i prodotti di tutti i supermercati
+    const allProducts = [...this.Coop, ...this.Esselunga, ...this.Carrefour];
+    this.minPrice = Math.min(...allProducts.map(p => p.price));
+    // Aggiungi una proprietà evidenziaMinimo ai prodotti con prezzo minimo
+    allProducts.forEach(p => {
+      (p as any).evidenziaMinimo = p.price === this.minPrice;
+    });
     switch(this.supermarket)
     {
       case 0:

@@ -1,0 +1,38 @@
+.cliente-area {
+  max-width: 700px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  padding: 32px 24px;
+}
+.cliente-area h2 {
+  text-align: center;
+  color: #222;
+  margin-bottom: 24px;
+}
+.statistiche ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 32px;
+}
+.statistiche li {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+.storico table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+}
+.storico th, .storico td {
+  border: 1px solid #eee;
+  padding: 8px 10px;
+  text-align: left;
+}
+.storico th {
+  background: #f8f8f8;
+}
+.storico tr:nth-child(even) {
+  background: #f6f6ff;
+}

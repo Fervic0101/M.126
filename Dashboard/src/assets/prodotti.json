@@ -1,0 +1,15 @@
+{
+  "coop": [
+    { "name": "Pasta Barilla 500g", "price": 1.09, "image": "https://example.com/images/pasta-barilla.jpg", "description": "Pasta di semola di grano duro", "available": true },
+    { "name": "Latte Parmalat 1L", "price": 1.35, "image": "https://example.com/images/latte-parmalat.jpg", "description": "Latte intero UHT", "available": true }
+    
+  ],
+  "esselunga": [
+    { "name": "Pasta De Cecco 500g", "price": 1.20, "image": "https://example.com/images/pasta-dececco.jpg", "description": "Pasta di semola premium", "available": true }
+    
+  ],
+  "carrefour": [
+    { "name": "Pasta Lidl 500g", "price": 0.89, "image": "https://example.com/images/pasta-lidl.jpg", "description": "Pasta secca di semola", "available": true }
+    
+  ]
+}

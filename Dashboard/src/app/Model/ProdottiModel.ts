@@ -4,6 +4,7 @@ export class ProdottiModel {
     public image: string;
     public description: string;
     public available: boolean;
+    evidenziaMinimo?: boolean;
     constructor( name : string , price: number ,image: string,description:string,available:boolean) 
     {
       this.name = name || '';
