@@ -1,14 +1,14 @@
-<nav >
-    <button matButton appNavButton  routerLink="/dashboard">
-        Home 
-    </button>
-    <button matButton appNavButton routerLink="/login">
-        Login 
-    </button>
-    <button matButton appNavButton routerLink="/accedi" >
-        Accedi
-    </button>
-    <button matButton appNavButton routerLink="/chi-siamo">
-        Chi Siamo 
-    </button>
+<nav>
+  <button matButton appNavButton routerLink="/dashboard">Home</button>
+  <button matButton appNavButton routerLink="/login">Login</button>
+  <button matButton appNavButton routerLink="/accedi">Sign In</button>
+  <button matButton appNavButton routerLink="/chi-siamo">Chi Siamo</button>
+  <input type="text" placeholder="Cerca" name="search" ngModel />
+  <select name="category" ngModel>
+    <option value="Alimentari">Alimentari</option>
+    <option value="Elettronica">Elettronica</option>
+    <option value="Igiene">Igiene</option>
+    <option value="Casa">Casa</option>
+  </select>
+  <button>Cerca</button>
 </nav>

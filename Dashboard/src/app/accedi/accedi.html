@@ -1,1 +1,13 @@
-<p>accedi works!</p>
+<ng-form #signInForm="ngForm">
+  <div>
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" ngModel required />
+  </div>
+  <div>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" ngModel required />
+  </div>
+  <button type="submit" matButton [disabled]="!signInForm.valid">
+    Sign In
+  </button>
+</ng-form>

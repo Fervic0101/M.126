@@ -1,1 +1,32 @@
-<p>login works!</p>
+<div class="form-container">
+  <p class="title">Login</p>
+  <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+    <label for="email">Email</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      ngModel
+      #email="ngModel"
+      required
+    />
+    <label for="password">Password</label>
+    <input
+      type="password"
+      id="password"
+      name="password"
+      ngModel
+      #password="ngModel"
+      required
+    />
+    <select name="Role-Selector" ngModel>
+      <option value="user">User</option>
+      <option value="admin">Administrator</option>
+    </select>
+    <button matButton="text">Login</button>
+  </form>
+  <p class="sign-up-label">
+    Non hai un account?
+    <button mat-button (click)="RegisterNavigate()">Registrati</button>
+  </p>
+</div>

@@ -1,2 +1,9 @@
-<p>{{Lista[0].name}}</p>
-<p>{{Lista[0].price}}</p>
+<div *ngFor="let prodotto of Lista">
+  <div class="card">
+    <img [src]="prodotto.image" [alt]="prodotto.name" />
+    <h3>{{ prodotto.name }}</h3>
+    <p>{{ prodotto.price }} €</p>
+    <p>{{ prodotto.description }}</p>
+    <p *ngIf="!prodotto.available">Prodotto non disponibile</p>
+  </div>
+</div>
