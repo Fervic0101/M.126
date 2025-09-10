@@ -1,0 +1,14 @@
+<mat-form-field>
+  <mat-label>Nome prodotto</mat-label>
+  <input matInput [(ngModel)]="searchName" (keyup)="applyFilter()">
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>Prezzo minimo</mat-label>
+  <input matInput type="number" [(ngModel)]="minPrice" (keyup)="applyFilter()">
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>Prezzo massimo</mat-label>
+  <input matInput type="number" [(ngModel)]="maxPrice" (keyup)="applyFilter()">
+</mat-form-field>

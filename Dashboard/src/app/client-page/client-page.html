@@ -1,0 +1,34 @@
+<div class="cliente-container">
+  <h1>Benvenuto, {{ username }}</h1>
+  <h2>Area Personale</h2>
+
+  <section class="stats-section">
+    <h3>Prodotti Acquistati</h3>
+    <table>
+      <tr>
+        <th>Prodotto</th>
+        <th>Quantità</th>
+        <th>Prezzo Unitario (€)</th>
+        <th>Totale (€)</th>
+      </tr>
+      <tr *ngFor="let p of prodottiAcquistati">
+        <td>{{ p.name }}</td>
+        <td>{{ p.quantity }}</td>
+        <td>{{ p.price }}</td>
+        <td>{{ (p.quantity * p.price) | number:'1.2-2' }}</td>
+      </tr>
+    </table>
+  </section>
+
+  <section class="stats-section">
+    <h3>Supermercati più usati</h3>
+    <ul>
+      <li *ngFor="let s of supermercatiPiuUsati">{{ s.name }}: {{ s.count }} volte</li>
+    </ul>
+  </section>
+
+  <section class="stats-section">
+    <h3>Spesa media per prodotto</h3>
+    <p>{{ spesaMedia }} €</p>
+  </section>
+</div>

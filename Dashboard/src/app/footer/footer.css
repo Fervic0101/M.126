@@ -1,0 +1,71 @@
+html, body {
+  font-family: 'Roboto Slab', serif;
+  color: #666;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+.contenitore .contenuto {
+  max-width: 1200px;
+  margin: auto;
+  padding: 70px 10px 70px 10px;
+}
+
+/* ----------------- footer ----------------- */
+
+footer {
+  border-top: 1px solid #C99D66; /* primary-color */
+  text-align: center;
+  padding: 30px 10px;
+  line-height: 1.6em;
+  font-size: 0.8em;
+  background-color: #B3453E; /* primary color */
+  color: #fff;
+}
+
+footer a {
+  color: #F0776C; /* secondary-color */
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #FF968C; /* light secondary color */
+}
+
+footer .credits {
+  max-width: 300px;
+  margin: auto;
+}
+
+footer .credits a img {
+  transition: opacity .2s ease-in;
+}
+
+footer .credits a img:hover {
+  opacity: 0.6;
+}
+
+footer .social-cont .social-list {
+  list-style-type: none;
+  margin: 0 auto;
+  padding: 10px 0;
+}
+
+footer .social-cont .social-list > li {
+  margin: 8px 8px 8px 0;
+  display: inline-block;
+  vertical-align: top;
+  height: 32px;
+  width: 32px;
+  border-radius: 6em;
+  background-color: #F0776C; /* secondary-color */
+}
+
+footer .social-cont .social-list li img {
+  width: 32px;
+}
+
+footer .social-cont .social-list > li:hover {
+  background: #FF968C; /* light secondary color */
+}

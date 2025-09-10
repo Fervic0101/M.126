@@ -1,17 +1,37 @@
-<h1 appTitleElement>Spessa Intelligente</h1>
-<div appContainer>
-    <div>
-        <label> COOP</label>
-        <app-prodotti [supermarket]=0></app-prodotti>
-        <app-prodotti [supermarket]=0></app-prodotti>
-        <app-prodotti [supermarket]=0></app-prodotti>
+<div class="home-container">
+  <h1 appTitleElement>Spesa Intelligente</h1>
+
+  <app-searchbar (filterChange)="applyFilterToAll($event)"></app-searchbar>
+
+  <div class="prodotti-wrapper">
+    <div class="supermarket-section">
+      <label><h2>COOP</h2></label>
+      <app-prodotti 
+        [supermarket]="0" 
+        [filters]="filters" 
+        [highlightedProducts]="highlightedProducts"
+        (loaded)="onProductsLoaded(0, $event)">
+      </app-prodotti>
     </div>
-    <div>
-        <label>Esselunga</label>
-         <app-prodotti [supermarket]=1></app-prodotti>
+
+    <div class="supermarket-section">
+      <label><h2>Esselunga</h2></label>
+      <app-prodotti 
+        [supermarket]="1" 
+        [filters]="filters" 
+        [highlightedProducts]="highlightedProducts"
+        (loaded)="onProductsLoaded(1, $event)">
+      </app-prodotti>
     </div>
-    <div>
-        <label>Carrefour</label> 
-         <app-prodotti [supermarket]=2></app-prodotti>   
+
+    <div class="supermarket-section">
+      <label><h2>Carrefour</h2></label>
+      <app-prodotti 
+        [supermarket]="2" 
+        [filters]="filters" 
+        [highlightedProducts]="highlightedProducts"
+        (loaded)="onProductsLoaded(2, $event)">
+      </app-prodotti>
     </div>
+  </div>
 </div>

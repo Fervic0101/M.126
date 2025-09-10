@@ -1,0 +1,13 @@
+.admin-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.product-form mat-form-field {
+  display: block;
+  width: 100%;
+  margin-bottom: 1rem;
+}

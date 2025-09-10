@@ -1,11 +1,14 @@
- <div class="form-container">
-      <p class="title">Login</p>
-      <form class="form">
-        <input type="email" class="input" placeholder="Email">
-        <input type="password" class="input" placeholder="Password">
-        <button class="form-btn">Log in</button>
-      </form>
-      <p class="sign-up-label">
-        Registrati<span class="sign-up-link">Registrati</span>
-      </p>
-    </div>
+<div class="login-page">
+  <div class="form-container">
+    <p class="title">Login</p>
+    <form class="form" (ngSubmit)="onSubmit()">
+      <input type="email" class="input" placeholder="Email" [(ngModel)]="username" name="email" required>
+      <input type="password" class="input" placeholder="Password" [(ngModel)]="password" name="password" required>
+      <select [(ngModel)]="role" name="role">
+        <option value="cliente">Cliente</option>
+        <option value="azienda">Supermercato</option>
+      </select>
+      <button type="submit" class="form-btn">Log in</button>
+    </form>
+  </div>
+</div>

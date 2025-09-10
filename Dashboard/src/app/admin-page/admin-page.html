@@ -1,0 +1,34 @@
+<div class="admin-container">
+  <h2>Area Amministrativa - Inserimento Nuovo Prodotto</h2>
+
+  <form (ngSubmit)="addProduct()" #productForm="ngForm" class="product-form">
+
+    <mat-form-field appearance="fill">
+      <mat-label>Nome Prodotto</mat-label>
+      <input matInput required [(ngModel)]="newProduct.name" name="name" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Prezzo (€)</mat-label>
+      <input matInput type="number" min="0" required [(ngModel)]="newProduct.price" name="price" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Descrizione</mat-label>
+      <textarea matInput [(ngModel)]="newProduct.description" name="description"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Disponibilità</mat-label>
+      <mat-select required [(ngModel)]="newProduct.available" name="available">
+        <mat-option [value]="true">Disponibile</mat-option>
+        <mat-option [value]="false">Non disponibile</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="productForm.invalid">
+      Inserisci Prodotto
+    </button>
+
+  </form>
+</div>
