@@ -1,7 +1,22 @@
+.errore-login {
+  color: #e53935;
+  background: #fff3f3;
+  border: 1px solid #e53935;
+  border-radius: 4px;
+  padding: 8px 12px;
+  margin-top: 12px;
+  text-align: center;
+  font-size: 1rem;
+}
 /* Stili base per la pagina di login */
+.login-wrapper {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .login-container {
   max-width: 350px;
-  margin: 40px auto;
   padding: 32px 24px;
   background: #f8f8f8;
   border-radius: 8px;

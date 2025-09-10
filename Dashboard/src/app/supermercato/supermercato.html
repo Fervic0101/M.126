@@ -1,39 +1,56 @@
 <div class="supermercato-area">
-  <h2>Gestione Supermercato</h2>
+  <h2>Area Operatore Supermercato</h2>
   <section class="aggiungi-prodotto">
     <h3>Inserisci nuovo prodotto</h3>
-    <form>
+    <form (submit)="aggiungiProdotto($event)">
+      <label for="supermercato">Supermercato</label>
+      <select id="supermercato" name="supermercato" required style="font-size:1.1rem; min-width:160px; padding:8px;">
+        <option value="coop">COOP</option>
+        <option value="esselunga">Esselunga</option>
+        <option value="carrefour">Carrefour</option>
+      </select>
       <label for="nome">Nome prodotto</label>
       <input type="text" id="nome" name="nome" required>
-      <label for="prezzo">Prezzo originale</label>
-      <input type="number" id="prezzo" name="prezzo" required>
-      <label for="offerta">Prezzo offerta</label>
-      <input type="number" id="offerta" name="offerta">
-      <label for="descrizione">Descrizione</label>
-      <textarea id="descrizione" name="descrizione"></textarea>
+      <label for="prezzo">Prezzo <span style="font-weight:bold; color:#1976d2;">€</span></label>
+      <input type="number" id="prezzo" name="prezzo" required step="0.01" min="0">
       <button type="submit">Aggiungi prodotto</button>
     </form>
   </section>
   <section class="prodotti-lista">
-    <h3>Prodotti inseriti</h3>
-    <table>
+    <h3>Confronto Prodotti tra Supermercati</h3>
+    <table class="tabella-confronto">
       <thead>
         <tr>
-          <th>Nome</th>
-          <th>Prezzo originale</th>
-          <th>Prezzo offerta</th>
-          <th>Descrizione</th>
+          <th>Prodotto</th>
+          <th>COOP</th>
+          <th>Esselunga</th>
+          <th>Carrefour</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let prodotto of prodotti">
-          <td>{{prodotto.nome}}</td>
-          <td>{{prodotto.prezzo}} €</td>
+        <tr *ngFor="let nomeProdotto of prodottiUnici">
+          <td>{{nomeProdotto}}</td>
           <td>
-            <span *ngIf="prodotto.offerta < prodotto.prezzo; else noOfferta">{{prodotto.offerta}} €</span>
-            <ng-template #noOfferta>-</ng-template>
+            <ng-container *ngIf="prezzi.coop[nomeProdotto]; else naCoop">
+              {{prezzi.coop[nomeProdotto].price | prezzoIt}} €
+              <button class="btn-rimuovi" (click)="rimuoviProdotto('coop', nomeProdotto)">Rimuovi</button>
+            </ng-container>
+            <ng-template #naCoop><span class="na">0 €</span></ng-template>
           </td>
-          <td>{{prodotto.descrizione}}</td>
+          <td>
+            <ng-container *ngIf="prezzi.esselunga[nomeProdotto]; else naEsselunga">
+              {{prezzi.esselunga[nomeProdotto].price | prezzoIt}} €
+              <button class="btn-rimuovi" (click)="rimuoviProdotto('esselunga', nomeProdotto)">Rimuovi</button>
+            </ng-container>
+            <ng-template #naEsselunga><span class="na">0 €</span></ng-template>
+          </td>
+          <td>
+            <ng-container *ngIf="prezzi.carrefour[nomeProdotto]; else naCarrefour">
+              {{prezzi.carrefour[nomeProdotto].price | prezzoIt}} €
+              <button class="btn-rimuovi" (click)="rimuoviProdotto('carrefour', nomeProdotto)">Rimuovi</button>
+            </ng-container>
+            <ng-template #naCarrefour><span class="na">0 €</span></ng-template>
+          </td>
         </tr>
       </tbody>
     </table>

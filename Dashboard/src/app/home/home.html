@@ -1,43 +1,68 @@
-<h1 appTitleElement>Spessa Intelligente</h1>
-<pre>{{prodotti | json}}</pre>
-<div *ngIf="!prodotti.coop && !prodotti.esselunga && !prodotti.carrefour">
-    <p style="color: red;">Errore: prodotti non caricati dal JSON. Controlla percorso e server.</p>
+<!-- Barra di ricerca SEMPRE visibile nella home -->
+<div class="search-bar-home">
+  <label for="search-nome">Nome prodotto:</label>
+  <input id="search-nome" type="text" [(ngModel)]="filtroNome" placeholder="Cerca prodotto..." list="prodottiDatalist" />
+  <datalist id="prodottiDatalist">
+    <option *ngFor="let nome of prodottiUnici" [value]="nome"></option>
+  </datalist>
+  <label for="prezzo-min">Prezzo min:</label>
+  <input id="prezzo-min" type="number" [(ngModel)]="prezzoMin" min="0" placeholder="Min" />
+  <label for="prezzo-max">Prezzo max:</label>
+  <input id="prezzo-max" type="number" [(ngModel)]="prezzoMax" min="0" placeholder="Max" />
 </div>
-<div appContainer>
-        <div>
-            <label>COOP</label>
-            <ul *ngIf="prodotti.coop && prodotti.coop.length > 0; else noCoop">
-                <li *ngFor="let prodotto of prodotti.coop">
-                    <strong>{{prodotto.name}}</strong> - {{prodotto.price}} €<br>
-                    <small>{{prodotto.description}}</small>
-                </li>
-            </ul>
-            <ng-template #noCoop>
-                <span>Non disponibile</span>
-            </ng-template>
-        </div>
-        <div>
-            <label>Esselunga</label>
-            <ul *ngIf="prodotti.esselunga && prodotti.esselunga.length > 0; else noEsselunga">
-                <li *ngFor="let prodotto of prodotti.esselunga">
-                    <strong>{{prodotto.name}}</strong> - {{prodotto.price}} €<br>
-                    <small>{{prodotto.description}}</small>
-                </li>
-            </ul>
-            <ng-template #noEsselunga>
-                <span>Non disponibile</span>
-            </ng-template>
-        </div>
-        <div>
-            <label>Carrefour</label>
-            <ul *ngIf="prodotti.carrefour && prodotti.carrefour.length > 0; else noCarrefour">
-                <li *ngFor="let prodotto of prodotti.carrefour">
-                    <strong>{{prodotto.name}}</strong> - {{prodotto.price}} €<br>
-                    <small>{{prodotto.description}}</small>
-                </li>
-            </ul>
-            <ng-template #noCarrefour>
-                <span>Non disponibile</span>
-            </ng-template>
-        </div>
+<h1 appTitleElement>Spessa Intelligente</h1>
+
+<!-- Messaggio errore se JSON vuoto -->
+<div *ngIf="!prodotti.coop && !prodotti.esselunga && !prodotti.carrefour">
+  <p class="errore-json">Errore: prodotti non caricati dal JSON. Controlla percorso e server.</p>
+</div>
+
+<!-- Lista prodotti -->
+<div class="prodotti-unici">
+  <div *ngFor="let nomeProdotto of prodottiUniciFiltrati()" class="prodotto-unico-row">
+    <!-- Coop -->
+    <div class="prodotto-card">
+      <div class="supermercato-header"><img src="https://img.icons8.com/color/48/coop.png" alt="Coop" /></div>
+      <img [src]="getImageForProduct(nomeProdotto)" alt="{{nomeProdotto}}" class="prodotto-img" />
+      <h4>{{nomeProdotto}}</h4>
+      <ng-container *ngIf="prodottiPerSupermercato[nomeProdotto]?.coop; else naCoopUnico">
+        <p class="prezzo" [ngStyle]="{'color': isPrezzoMinimo(nomeProdotto, 'coop') ? 'green' : 'black'}">
+          {{prodottiPerSupermercato[nomeProdotto].coop.price | prezzoIt}} €
+        </p>
+        <p class="descrizione">{{prodottiPerSupermercato[nomeProdotto].coop.description}}</p>
+        <button *ngIf="isClienteLoggato" class="acquista-btn" (click)="aggiungiAlCarrello(nomeProdotto, 'coop')">Aggiungi al carrello</button>
+      </ng-container>
+      <ng-template #naCoopUnico><div class="na-rosso">N/A</div></ng-template>
+    </div>
+
+    <!-- Esselunga -->
+    <div class="prodotto-card">
+      <div class="supermercato-header"><img src="https://img.icons8.com/color/48/esselunga.png" alt="Esselunga" /></div>
+      <img [src]="getImageForProduct(nomeProdotto)" alt="{{nomeProdotto}}" class="prodotto-img" />
+      <h4>{{nomeProdotto}}</h4>
+      <ng-container *ngIf="prodottiPerSupermercato[nomeProdotto]?.esselunga; else naEsselungaUnico">
+        <p class="prezzo" [ngStyle]="{'color': isPrezzoMinimo(nomeProdotto, 'esselunga') ? 'green' : 'black'}">
+          {{prodottiPerSupermercato[nomeProdotto].esselunga.price | prezzoIt}} €
+        </p>
+        <p class="descrizione">{{prodottiPerSupermercato[nomeProdotto].esselunga.description}}</p>
+        <button *ngIf="isClienteLoggato" class="acquista-btn" (click)="aggiungiAlCarrello(nomeProdotto, 'esselunga')">Aggiungi al carrello</button>
+      </ng-container>
+      <ng-template #naEsselungaUnico><div class="na-rosso">N/A</div></ng-template>
+    </div>
+
+    <!-- Carrefour -->
+    <div class="prodotto-card">
+      <div class="supermercato-header"><img src="https://img.icons8.com/color/48/carrefour.png" alt="Carrefour" /></div>
+      <img [src]="getImageForProduct(nomeProdotto)" alt="{{nomeProdotto}}" class="prodotto-img" />
+      <h4>{{nomeProdotto}}</h4>
+      <ng-container *ngIf="prodottiPerSupermercato[nomeProdotto]?.carrefour; else naCarrefourUnico">
+        <p class="prezzo" [ngStyle]="{'color': isPrezzoMinimo(nomeProdotto, 'carrefour') ? 'green' : 'black'}">
+          {{prodottiPerSupermercato[nomeProdotto].carrefour.price | prezzoIt}} €
+        </p>
+        <p class="descrizione">{{prodottiPerSupermercato[nomeProdotto].carrefour.description}}</p>
+        <button *ngIf="isClienteLoggato" class="acquista-btn" (click)="aggiungiAlCarrello(nomeProdotto, 'carrefour')">Aggiungi al carrello</button>
+      </ng-container>
+      <ng-template #naCarrefourUnico><div class="na-rosso">N/A</div></ng-template>
+    </div>
+  </div>
 </div>

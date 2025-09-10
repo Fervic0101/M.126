@@ -1,14 +1,11 @@
-<nav >
-    <button matButton appNavButton  routerLink="/dashboard">
-        Home 
-    </button>
-    <button matButton appNavButton routerLink="/login">
-        Login 
-    </button>
-    <button matButton appNavButton routerLink="/accedi" >
-        Accedi
-    </button>
-    <button matButton appNavButton routerLink="/chi-siamo">
-        Chi Siamo
-    </button>
+<nav>
+    <button matButton appNavButton routerLink="/dashboard">Home</button>
+    <button matButton appNavButton routerLink="/chi-siamo">Chi Siamo</button>
+    <ng-container *ngIf="!isLoggedIn">
+        <button matButton appNavButton routerLink="/login">Accedi</button>
+    </ng-container>
+    <ng-container *ngIf="isLoggedIn">
+        <button matButton appNavButton [routerLink]="userType === 'operatore' ? '/supermercato' : '/cliente'">Area Personale</button>
+    <button matButton appNavButton class="logout-btn" (click)="logout()">Logout</button>
+    </ng-container>
 </nav>

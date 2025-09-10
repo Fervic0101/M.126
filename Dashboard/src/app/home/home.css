@@ -1,0 +1,181 @@
+.search-bar-home {
+	background: #ffe082;
+	border: 2px solid #ff9800;
+	border-radius: 10px;
+	padding: 18px 12px;
+	margin-bottom: 24px;
+	display: flex;
+	gap: 1rem;
+	align-items: center;
+	font-size: 1.1em;
+}
+
+.errore-json {
+	color: red;
+	font-weight: bold;
+	margin: 1rem 0;
+}
+.acquista-btn {
+	background: #1976d2;
+	color: #fff;
+	border: none;
+	border-radius: 6px;
+	padding: 7px 18px;
+	font-size: 1em;
+	margin-top: 8px;
+	cursor: pointer;
+	transition: background 0.2s;
+}
+.acquista-btn:hover {
+	background: #1565c0;
+}
+.prodotti-unici {
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+}
+.prodotto-unico-row {
+	display: flex;
+	flex-direction: row;
+	gap: 24px;
+	justify-content: center;
+	align-items: stretch;
+}
+.prodotto-card {
+	flex: 1 1 0;
+	min-width: 220px;
+	max-width: 320px;
+	background: #fff;
+	border-radius: 12px;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+	padding: 18px 12px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.na-rosso {
+	color: #e53935;
+	font-weight: bold;
+	text-align: center;
+	font-size: 1.2rem;
+	margin: 16px 0;
+}
+.prodotti-container {
+	display: flex;
+	gap: 2rem;
+	justify-content: center;
+	margin-top: 2rem;
+}
+.supermercato-col {
+	background: #f8f9fa;
+	border-radius: 10px;
+	padding: 1.5rem 1rem;
+	min-width: 220px;
+	box-shadow: 0 2px 8px rgba(44,62,80,0.07);
+}
+.supermercato-header {
+	display: flex;
+	align-items: center;
+	gap: 0.7rem;
+	margin-bottom: 1rem;
+	font-weight: bold;
+	font-size: 1.2rem;
+}
+.prodotti-list {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+.prodotto-card {
+	background: #fff;
+	border-radius: 8px;
+	box-shadow: 0 1px 4px rgba(44,62,80,0.08);
+	padding: 1rem;
+	transition: box-shadow 0.2s;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.prodotto-card:hover {
+	box-shadow: 0 4px 12px rgba(44,62,80,0.15);
+}
+.prodotto-card h4 {
+	margin: 0 0 0.5rem 0;
+	color: #1976d2;
+}
+.prodotto-card .prezzo {
+	font-size: 1.1rem;
+	color: black;
+	font-weight: bold;
+}
+.prodotto-card .descrizione {
+	color: #555;
+	font-size: 0.95rem;
+	text-align: center;
+}
+.prodotto-card.vuoto {
+	color: #888;
+	text-align: center;
+	background: #f0f0f0;
+}
+.prodotto-img {
+	width: 80px;
+	height: 80px;
+	object-fit: cover;
+	border-radius: 6px;
+	margin-bottom: 0.5rem;
+}
+.prodotti-container {
+	display: flex;
+	gap: 2rem;
+	justify-content: center;
+	margin-top: 2rem;
+}
+.supermercato-col {
+	background: #f8f9fa;
+	border-radius: 10px;
+	padding: 1.5rem 1rem;
+	min-width: 220px;
+	box-shadow: 0 2px 8px rgba(44,62,80,0.07);
+}
+.supermercato-header {
+	display: flex;
+	align-items: center;
+	gap: 0.7rem;
+	margin-bottom: 1rem;
+	font-weight: bold;
+	font-size: 1.2rem;
+}
+.prodotti-list {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+.prodotto-card {
+	background: #fff;
+	border-radius: 8px;
+	box-shadow: 0 1px 4px rgba(44,62,80,0.08);
+	padding: 1rem;
+	transition: box-shadow 0.2s;
+}
+.prodotto-card:hover {
+	box-shadow: 0 4px 12px rgba(44,62,80,0.15);
+}
+.prodotto-card h4 {
+	margin: 0 0 0.5rem 0;
+	color: #1976d2;
+}
+.prodotto-card .prezzo {
+	font-size: 1.1rem;
+	color: #2e7d32;
+	font-weight: bold;
+}
+.prodotto-card .descrizione {
+	color: #555;
+	font-size: 0.95rem;
+}
+.prodotto-card.vuoto {
+	color: #888;
+	text-align: center;
+	background: #f0f0f0;
+}

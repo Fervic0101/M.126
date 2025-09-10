@@ -1,3 +1,18 @@
+/* Bottone rimozione prodotto */
+.btn-rimuovi {
+  margin-left: 8px;
+  padding: 2px 10px;
+  font-size: 0.95rem;
+  background: #e53935;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-rimuovi:hover {
+  background: #b71c1c;
+}
 .supermercato-area {
   max-width: 700px;
   margin: 40px auto;

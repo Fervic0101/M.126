@@ -1,4 +1,20 @@
-<div *ngFor="let prodotto of Lista">
+
+<!-- Barra di ricerca -->
+
+<div class="search-bar" style="display: flex; gap: 1rem; align-items: center; margin-bottom: 1rem;">
+	<label for="search-nome">Nome prodotto:</label>
+	<input id="search-nome" type="text" [(ngModel)]="filtroNome" placeholder="Cerca prodotto..." list="prodottiDatalist" style="width: 180px;" />
+	<datalist id="prodottiDatalist">
+		<option *ngFor="let prodotto of Lista" [value]="prodotto.name"></option>
+	</datalist>
+	<label for="prezzo-min">Prezzo min:</label>
+	<input id="prezzo-min" type="number" [(ngModel)]="prezzoMin" min="0" placeholder="Min" style="width: 80px;" />
+	<label for="prezzo-max">Prezzo max:</label>
+	<input id="prezzo-max" type="number" [(ngModel)]="prezzoMax" min="0" placeholder="Max" style="width: 80px;" />
+</div>
+
+<!-- Lista prodotti filtrata -->
+<div *ngFor="let prodotto of prodottiFiltrati()">
 	<div [class.prodotto-economico]="prodotto.evidenziaMinimo">
 		<p>{{prodotto.name}}</p>
 		<p>{{prodotto.price}} €</p>

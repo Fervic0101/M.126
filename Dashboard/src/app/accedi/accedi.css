@@ -1,6 +1,11 @@
+.accedi-wrapper {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .card-accedi {
   max-width: 350px;
-  margin: 60px auto;
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 2px 12px rgba(0,0,0,0.10);

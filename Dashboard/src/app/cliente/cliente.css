@@ -1,3 +1,137 @@
+.rimuovi-btn {
+  background: #e53935;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 0.95em;
+  cursor: pointer;
+  margin-left: 8px;
+  transition: background 0.2s;
+}
+.rimuovi-btn:hover {
+  background: #b71c1c;
+}
+.card-statistiche {
+  order: 1;
+}
+.card-carrello {
+  order: 2;
+}
+.cliente-layout {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+}
+.card-statistiche {
+  order: 1;
+}
+.card-carrello {
+  order: 2;
+}
+@media (max-width: 900px) {
+  .cliente-layout {
+    flex-direction: column;
+  }
+  .card-statistiche, .card-carrello {
+    order: unset;
+    max-width: 100%;
+  }
+}
+.card-statistiche, .card-carrello {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.card-statistiche {
+  background: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(44,62,80,0.07);
+  padding: 24px 18px;
+  min-width: 420px;
+  max-width: 700px;
+  flex: 2 1 420px;
+  margin-bottom: 32px;
+}
+.card-carrello {
+  background: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(44,62,80,0.07);
+  padding: 24px 18px;
+  min-width: 340px;
+  max-width: 540px;
+  flex: 1 1 340px;
+  margin-bottom: 32px;
+}
+.statistiche-card {
+  background: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(44,62,80,0.07);
+  padding: 24px 18px;
+  margin-bottom: 32px;
+}
+.statistiche-row {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}
+.statistica-item {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(44,62,80,0.08);
+  padding: 18px 12px;
+  text-align: center;
+  min-width: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.statistica-item img {
+  width: 36px;
+  height: 36px;
+  margin-bottom: 8px;
+}
+.stat-label {
+  color: #555;
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
+.stat-value {
+  font-size: 1.3rem;
+  color: #1976d2;
+  font-weight: bold;
+}
+.storico-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+  box-shadow: 0 1px 4px rgba(44,62,80,0.08);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.storico-table th, .storico-table td {
+  border: 1px solid #eee;
+  padding: 10px 12px;
+  text-align: left;
+}
+.storico-table th {
+  background: #f8f8f8;
+  font-weight: 600;
+}
+.storico-table tr:nth-child(even) {
+  background: #f6f6ff;
+}
+.storico-table tr:hover {
+  background: #e3f2fd;
+}
+.storico p.errore {
+  color: red;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
 .cliente-area {
   max-width: 700px;
   margin: 40px auto;

@@ -1,35 +1,84 @@
-<div class="cliente-area"></div>
-  <h2>Area Personale Cliente</h2>
-  <section class="statistiche">
-    <h3>Statistiche Acquisti</h3>
-    <ul>
-      <li><strong>Prodotti acquistati:</strong> <span>{{prodottiAcquistati}}</span></li>
-      <li><strong>Supermercato più usato:</strong> <span>{{supermercatoPreferito}}</span></li>
-      <li><strong>Spesa media:</strong> <span>{{spesaMedia}} €</span></li>
-    </ul>
-  </section>
-  <section class="storico">
-    <h3>Storico Acquisti</h3>
-    <div *ngIf="storicoAcquisti.length === 0">
-      <p style="color: red;">Nessun prodotto trovato o errore nel caricamento dati.</p>
-      <p>Debug: prodotti caricati = {{prodotti | json}}</p>
+<div class="cliente-layout">
+  <div class="card-statistiche">
+    <h2>Area Personale Cliente</h2>
+    <div class="statistiche-card">
+      <h3>Statistiche Acquisti</h3>
+      <div class="statistiche-row">
+  <div class="statistica-item">
+          <img src="https://img.icons8.com/fluency/48/000000/shopping-cart.png" alt="Acquisti" />
+          <span class="stat-label">Prodotti acquistati</span>
+          <span class="stat-value">{{prodottiAcquistati}}</span>
+        </div>
+        <div class="statistica-item">
+          <img src="https://img.icons8.com/fluency/48/000000/shop.png" alt="Supermercato" />
+          <span class="stat-label">Supermercato più usato</span>
+          <span class="stat-value">{{supermercatoPreferito | titlecase}}</span>
+        </div>
+        <div class="statistica-item">
+          <img src="https://img.icons8.com/fluency/48/000000/money.png" alt="Spesa media" />
+          <span class="stat-label">Spesa media</span>
+          <span class="stat-value">{{spesaMedia}} €</span>
+        </div>
+      </div>
     </div>
-    <table *ngIf="storicoAcquisti.length > 0">
-      <thead>
-        <tr>
-          <th>Prodotto</th>
-          <th>Supermercato</th>
-          <th>Prezzo</th>
-          <th>Data</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let acquisto of storicoAcquisti">
-          <td>{{acquisto.prodotto}}</td>
-          <td>{{acquisto.supermercato}}</td>
-          <td>{{acquisto.prezzo}} €</td>
-          <td>{{acquisto.data}}</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
+    <section class="storico">
+      <h3>Storico Acquisti</h3>
+      <div *ngIf="storicoAcquisti.length === 0">
+        <p class="errore">Nessun prodotto trovato o errore nel caricamento dati.</p>
+        <p>Debug: prodotti caricati = {{prodotti | json}}</p>
+      </div>
+      <table *ngIf="storicoAcquisti.length > 0" class="storico-table">
+        <thead>
+          <tr>
+            <th>Prodotto</th>
+            <th>Supermercato</th>
+            <th>Prezzo</th>
+            <th>Data</th>
+          <table>
+            <thead>
+              <tr>
+                <th>Prodotti</th>
+                <th>Supermercato</th>
+                <th>Prezzo Totale</th>
+                <th>Data</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let acquisto of storicoAcquisti">
+                <td>
+                  <ul>
+                    <li *ngFor="let prodotto of acquisto.prodotti">
+                      {{ prodotto.nome }} <span *ngIf="prodotto.prezzo">({{ prodotto.prezzo | number:'1.2-2' }}€)</span>
+                    </li>
+                  </ul>
+                </td>
+                <td>{{ acquisto.supermercato }}</td>
+                <td>{{ acquisto.prezzoTotale | number:'1.2-2' }}€</td>
+                <td>{{ acquisto.data }}</td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+      <table *ngIf="carrello.length > 0" class="storico-table">
+        <thead>
+          <tr>
+            <th>Prodotto</th>
+            <th>Supermercato</th>
+            <th>Prezzo</th>
+            <th>Data aggiunta</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of carrello; let i = index">
+            <td>{{p.name}}</td>
+            <td>{{p.supermercato | titlecase}}</td>
+            <td>{{p.price}} €</td>
+            <td>{{p.date}}</td>
+            <td><button class="rimuovi-btn" (click)="rimuoviDalCarrello(i)">Rimuovi</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <button *ngIf="carrello.length > 0" class="acquista-btn" (click)="pagaCarrello()">Paga e sposta nello storico</button>
+    </section>
+  </div>
+</div>

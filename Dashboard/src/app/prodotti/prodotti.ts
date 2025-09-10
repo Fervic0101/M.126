@@ -1,14 +1,27 @@
+  // ...existing code...
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { ProdottiModel } from '../Model/ProdottiModel';
 
 @Component({
   selector: 'app-prodotti',
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './prodotti.html',
   styleUrl: './prodotti.css'
 })
 export class Prodotti {
+  filtroNome: string = '';
+  prezzoMin: number = 0;
+  prezzoMax: number = 0;
+
+  prodottiFiltrati() {
+    return this.Lista.filter((p: any) => {
+      const nomeMatch = !this.filtroNome || p.nome.toLowerCase().includes(this.filtroNome.toLowerCase());
+      const prezzoMatch = (!this.prezzoMin || p.price >= this.prezzoMin) && (!this.prezzoMax || p.price <= this.prezzoMax);
+      return nomeMatch && prezzoMatch;
+    });
+  }
   @Input() supermarket: number = 0;
   Lista : Array<ProdottiModel> = [];
   Coop : Array<ProdottiModel> = [];;
