@@ -20,65 +20,57 @@
           <span class="stat-value">{{spesaMedia}} €</span>
         </div>
       </div>
-    </div>
-    <section class="storico">
-      <h3>Storico Acquisti</h3>
-      <div *ngIf="storicoAcquisti.length === 0">
-        <p class="errore">Nessun prodotto trovato o errore nel caricamento dati.</p>
-        <p>Debug: prodotti caricati = {{prodotti | json}}</p>
-      </div>
-      <table *ngIf="storicoAcquisti.length > 0" class="storico-table">
-        <thead>
-          <tr>
-            <th>Prodotto</th>
-            <th>Supermercato</th>
-            <th>Prezzo</th>
-            <th>Data</th>
-          <table>
-            <thead>
-              <tr>
-                <th>Prodotti</th>
-                <th>Supermercato</th>
-                <th>Prezzo Totale</th>
-                <th>Data</th>
+      <section class="storico">
+        <h3>Storico Acquisti</h3>
+        <div *ngIf="storicoAcquisti.length === 0">
+          <p class="errore">Nessun acquisto effettuato.</p>
+        </div>
+        <table *ngIf="storicoAcquisti.length > 0" class="storico-table">
+          <thead>
+            <tr>
+              <th>Prodotto</th>
+              <th>Prezzo</th>
+              <th>Supermercato</th>
+              <th>Data</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let acquisto of storicoAcquisti">
+              <tr *ngFor="let prodotto of acquisto.prodotti">
+                <td><strong>{{ prodotto.name || prodotto.nome }}</strong></td>
+                <td>{{ (prodotto.price || prodotto.prezzo) | number:'1.2-2' }} €</td>
+                <td>{{ acquisto.supermercato | titlecase }}</td>
+                <td>{{ prodotto.data || acquisto.data }}</td>
               </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let acquisto of storicoAcquisti">
-                <td>
-                  <ul>
-                    <li *ngFor="let prodotto of acquisto.prodotti">
-                      {{ prodotto.nome }} <span *ngIf="prodotto.prezzo">({{ prodotto.prezzo | number:'1.2-2' }}€)</span>
-                    </li>
-                  </ul>
-                </td>
-                <td>{{ acquisto.supermercato }}</td>
-                <td>{{ acquisto.prezzoTotale | number:'1.2-2' }}€</td>
-                <td>{{ acquisto.data }}</td>
-              </tr>
-            </tbody>
-          </table>
-      </div>
-      <table *ngIf="carrello.length > 0" class="storico-table">
-        <thead>
-          <tr>
-            <th>Prodotto</th>
-            <th>Supermercato</th>
-            <th>Prezzo</th>
-            <th>Data aggiunta</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let p of carrello; let i = index">
-            <td>{{p.name}}</td>
-            <td>{{p.supermercato | titlecase}}</td>
-            <td>{{p.price}} €</td>
-            <td>{{p.date}}</td>
-            <td><button class="rimuovi-btn" (click)="rimuoviDalCarrello(i)">Rimuovi</button></td>
-          </tr>
-        </tbody>
-      </table>
-      <button *ngIf="carrello.length > 0" class="acquista-btn" (click)="pagaCarrello()">Paga e sposta nello storico</button>
-    </section>
-  </div>
-</div>
+            </ng-container>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="carrello">
+        <h3>Carrello</h3>
+        <div *ngIf="carrello.length === 0">
+          <p class="errore">Il carrello è vuoto.</p>
+        </div>
+        <table *ngIf="carrello.length > 0" class="storico-table">
+          <thead>
+            <tr>
+              <th>Prodotto</th>
+              <th>Prezzo</th>
+              <th>Supermercato</th>
+              <th>Data aggiunta</th>
+              <th>Azioni</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let p of carrello; let i = index">
+              <td><strong>{{p.name}}</strong></td>
+              <td>{{p.price | number:'1.2-2'}} €</td>
+              <td>{{p.supermercato | titlecase}}</td>
+              <td>{{p.date}}</td>
+              <td><button class="rimuovi-btn" (click)="rimuoviDalCarrello(i)">Rimuovi</button></td>
+            </tr>
+          </tbody>
+        </table>
+        <button *ngIf="carrello.length > 0" class="paga-btn" (click)="pagaCarrello()">Paga</button>
+      </section>

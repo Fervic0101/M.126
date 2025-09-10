@@ -97,10 +97,16 @@ export class Supermercato {
     let arr = modifiche ? JSON.parse(modifiche) : [];
     arr = arr.filter((p: any) => !(p.nome === nomeProdotto && p.supermercato === supermercato));
     localStorage.setItem('prodottiModificati', JSON.stringify(arr));
-    // Se il prodotto non esiste più in nessun supermercato, rimuovilo da prodottiUnici
+    // Se il prodotto non esiste più in nessun supermercato, aggiungi a prodottiEliminati e rimuovilo da prodottiUnici
     const ancoraPresente = ['coop','esselunga','carrefour'].some(sup => this.prezzi[sup][nomeProdotto]);
     if (!ancoraPresente) {
       this.prodottiUnici = this.prodottiUnici.filter(n => n !== nomeProdotto);
+      const eliminati = localStorage.getItem('prodottiEliminati');
+      let arrEliminati = eliminati ? JSON.parse(eliminati) : [];
+      if (!arrEliminati.includes(nomeProdotto)) {
+        arrEliminati.push(nomeProdotto);
+        localStorage.setItem('prodottiEliminati', JSON.stringify(arrEliminati));
+      }
     }
   }
 }

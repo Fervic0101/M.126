@@ -66,6 +66,54 @@
   flex: 1 1 340px;
   margin-bottom: 32px;
 }
+.card-storico {
+  background: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(44,62,80,0.07);
+  padding: 24px 18px;
+  min-width: 340px;
+  max-width: 540px;
+  flex: 1 1 340px;
+  margin-bottom: 32px;
+}
+.storico-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+.storico-table th, .storico-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: left;
+}
+.storico-table th {
+  background: #f0f0f0;
+  font-weight: 600;
+}
+.storico-table tr:nth-child(even) {
+  background: #fafafa;
+}
+.storico-table tr:hover {
+  background: #e3f2fd;
+}
+.paga-btn {
+  background: #43a047;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 18px;
+  font-size: 1em;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background 0.2s;
+}
+.paga-btn:disabled {
+  background: #bdbdbd;
+  cursor: not-allowed;
+}
+.paga-btn:hover:not(:disabled) {
+  background: #388e3c;
+}
 .statistiche-card {
   background: #f8f9fa;
   border-radius: 10px;

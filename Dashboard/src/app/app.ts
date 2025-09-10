@@ -12,6 +12,24 @@ import { AuthService } from './services/auth.service';
   styleUrl: './app.css'
 })
 export class App {
+  onResetFiltri() {
+    // Trova il componente Home e chiama resetFiltri se presente
+    const home = document.querySelector('app-home');
+    if (home && 'resetFiltri' in home) {
+      (home as any).resetFiltri();
+    }
+    // In alternativa, si può gestire con un servizio condiviso o segnale
+  }
+  onRipristinaProdottiClick(event: Event) {
+    event.preventDefault();
+    if (this.userType === 'operatore') {
+      this.ripristinaTuttiProdotti();
+    }
+  }
+  ripristinaTuttiProdotti() {
+    localStorage.removeItem('prodottiEliminati');
+    window.location.reload();
+  }
   protected readonly title = signal('Dashboard');
   prodotti: any = {};
   isLoggedIn = false;

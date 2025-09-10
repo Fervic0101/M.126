@@ -11,6 +11,11 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './menu-component.css'
 })
 export class MenuComponent {
+  @Output() resetFiltriEvent = new EventEmitter<void>();
+
+  resetFiltri() {
+    this.resetFiltriEvent.emit();
+  }
   isHome: boolean = false;
   filtroNome: string = '';
   prezzoMin: number = 0;

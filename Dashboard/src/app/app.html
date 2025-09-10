@@ -1,11 +1,14 @@
 <div id="main-wrapper">
-	<app-menu-component [isLoggedIn]="isLoggedIn" [userType]="userType" (logoutEvent)="logout()"></app-menu-component>
+	<app-menu-component [isLoggedIn]="isLoggedIn" [userType]="userType" (logoutEvent)="logout()" (resetFiltriEvent)="onResetFiltri()"></app-menu-component>
 	<router-outlet></router-outlet>
 	<footer class="footer">
 		<div class="footer-links">
 			<a href="https://www.example.com" target="_blank" rel="noopener">Link utile 1</a> |
 			<a href="https://www.example2.com" target="_blank" rel="noopener">Link utile 2</a> |
-			<a href="https://www.example3.com" target="_blank" rel="noopener">Link utile 3</a>
+			<a href="https://www.example3.com" target="_blank" rel="noopener" 
+				[class.disabled-link]="userType !== 'operatore'" 
+				[attr.tabindex]="userType === 'operatore' ? 0 : -1" 
+				(click)="onRipristinaProdottiClick($event)">Link utile 3</a>
 		</div>
 		<div class="footer-contact">
 			<span>Email: <a href="mailto:info@example.com">info@example.com</a></span> |

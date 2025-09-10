@@ -15,14 +15,26 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './home.css'
 })
 export class Home {
+  resetFiltri() {
+    this.filtroNome = '';
+    this.prezzoMin = 0;
+    this.prezzoMax = 0;
+  }
+  ripristinaTuttiProdotti() {
+    localStorage.removeItem('prodottiEliminati');
+    window.location.reload();
+  }
   filtroNome: string = '';
   prezzoMin: number = 0;
   prezzoMax: number = 0;
 
   prodottiUniciFiltrati(): string[] {
-    return this.prodottiUnici.filter(nome => {
+    const eliminati = localStorage.getItem('prodottiEliminati');
+    const prodottiEliminati = eliminati ? JSON.parse(eliminati) : [];
+    // Filtra come prima
+    const filtrati = this.prodottiUnici.filter(nome => {
+      if (prodottiEliminati.includes(nome)) return false;
       const nomeMatch = !this.filtroNome || nome.toLowerCase().includes(this.filtroNome.toLowerCase());
-      // Trova il prezzo minimo tra i supermercati disponibili per il prodotto
       const prezzi = ['coop', 'esselunga', 'carrefour']
         .map(sup => this.prodottiPerSupermercato[nome]?.[sup]?.price)
         .filter(p => typeof p === 'number');
@@ -30,6 +42,13 @@ export class Home {
       const prezzoMatch = (!this.prezzoMin || prezzoMinimo >= this.prezzoMin) && (!this.prezzoMax || prezzoMinimo <= this.prezzoMax);
       return nomeMatch && prezzoMatch;
     });
+    // Se filtroNome è attivo, porta i match esatti in cima
+    if (this.filtroNome) {
+      const esatti = filtrati.filter(n => n.toLowerCase() === this.filtroNome.toLowerCase());
+      const altri = filtrati.filter(n => n.toLowerCase() !== this.filtroNome.toLowerCase());
+      return [...esatti, ...altri];
+    }
+    return filtrati;
   }
   isClienteLoggato = false;
   aggiungiAlCarrello(nomeProdotto: string, supermercato: string) {

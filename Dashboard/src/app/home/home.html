@@ -11,6 +11,8 @@
   <input id="prezzo-max" type="number" [(ngModel)]="prezzoMax" min="0" placeholder="Max" />
 </div>
 <h1 appTitleElement>Spessa Intelligente</h1>
+<!-- Pulsante nascosto per ripristinare tutti i prodotti -->
+<button (click)="ripristinaTuttiProdotti()" style="position: absolute; left: -9999px; top: -9999px;">Ripristina prodotti</button>
 
 <!-- Messaggio errore se JSON vuoto -->
 <div *ngIf="!prodotti.coop && !prodotti.esselunga && !prodotti.carrefour">

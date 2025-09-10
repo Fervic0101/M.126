@@ -1,18 +1,42 @@
 .search-bar-home {
-	background: #ffe082;
-	border: 2px solid #ff9800;
-	border-radius: 10px;
-	padding: 18px 12px;
-	margin-bottom: 24px;
+	background-color: #1976d2;
+	padding: 10px;
 	display: flex;
 	gap: 1rem;
 	align-items: center;
 	font-size: 1.1em;
+	width: 100%;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+	position: sticky;
+	top: 0;
+	z-index: 100;
+}
+:root {
+	--search-bar-height: 56px;
+	--navbar-height: 50px;
 }
 
+.search-bar-home label {
+	color: #fff;
+	font-weight: 500;
+}
+.search-bar-home input {
+	border: none;
+	border-radius: 0;
+	padding: 8px 12px;
+	top: var(--navbar-height);
+	margin-right: 8px;
+}
+.search-bar-home input[type="number"] {
+	width: 80px;
+	height: var(--search-bar-height);
+}
+
+/* .prodotti-unici {
+	padding-top: calc(var(--navbar-height) + var(--search-bar-height));
+} */
+  
 .errore-json {
-	color: red;
-	font-weight: bold;
 	margin: 1rem 0;
 }
 .acquista-btn {

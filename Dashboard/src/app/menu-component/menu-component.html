@@ -1,5 +1,5 @@
 <nav>
-    <button matButton appNavButton routerLink="/dashboard">Home</button>
+    <button matButton appNavButton routerLink="/dashboard" (click)="resetFiltri()">Home</button>
     <button matButton appNavButton routerLink="/chi-siamo">Chi Siamo</button>
     <ng-container *ngIf="!isLoggedIn">
         <button matButton appNavButton routerLink="/login">Accedi</button>
