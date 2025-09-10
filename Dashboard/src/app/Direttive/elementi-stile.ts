@@ -25,7 +25,7 @@ export class ElementiStile  {
   private modifcaH1() 
   {
     const  h1Modicare = this.item.nativeElement.querySelectorAll('h1') as NodeListOf<HTMLElement>;
-    console.log(h1Modicare)
+
     h1Modicare.forEach((h1) => {
       h1.style.color = '#FFA500'
       h1.style.fontSize = '25px';

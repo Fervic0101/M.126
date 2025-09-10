@@ -77,7 +77,14 @@ export class Accedi {
     if(this.mioForm.valid && String(mail?.value) == this.emailRegistrazione && String(pass?.value) == this.passwordRegistrazione && String(uten?.value) == this.utenteRegistrazione){
      
       alert("Login Effettuato");
-      this.router.navigate(['/cliente'])
+      
+      if(this.utenteRegistrazione=='cliente')
+      {
+         this.router.navigate(['/cliente'])
+      }else{
+        this.router.navigate(['/supermercato'])
+      }
+     
       
     }else{
       alert("Login non Effetuato");

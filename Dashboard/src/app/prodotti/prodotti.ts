@@ -1,8 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectorRef, Component, Input } from '@angular/core';
 import { ProdottiModel } from '../Model/ProdottiModel';
 import { CommonModule } from '@angular/common';
 import { ElementiStile } from '../Direttive/elementi-stile';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-prodotti',
   imports: [CommonModule,ElementiStile],
@@ -11,13 +12,17 @@ import { HttpClient } from '@angular/common/http';
 })
 export class Prodotti {
   @Input() supermarket: number = 0;
+  @Input() PrezzoDaModificare: number = 0;
+  @Input( ) ProdottoDaModificare: string='';
+  @Input() SeRicerca:boolean=false;
+  @Input() ProdottoRicercare:string='';
   Lista : Array<ProdottiModel> = [];
   Coop : Array<ProdottiModel> = [];;
   Esselunga : Array<ProdottiModel> = [];;
   Carrefour : Array<ProdottiModel> = [];;
   PrezzoPiccolo : Array<number> =[];;
 
-  constructor(private http: HttpClient)
+  constructor(private http: HttpClient,private route: ActivatedRoute)
   {
       
   }
@@ -25,6 +30,9 @@ export class Prodotti {
 
   ngOnInit()
   {
+      
+       console.log('ok')
+
     this.http.get<any>('/prodotti.json').subscribe(data => {
        this.Coop = data.coop.map((p: ProdottiModel) => new ProdottiModel(p.name, p.price, p.image, p.description, p.available))
         this.Esselunga = data.esselunga.map((p: any) => new ProdottiModel(p.name, p.price, p.image, p.description, p.available))
@@ -37,17 +45,26 @@ export class Prodotti {
       switch(this.supermarket)
     {
       case 0:
-        console.log(this.Coop)
+        
         this.Lista = this.Coop;
+        this.PrezzoAggiornato()
+       
+        this.Ricerca()
         break;
       case 1:
         this.Lista = this.Esselunga;
+        this.PrezzoAggiornato()
+        this.Ricerca()
         break;
       case 2:
         this.Lista = this.Carrefour;
+        this.PrezzoAggiornato()
+        this.Ricerca()
         break;
       default:
         this.Lista = this.Coop;
+        this.PrezzoAggiornato()
+        this.Ricerca()
         break;
     }
     });
@@ -57,4 +74,31 @@ export class Prodotti {
 
 
     }
+    PrezzoAggiornato()
+    {
+      for(let i=0;i<this.Lista.length;i++){
+          if(this.Lista[i].name==this.ProdottoDaModificare)
+          {
+            this.Lista[i].price=this.PrezzoDaModificare
+          }
+        }
+
+    }
+    Ricerca()
+    {
+      if(this.SeRicerca){
+        for(let i=0;i<this.Lista.length;i++){
+          if(this.Lista[i].name==this.ProdottoDaModificare)
+          {
+            this.Lista[0]= this.Lista[i]
+             this.Lista.splice(1, this.Lista.length-1);
+             
+          }else{
+            this.Lista.splice(0, this.Lista.length);
+          }
+        }
+      }
+
+    }
+
 }

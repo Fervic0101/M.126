@@ -59,7 +59,7 @@ export class Cliente {
           var presente=0;
           for(let x=0;x<this.Prodotti.length;x++)
           {
-            console.log(this.Prodotti[i].description+"x->"+this.Prodotti[x].description)
+            
             if(this.Prodotti[i].description==this.Prodotti[x].description){
               presente++;
             }

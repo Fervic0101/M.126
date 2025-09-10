@@ -4,6 +4,8 @@ import { Login } from './login/login';
 import { Accedi } from './accedi/accedi';
 import { ChiSiamo } from './chi-siamo/chi-siamo';
 import { Cliente } from './cliente/cliente';
+import { Supermercato } from './supermercato/supermercato';
+import { Prodotti } from './prodotti/prodotti';
 
 
 export const routes: Routes = [
@@ -11,7 +13,8 @@ export const routes: Routes = [
   { path: 'dashboard', component: Home },
   { path: 'login', component: Login },
   { path: 'accedi', component: Accedi },
-
+  { path: 'supermercato', component: Supermercato },
   { path: 'chi-siamo', component: ChiSiamo },
   { path: 'cliente', component: Cliente },
+
 ];

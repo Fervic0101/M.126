@@ -1,0 +1,21 @@
+<div name="cliente" appLoginStile>
+    <form  [formGroup]="nuovoProddottoForm" (ngSubmit)="onSubmit()">
+    <h1>Modifica Prodotto</h1>
+    <h3>Nome Prodotto:</h3>
+    <mat-form-field appearance="fill">
+        <mat-label>Insersci Nome Prodotto</mat-label>
+        <input type="text" name="prodotto" matInput  formControlName="nome" >
+    </mat-form-field>
+    <h3>Nuovo Prezzo:</h3>
+    <mat-form-field class="example-full-width">
+    <input matInput  placeholder="Ex. 4.50"  formControlName="prezzoNuovo">
+    </mat-form-field>
+    <br>
+    <br>
+    
+    <button matButton="filled">Inserisci</button>
+
+    </form>
+
+
+</div>
