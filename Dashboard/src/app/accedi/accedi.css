@@ -1,0 +1,302 @@
+.pannello-controllo {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  color: #2d3748;
+  background-color: #f7fafc;
+}
+
+.intestazione-pannello {
+  background: linear-gradient(135deg, #4c51bf 0%, #6b46c1 100%);
+  color: white;
+  padding: 28px;
+  border-radius: 14px;
+  margin-bottom: 28px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.intestazione-pannello h1 {
+  margin: 0 0 18px 0;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.info-utente {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.saluto-utente h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.saluto-utente p {
+  margin: 6px 0 0 0;
+  opacity: 0.85;
+}
+
+.schede-riepilogo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.scheda {
+  background: white;
+  border-radius: 14px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border: 1px solid #edf2f7;
+}
+
+.scheda:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.icona-scheda {
+  width: 55px;
+  height: 55px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 18px;
+  font-size: 26px;
+  font-weight: bold;
+  color: white;
+}
+
+.contenuto-scheda h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: #718096;
+}
+
+.importo {
+  margin: 6px 0 0 0;
+  font-size: 26px;
+  font-weight: 700;
+  color: #2d3748;
+}
+
+.contenuto-pannello {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-bottom: 32px;
+}
+
+.sezione-contenuto {
+  background: white;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+  border: 1px solid #edf2f7;
+}
+
+.sezione-contenuto h3 {
+  margin: 0 0 22px 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #2d3748;
+  padding-bottom: 14px;
+  border-bottom: 2px solid #f7fafc;
+}
+
+.lista-prodotti, .lista-supermercati {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.voce-prodotto, .voce-supermercato {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.info-prodotto, .info-supermercato {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nome-prodotto, .nome-supermercato {
+  font-weight: 600;
+}
+
+.quantita-prodotto, .visite-supermercato {
+  font-size: 14px;
+  color: #718096;
+}
+
+.barra-prodotto, .barra-supermercato {
+  height: 26px;
+  background-color: #f8fafc;
+  border-radius: 13px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  position: relative;
+}
+
+.riempimento-barra {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: linear-gradient(90deg, #4c51bf 0%, #667eea 100%);
+  border-radius: 13px;
+  opacity: 0.8;
+}
+
+.percentuale {
+  z-index: 1;
+  font-size: 13px;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.dettagli-supermercato {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 6px;
+}
+
+.importo-supermercato {
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.sezione-grafici {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 28px;
+}
+
+.contenitore-grafico {
+  padding: 18px 0;
+}
+
+.barre-grafico {
+  display: flex;
+  align-items: flex-end;
+  gap: 22px;
+  height: 220px;
+  padding: 0 12px;
+}
+
+.barra-mese {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.barra {
+  width: 32px;
+  background: linear-gradient(0deg, #4c51bf 0%, #667eea 100%);
+  border-radius: 6px 6px 0 0;
+  transition: height 0.6s ease;
+}
+
+.etichetta-mese {
+  font-size: 14px;
+  color: #718096;
+  font-weight: 500;
+}
+
+.etichetta-importo {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.lista-transazioni {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.voce-transazione {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  padding: 14px;
+  background-color: #f8fafc;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+}
+
+.data-transazione {
+  font-size: 14px;
+  color: #718096;
+}
+
+.supermercato-transazione {
+  font-weight: 600;
+}
+
+.importo-transazione {
+  text-align: right;
+  font-weight: 700;
+  color: #2d3748;
+}
+
+/* Regole responsive */
+@media (max-width: 1024px) {
+  .contenuto-pannello {
+    grid-template-columns: 1fr;
+  }
+  
+  .sezione-grafici {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .schede-riepilogo {
+    grid-template-columns: 1fr;
+  }
+  
+  .voce-transazione {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .importo-transazione {
+    grid-column: span 2;
+    text-align: left;
+  }
+}
+
+@media (max-width: 480px) {
+  .pannello-controllo {
+    padding: 15px;
+  }
+  
+  .intestazione-pannello {
+    padding: 20px;
+  }
+  
+  .scheda {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .icona-scheda {
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+}

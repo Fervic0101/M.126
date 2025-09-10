@@ -1,17 +1,116 @@
-<h1 appTitleElement>Spessa Intelligente</h1>
-<div appContainer>
-    <div>
-        <label> COOP</label>
-        <app-prodotti [supermarket]=0></app-prodotti>
-        <app-prodotti [supermarket]=0></app-prodotti>
-        <app-prodotti [supermarket]=0></app-prodotti>
+<h1 class="main-title">Spesa Intelligente</h1>
+<div class="content-wrapper">
+  <div class="market-selector">
+    <button 
+      (click)="setActiveMarket(0)" 
+      [class.selected]="activeMarket === 0"
+      class="market-btn">
+      COOP
+    </button>
+    <button 
+      (click)="setActiveMarket(1)" 
+      [class.selected]="activeMarket === 1"
+      class="market-btn">
+      Esselunga
+    </button>
+    <button 
+      (click)="setActiveMarket(2)" 
+      [class.selected]="activeMarket === 2"
+      class="market-btn">
+      Carrefour
+    </button>
+  </div>
+  
+  <h2 class="current-market">{{ getCurrentMarket() }}</h2>
+
+  <!-- Barra di ricerca e filtri -->
+  <div class="search-filters">
+    <div class="search-header">
+      <h3>Ricerca Prodotti</h3>
+      <button class="reset-filters" (click)="resetFilters()">Azzera Filtri</button>
     </div>
-    <div>
-        <label>Esselunga</label>
-         <app-prodotti [supermarket]=1></app-prodotti>
+    
+    <div class="filters-container">
+      <div class="filter-group">
+        <label for="searchTerm">Nome prodotto</label>
+        <input 
+          type="text" 
+          id="searchTerm"
+          [(ngModel)]="searchTerm" 
+          placeholder="Cerca per nome..."
+          class="filter-input"
+        >
+      </div>
+      
+      <div class="filter-group">
+        <label for="minPrice">Prezzo minimo (€)</label>
+        <input 
+          type="number" 
+          id="minPrice"
+          [(ngModel)]="minPrice" 
+          min="0" 
+          max="100"
+          class="filter-input"
+        >
+      </div>
+      
+      <div class="filter-group">
+        <label for="maxPrice">Prezzo massimo (€)</label>
+        <input 
+          type="number" 
+          id="maxPrice"
+          [(ngModel)]="maxPrice" 
+          min="0" 
+          max="100"
+          class="filter-input"
+        >
+      </div>
+      
+      <div class="filter-group availability">
+        <label class="checkbox-label">
+          <input 
+            type="checkbox" 
+            [(ngModel)]="onlyAvailable"
+            class="checkbox-input"
+          >
+          <span class="checkmark"></span>
+          Solo prodotti disponibili
+        </label>
+      </div>
     </div>
-    <div>
-        <label>Carrefour</label> 
-         <app-prodotti [supermarket]=2></app-prodotti>   
-    </div>
+  </div>
+  
+  <app-prodotti 
+    [supermarket]="activeMarket"
+    [searchTerm]="searchTerm"
+    [minPrice]="minPrice"
+    [maxPrice]="maxPrice"
+    [onlyAvailable]="onlyAvailable">
+  </app-prodotti>
 </div>
+
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-block">
+      <h3>Contatti</h3>
+      <p>Email: assistenza@spesaintelligente.it</p>
+      <p>Telefono: +39 02 9876 5432</p>
+    </div>
+    
+    <div class="footer-block">
+      <h3>Supporto</h3>
+      <p>Assistenza: help@spesaintelligente.it</p>
+      <p>Orari: Lun-Sab 8:00-20:00</p>
+    </div>
+    
+    <div class="footer-block">
+      <h3>Informazioni</h3>
+      <p>Spesa Intelligente S.r.l.</p>
+      <p>P.IVA: 09876543210</p>
+    </div>
+  </div>
+  
+  <div class="footer-copyright">
+    <p>&copy; 2025 Spesa Intelligente. Tutti i diritti riservati.</p>
+  </div>
+</footer>

@@ -1,2 +1,98 @@
-<p>{{Lista[0].name}}</p>
-<p>{{Lista[0].price}}</p>
+<div class="filtri-container">
+  <div class="filtri-header">
+    <h3>Filtra Prodotti</h3>
+    <button (click)="resetFiltri()" class="reset-btn">Azzera Filtri</button>
+  </div>
+  
+  <div class="filtri-inputs">
+    <div class="filtro-group">
+      <label for="searchTerm">Nome prodotto</label>
+      <input 
+        type="text" 
+        id="searchTerm"
+        placeholder="Cerca prodotto..." 
+        [(ngModel)]="searchTerm" 
+        (input)="filtraLista()" 
+        class="filtro-input"
+      />
+    </div>
+    
+    <div class="filtro-group">
+      <label for="minPrice">Prezzo minimo (€)</label>
+      <input 
+        type="number" 
+        id="minPrice"
+        placeholder="Min" 
+        [(ngModel)]="minPrice" 
+        (input)="filtraLista()" 
+        min="0"
+        class="filtro-input"
+      />
+    </div>
+    
+    <div class="filtro-group">
+      <label for="maxPrice">Prezzo massimo (€)</label>
+      <input 
+        type="number" 
+        id="maxPrice"
+        placeholder="Max" 
+        [(ngModel)]="maxPrice" 
+        (input)="filtraLista()" 
+        min="0"
+        class="filtro-input"
+      />
+    </div>
+    
+    <div class="filtro-group disponibilita">
+      <label class="checkbox-label">
+        <input 
+          type="checkbox" 
+          [(ngModel)]="onlyAvailable" 
+          (change)="filtraLista()"
+          class="checkbox-input"
+        />
+        <span class="checkmark"></span>
+        Solo disponibili
+      </label>
+    </div>
+  </div>
+</div>
+
+<div class="prodotti-container">
+  @for (prodotto of ListaFiltrata; track prodotto.name) {
+    <div class="prodotto-card" [class.economico]="isCheapest(prodotto.name) && prodotto.available">
+      <div class="prodotto-image-container">
+        <img [src]="prodotto.image" [alt]="prodotto.name" class="prodotto-image" />
+        @if (isCheapest(prodotto.name) && prodotto.available) {
+          <div class="badge-economico">Migliore offerta</div>
+        }
+      </div>
+      
+      <div class="prodotto-info">
+        <h2 class="prodotto-name">{{ prodotto.name }}</h2>
+        
+        <div class="prodotto-price-container">
+          @if (prodotto.available) {
+            <p class="prodotto-price">€{{ prodotto.price }}</p>
+          } @else {
+            <p class="prodotto-non-disponibile">Non disponibile</p>
+          }
+        </div>
+        
+        <p class="prodotto-description">{{ prodotto.description }}</p>
+        
+        @if (isCheapest(prodotto.name) && prodotto.available) {
+          <div class="risparmio-badge">
+            <span>✓ Risparmia con questo prodotto</span>
+          </div>
+        }
+      </div>
+    </div>
+  }
+</div>
+
+@if (ListaFiltrata.length === 0 && Lista.length > 0) {
+  <div class="no-results">
+    <p>Nessun prodotto trovato con i filtri selezionati.</p>
+  </div>
+}

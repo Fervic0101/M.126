@@ -1,0 +1,167 @@
+.contenitore-accesso {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+}
+
+.pannello-form {
+  width: 420px;
+  background-color: #ffffff;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  border-radius: 16px;
+  padding: 35px;
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+}
+
+.titolo-principale {
+  text-align: center;
+  margin: 0 0 8px 0;
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a202c;
+}
+
+.sottotitolo {
+  text-align: center;
+  margin: 0 0 30px 0;
+  font-size: 15px;
+  color: #718096;
+}
+
+.form-accesso {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin-bottom: 25px;
+}
+
+.gruppo-input {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.campo-input {
+  border-radius: 10px;
+  border: 2px solid #e2e8f0;
+  outline: 0 !important;
+  box-sizing: border-box;
+  padding: 14px 18px;
+  font-size: 15px;
+  transition: all 0.25s;
+  width: 100%;
+  background-color: #f8fafc;
+}
+
+.campo-input:focus {
+  border-color: #5a67d8;
+  box-shadow: 0 0 0 3px rgba(90, 103, 216, 0.15);
+  background-color: #ffffff;
+}
+
+.campo-input.errore {
+  border-color: #e53e3e;
+  background-color: #fef5f5;
+}
+
+.messaggio-errore {
+  font-size: 13px;
+  color: #e53e3e;
+  margin-top: 5px;
+  font-weight: 500;
+}
+
+.opzioni-accesso {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+.ricorda-me {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #4a5568;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.ricorda-me input {
+  margin: 0;
+  width: 16px;
+  height: 16px;
+}
+
+.password-dimenticata {
+  color: #5a67d8;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.password-dimenticata:hover {
+  text-decoration: underline;
+}
+
+.pulsante-accesso {
+  padding: 14px 18px;
+  border-radius: 10px;
+  border: 0 !important;
+  outline: 0 !important;
+  background: linear-gradient(135deg, #5a67d8 0%, #4c51bf 100%);
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.25s;
+  margin-top: 12px;
+}
+
+.pulsante-accesso:hover {
+  background: linear-gradient(135deg, #4c51bf 0%, #434190 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(90, 103, 216, 0.3);
+}
+
+.pulsante-accesso:active {
+  transform: translateY(0);
+}
+
+.testo-registrazione {
+  text-align: center;
+  margin: 0;
+  font-size: 14px;
+  color: #718096;
+}
+
+.link-registrazione {
+  color: #5a67d8;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.link-registrazione:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .pannello-form {
+    width: 100%;
+    padding: 25px 20px;
+  }
+  
+  .opzioni-accesso {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .password-dimenticata {
+    align-self: flex-end;
+  }
+}

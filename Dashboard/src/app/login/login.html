@@ -1,1 +1,53 @@
-<p>login works!</p>
+<div class="contenitore-accesso">
+  <div class="pannello-form">
+    
+    <h1 class="titolo-principale">Accedi al tuo account</h1>
+    <p class="sottotitolo">Inserisci le tue credenziali per continuare</p>
+    
+    <form class="form-accesso" (ngSubmit)="inviaForm()" #formLogin="ngForm">
+      <div class="gruppo-input">
+        <input 
+          type="email" 
+          class="campo-input" 
+          placeholder="Indirizzo email"
+          [(ngModel)]="indirizzoEmail"
+          name="indirizzoEmail"
+          required
+          [class.errore]="errori.email"
+          #inputEmail="ngModel">
+        @if (errori.email) {
+          <div class="messaggio-errore">{{ errori.email }}</div>
+        }
+      </div>
+      
+      <div class="gruppo-input">
+        <input 
+          type="password" 
+          class="campo-input" 
+          placeholder="Password"
+          [(ngModel)]="credenziale"
+          name="credenziale"
+          required
+          [class.errore]="errori.password"
+          #inputPassword="ngModel">
+        @if (errori.password) {
+          <div class="messaggio-errore">{{ errori.password }}</div>
+        }
+      </div>
+      
+      <div class="opzioni-accesso">
+        <label class="ricorda-me">
+          <input type="checkbox" [(ngModel)]="ricordami" name="ricordami">
+          <span>Ricordami</span>
+        </label>
+        <a href="#" class="password-dimenticata">Password dimenticata?</a>
+      </div>
+      
+      <button type="submit" class="pulsante-accesso">Accedi</button>
+    </form>
+    
+    <p class="testo-registrazione">
+      Non hai un account? <a href="#" class="link-registrazione">Registrati</a>
+    </p>
+  </div>
+</div>

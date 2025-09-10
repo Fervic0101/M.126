@@ -1,1 +1,115 @@
-<p>accedi works!</p>
+<div class="pannello-controllo">
+  <!-- Intestazione -->
+  <header class="intestazione-pannello">
+    <h1>La Tua Dashboard Personale</h1>
+    <div class="info-utente">
+      <div class="saluto-utente">
+        <h2>Benvenuto, {{ nomeUtente }}</h2>
+        <p>{{ iscrittoDa }}</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Riepilogo statistiche -->
+  <div class="schede-riepilogo">
+    <div class="scheda">
+      <div class="icona-scheda">€</div>
+      <div class="contenuto-scheda">
+        <h3>Spesa Totale</h3>
+        <p class="importo">{{ spesaTotale }} €</p>
+      </div>
+    </div>
+
+    <div class="scheda">
+      <div class="icona-scheda">M</div>
+      <div class="contenuto-scheda">
+        <h3>Spesa Media Mensile</h3>
+        <p class="importo">{{ mediaMensile }} €</p>
+      </div>
+    </div>
+
+    <div class="scheda">
+      <div class="icona-scheda">T</div>
+      <div class="contenuto-scheda">
+        <h3>Transazioni</h3>
+        <p class="importo">{{ transazioni }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenuto principale -->
+  <div class="contenuto-pannello">
+    <!-- Sezione prodotti -->
+    <div class="sezione-contenuto">
+      <h3>Prodotti più acquistati</h3>
+      <div class="lista-prodotti">
+        @for (prodotto of prodottiAcquistati; track prodotto.nome) {
+          <div class="voce-prodotto">
+            <div class="info-prodotto">
+              <span class="nome-prodotto">{{ prodotto.nome }}</span>
+              <span class="quantita-prodotto">{{ prodotto.quantita }} acquisti</span>
+            </div>
+            <div class="barra-prodotto">
+              <div class="riempimento-barra" [style.width.%]="prodotto.percentuale"></div>
+              <span class="percentuale">{{ prodotto.percentuale }}%</span>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Sezione supermercati -->
+    <div class="sezione-contenuto">
+      <h3>Supermercati più frequentati</h3>
+      <div class="lista-supermercati">
+        @for (supermercato of supermercati; track supermercato.nome) {
+          <div class="voce-supermercato">
+            <div class="info-supermercato">
+              <span class="nome-supermercato">{{ supermercato.nome }}</span>
+              <span class="visite-supermercato">{{ supermercato.visite }} visite</span>
+            </div>
+            <div class="dettagli-supermercato">
+              <div class="barra-supermercato">
+                <div class="riempimento-barra" [style.width.%]="supermercato.percentuale"></div>
+                <span class="percentuale">{{ supermercato.percentuale }}%</span>
+              </div>
+              <span class="importo-supermercato">{{ supermercato.importo }} €</span>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- Sezione grafici -->
+  <div class="sezione-grafici">
+    <div class="sezione-contenuto">
+      <h3>Andamento della spesa mensile</h3>
+      <div class="contenitore-grafico">
+        <div class="barre-grafico">
+          @for (mese of spesaMensile; track mese.mese) {
+            <div class="barra-mese">
+              <div class="barra" [style.height]="(mese.importo / 400 * 100) + 'px'"></div>
+              <span class="etichetta-mese">{{ mese.mese }}</span>
+              <span class="etichetta-importo">{{ mese.importo }} €</span>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Transazioni recenti -->
+    <div class="sezione-contenuto">
+      <h3>Transazioni recenti</h3>
+      <div class="lista-transazioni">
+        @for (transazione of transazioniRecenti; track transazione.data) {
+          <div class="voce-transazione">
+            <div class="data-transazione">{{ transazione.data }}</div>
+            <div class="supermercato-transazione">{{ transazione.supermercato }}</div>
+            <div class="importo-transazione">{{ transazione.importo }} €</div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>

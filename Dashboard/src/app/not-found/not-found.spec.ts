@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Prodotti } from './prodotti';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-describe('Prodotti', () => {
-  let component: Prodotti;
-  let fixture: ComponentFixture<Prodotti>;
+import { NotFound } from './not-found';
+
+describe('NotFound', () => {
+  let component: NotFound;
+  let fixture: ComponentFixture<NotFound>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Prodotti, HttpClientTestingModule]
+      imports: [NotFound]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(Prodotti);
+    fixture = TestBed.createComponent(NotFound);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
