@@ -1,0 +1,83 @@
+<div>
+  <div class="form-container">
+    <h4>Scegli il supermercato:</h4>
+    <mat-form-field>
+      <mat-label>Seleziona</mat-label>
+      <mat-select [(ngModel)]="selectedSupermarket" name="supermarket" required>
+        @for (food of foods; track food) {
+        <mat-option [value]="food.value">{{ food.viewValue }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <div class="example-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Nome Prodotto: </mat-label>
+        <input
+          matInput
+          placeholder="Es: pasta"
+          [(ngModel)]="productName"
+          name="productName"
+          required
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="example-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Prezzo: </mat-label>
+        <input
+          matInput
+          placeholder="es: 1,20"
+          [(ngModel)]="productPrice"
+          name="productPrice"
+          required
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="example-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Link immagine</mat-label>
+        <input
+          matInput
+          placeholder="es: https://example.com/image.jpg"
+          [(ngModel)]="productImage"
+          name="productImage"
+          required
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="example-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Descrizione: </mat-label>
+        <input
+          matInput
+          placeholder="es: prodotto buono"
+          [(ngModel)]="productDescription"
+          name="productDescription"
+          required
+        />
+      </mat-form-field>
+    </div>
+
+    <section class="example-section">
+      <h4>È disponibile?</h4>
+      <mat-radio-group
+        [(ngModel)]="disponibilita"
+        name="disponibilita"
+        required
+      >
+        <mat-radio-button value="si">Sì</mat-radio-button>
+        <mat-radio-button value="no">No</mat-radio-button>
+      </mat-radio-group>
+    </section>
+
+    <div class="button-container">
+      <button mat-raised-button color="primary" (click)="onSubmit()">
+        Salva Prodotto
+      </button>
+    </div>
+  </div>
+</div>

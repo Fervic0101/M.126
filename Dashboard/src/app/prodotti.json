@@ -1,68 +1,496 @@
 {
   "coop": [
-    { "name": "Pasta Barilla 500g", "price": 1.09, "image": "https://example.com/images/pasta-barilla.jpg", "description": "Pasta di semola di grano duro", "available": true },
-    { "name": "Latte Parmalat 1L", "price": 1.35, "image": "https://example.com/images/latte-parmalat.jpg", "description": "Latte intero UHT", "available": true },
-    { "name": "Olio Extra Vergine Coop 1L", "price": 5.50, "image": "https://example.com/images/olio-coop.jpg", "description": "Olio extra vergine di oliva 100% italiano", "available": true },
-    { "name": "Riso Arborio 1Kg", "price": 2.30, "image": "https://example.com/images/riso-arborio.jpg", "description": "Riso ideale per risotti", "available": true },
-    { "name": "Mozzarella 125g", "price": 1.19, "image": "https://example.com/images/mozzarella.jpg", "description": "Mozzarella fresca", "available": true },
-    { "name": "Yogurt Bianco 150g", "price": 0.65, "image": "https://example.com/images/yogurt-bianco.jpg", "description": "Yogurt bianco intero", "available": true },
-    { "name": "Acqua Naturale 1.5L", "price": 0.30, "image": "https://example.com/images/acqua-naturale.jpg", "description": "Acqua minerale naturale", "available": true },
-    { "name": "Biscotti Mulino Bianco 350g", "price": 2.30, "image": "https://example.com/images/biscotti.jpg", "description": "Biscotti classici per la colazione", "available": true },
-    { "name": "Zucchero 1Kg", "price": 0.85, "image": "https://example.com/images/zucchero.jpg", "description": "Zucchero semolato bianco", "available": true },
-    { "name": "Sale Fino 1Kg", "price": 0.45, "image": "https://example.com/images/sale-fino.jpg", "description": "Sale fino da cucina", "available": true },
-    { "name": "Tonno in scatola 80g", "price": 1.10, "image": "https://example.com/images/tonno.jpg", "description": "Tonno in olio d’oliva", "available": true },
-    { "name": "Pomodori pelati 400g", "price": 0.70, "image": "https://example.com/images/pelati.jpg", "description": "Pomodori pelati italiani", "available": true },
-    { "name": "Uova 6pz", "price": 1.80, "image": "https://example.com/images/uova.jpg", "description": "Uova fresche allevate a terra", "available": true },
-    { "name": "Detersivo Piatti 500ml", "price": 1.50, "image": "https://example.com/images/detersivo-piatti.jpg", "description": "Detersivo per piatti a mano", "available": true },
-    { "name": "Carta Igienica 4 rotoli", "price": 2.20, "image": "https://example.com/images/carta-igienica.jpg", "description": "Carta igienica soffice", "available": true },
-    { "name": "Shampoo 250ml", "price": 3.50, "image": "https://example.com/images/shampoo.jpg", "description": "Shampoo nutriente", "available": true },
-    { "name": "Sapone Liquido 300ml", "price": 1.20, "image": "https://example.com/images/sapone-liquido.jpg", "description": "Sapone liquido igienizzante", "available": true },
-    { "name": "Dentifricio 75ml", "price": 2.00, "image": "https://example.com/images/dentifricio.jpg", "description": "Dentifricio protezione totale", "available": true },
-    { "name": "Sacchetti Spazzatura 30L", "price": 1.70, "image": "https://example.com/images/sacchetti.jpg", "description": "Sacchetti per immondizia resistenti", "available": true },
-    { "name": "Batterie AA 4pz", "price": 2.90, "image": "https://example.com/images/batterie-aa.jpg", "description": "Batterie alcaline AA", "available": true }
+    {
+      "name": "Pasta Barilla 500g",
+      "price": 1.09,
+      "image": "https://example.com/images/pasta-barilla.jpg",
+      "description": "Pasta di semola di grano duro",
+      "available": true,
+      "id": "e71d"
+    },
+    {
+      "name": "Latte Parmalat 1L",
+      "price": 1.35,
+      "image": "https://example.com/images/latte-parmalat.jpg",
+      "description": "Latte intero UHT",
+      "available": true,
+      "id": "f8fc"
+    },
+    {
+      "name": "Olio Extra Vergine Coop 1L",
+      "price": 5.5,
+      "image": "https://example.com/images/olio-coop.jpg",
+      "description": "Olio extra vergine di oliva 100% italiano",
+      "available": true,
+      "id": "bf7e"
+    },
+    {
+      "name": "Riso Arborio 1Kg",
+      "price": 2.3,
+      "image": "https://example.com/images/riso-arborio.jpg",
+      "description": "Riso ideale per risotti",
+      "available": true,
+      "id": "62d5"
+    },
+    {
+      "name": "Mozzarella 125g",
+      "price": 1.19,
+      "image": "https://example.com/images/mozzarella.jpg",
+      "description": "Mozzarella fresca",
+      "available": true,
+      "id": "4ebb"
+    },
+    {
+      "name": "Yogurt Bianco 150g",
+      "price": 0.65,
+      "image": "https://example.com/images/yogurt-bianco.jpg",
+      "description": "Yogurt bianco intero",
+      "available": true,
+      "id": "b0de"
+    },
+    {
+      "name": "Acqua Naturale 1.5L",
+      "price": 0.3,
+      "image": "https://example.com/images/acqua-naturale.jpg",
+      "description": "Acqua minerale naturale",
+      "available": true,
+      "id": "31d2"
+    },
+    {
+      "name": "Biscotti Mulino Bianco 350g",
+      "price": 2.3,
+      "image": "https://example.com/images/biscotti.jpg",
+      "description": "Biscotti classici per la colazione",
+      "available": true,
+      "id": "d8b8"
+    },
+    {
+      "name": "Zucchero 1Kg",
+      "price": 0.85,
+      "image": "https://example.com/images/zucchero.jpg",
+      "description": "Zucchero semolato bianco",
+      "available": true,
+      "id": "40d8"
+    },
+    {
+      "name": "Sale Fino 1Kg",
+      "price": 0.45,
+      "image": "https://example.com/images/sale-fino.jpg",
+      "description": "Sale fino da cucina",
+      "available": true,
+      "id": "2054"
+    },
+    {
+      "name": "Tonno in scatola 80g",
+      "price": 1.1,
+      "image": "https://example.com/images/tonno.jpg",
+      "description": "Tonno in olio d’oliva",
+      "available": true,
+      "id": "c6ba"
+    },
+    {
+      "name": "Pomodori pelati 400g",
+      "price": 0.7,
+      "image": "https://example.com/images/pelati.jpg",
+      "description": "Pomodori pelati italiani",
+      "available": true,
+      "id": "314e"
+    },
+    {
+      "name": "Uova 6pz",
+      "price": 1.8,
+      "image": "https://example.com/images/uova.jpg",
+      "description": "Uova fresche allevate a terra",
+      "available": true,
+      "id": "2cb5"
+    },
+    {
+      "name": "Detersivo Piatti 500ml",
+      "price": 1.5,
+      "image": "https://example.com/images/detersivo-piatti.jpg",
+      "description": "Detersivo per piatti a mano",
+      "available": true,
+      "id": "d69c"
+    },
+    {
+      "name": "Carta Igienica 4 rotoli",
+      "price": 2.2,
+      "image": "https://example.com/images/carta-igienica.jpg",
+      "description": "Carta igienica soffice",
+      "available": true,
+      "id": "08af"
+    },
+    {
+      "name": "Shampoo 250ml",
+      "price": 3.5,
+      "image": "https://example.com/images/shampoo.jpg",
+      "description": "Shampoo nutriente",
+      "available": true,
+      "id": "cba3"
+    },
+    {
+      "name": "Sapone Liquido 300ml",
+      "price": 1.2,
+      "image": "https://example.com/images/sapone-liquido.jpg",
+      "description": "Sapone liquido igienizzante",
+      "available": true,
+      "id": "1741"
+    },
+    {
+      "name": "Dentifricio 75ml",
+      "price": 2,
+      "image": "https://example.com/images/dentifricio.jpg",
+      "description": "Dentifricio protezione totale",
+      "available": true,
+      "id": "60b7"
+    },
+    {
+      "name": "Sacchetti Spazzatura 30L",
+      "price": 1.7,
+      "image": "https://example.com/images/sacchetti.jpg",
+      "description": "Sacchetti per immondizia resistenti",
+      "available": true,
+      "id": "14f2"
+    },
+    {
+      "name": "Batterie AA 4pz",
+      "price": 2.9,
+      "image": "https://example.com/images/batterie-aa.jpg",
+      "description": "Batterie alcaline AA",
+      "available": true,
+      "id": "d8ed"
+    }
   ],
   "esselunga": [
-    { "name": "Pasta De Cecco 500g", "price": 1.20, "image": "https://example.com/images/pasta-dececco.jpg", "description": "Pasta di semola premium", "available": true },
-    { "name": "Latte Fresco Alta Qualità 1L", "price": 1.50, "image": "https://example.com/images/latte-fresco.jpg", "description": "Latte fresco intero", "available": true },
-    { "name": "Olio EVO Esselunga 1L", "price": 6.00, "image": "https://example.com/images/olio-esselunga.jpg", "description": "Olio extra vergine Esselunga", "available": true },
-    { "name": "Pane Casereccio 500g", "price": 2.00, "image": "https://example.com/images/pane-casereccio.jpg", "description": "Pane cotto a legna", "available": true },
-    { "name": "Riso Carnaroli 1Kg", "price": 2.80, "image": "https://example.com/images/riso-carnaroli.jpg", "description": "Riso per risotti", "available": true },
-    { "name": "Mozzarella Galbani 125g", "price": 1.29, "image": "https://example.com/images/mozzarella-galbani.jpg", "description": "Mozzarella fresca Galbani", "available": true },
-    { "name": "Yogurt alla Frutta 150g", "price": 0.75, "image": "https://example.com/images/yogurt-frutta.jpg", "description": "Yogurt con pezzi di frutta", "available": true },
-    { "name": "Acqua Frizzante 1.5L", "price": 0.35, "image": "https://example.com/images/acqua-frizzante.jpg", "description": "Acqua frizzante naturale", "available": true },
-    { "name": "Biscotti Oro Saiwa 350g", "price": 2.50, "image": "https://example.com/images/biscotti-oro.jpg", "description": "Biscotti secchi classici", "available": true },
-    { "name": "Zucchero di Canna 1Kg", "price": 1.20, "image": "https://example.com/images/zucchero-canna.jpg", "description": "Zucchero di canna grezzo", "available": true },
-    { "name": "Sale Grosso 1Kg", "price": 0.60, "image": "https://example.com/images/sale-grosso.jpg", "description": "Sale grosso da cucina", "available": true },
-    { "name": "Tonno Filetti 100g", "price": 1.40, "image": "https://example.com/images/tonno-filetti.jpg", "description": "Tonno in filetti", "available": true },
-    { "name": "Salsa di Pomodoro 500g", "price": 0.90, "image": "https://example.com/images/salsa-pomodoro.jpg", "description": "Passata di pomodoro", "available": true },
-    { "name": "Uova 10pz", "price": 2.50, "image": "https://example.com/images/uova-10.jpg", "description": "Uova fresche grandi", "available": true },
-    { "name": "Detersivo Bucato 1L", "price": 4.00, "image": "https://example.com/images/detersivo-bucato.jpg", "description": "Detersivo liquido per lavatrice", "available": true },
-    { "name": "Carta da Cucina 2 rotoli", "price": 1.60, "image": "https://example.com/images/carta-cucina.jpg", "description": "Carta assorbente da cucina", "available": true },
-    { "name": "Shampoo 400ml", "price": 5.00, "image": "https://example.com/images/shampoo-400.jpg", "description": "Shampoo rinforzante", "available": true },
-    { "name": "Dentifricio Sbiancante 75ml", "price": 2.50, "image": "https://example.com/images/dentifricio-sbiancante.jpg", "description": "Dentifricio whitening", "available": true },
-    { "name": "Sapone Solido 100g", "price": 1.00, "image": "https://example.com/images/sapone-solido.jpg", "description": "Sapone classico", "available": true },
-    { "name": "Batterie AAA 4pz", "price": 3.10, "image": "https://example.com/images/batterie-aaa.jpg", "description": "Batterie alcaline AAA", "available": true }
+    {
+      "name": "Pasta De Cecco 500g",
+      "price": 1.2,
+      "image": "https://example.com/images/pasta-dececco.jpg",
+      "description": "Pasta di semola premium",
+      "available": true,
+      "id": "394d"
+    },
+    {
+      "name": "Latte Fresco Alta Qualità 1L",
+      "price": 1.5,
+      "image": "https://example.com/images/latte-fresco.jpg",
+      "description": "Latte fresco intero",
+      "available": true,
+      "id": "213b"
+    },
+    {
+      "name": "Olio EVO Esselunga 1L",
+      "price": 6,
+      "image": "https://example.com/images/olio-esselunga.jpg",
+      "description": "Olio extra vergine Esselunga",
+      "available": true,
+      "id": "d37f"
+    },
+    {
+      "name": "Pane Casereccio 500g",
+      "price": 2,
+      "image": "https://example.com/images/pane-casereccio.jpg",
+      "description": "Pane cotto a legna",
+      "available": true,
+      "id": "06e9"
+    },
+    {
+      "name": "Riso Carnaroli 1Kg",
+      "price": 2.8,
+      "image": "https://example.com/images/riso-carnaroli.jpg",
+      "description": "Riso per risotti",
+      "available": true,
+      "id": "66cb"
+    },
+    {
+      "name": "Mozzarella Galbani 125g",
+      "price": 1.29,
+      "image": "https://example.com/images/mozzarella-galbani.jpg",
+      "description": "Mozzarella fresca Galbani",
+      "available": true,
+      "id": "181a"
+    },
+    {
+      "name": "Yogurt alla Frutta 150g",
+      "price": 0.75,
+      "image": "https://example.com/images/yogurt-frutta.jpg",
+      "description": "Yogurt con pezzi di frutta",
+      "available": true,
+      "id": "1b2d"
+    },
+    {
+      "name": "Acqua Frizzante 1.5L",
+      "price": 0.35,
+      "image": "https://example.com/images/acqua-frizzante.jpg",
+      "description": "Acqua frizzante naturale",
+      "available": true,
+      "id": "6840"
+    },
+    {
+      "name": "Biscotti Oro Saiwa 350g",
+      "price": 2.5,
+      "image": "https://example.com/images/biscotti-oro.jpg",
+      "description": "Biscotti secchi classici",
+      "available": true,
+      "id": "8e29"
+    },
+    {
+      "name": "Zucchero di Canna 1Kg",
+      "price": 1.2,
+      "image": "https://example.com/images/zucchero-canna.jpg",
+      "description": "Zucchero di canna grezzo",
+      "available": true,
+      "id": "01e7"
+    },
+    {
+      "name": "Sale Grosso 1Kg",
+      "price": 0.6,
+      "image": "https://example.com/images/sale-grosso.jpg",
+      "description": "Sale grosso da cucina",
+      "available": true,
+      "id": "53f2"
+    },
+    {
+      "name": "Tonno Filetti 100g",
+      "price": 1.4,
+      "image": "https://example.com/images/tonno-filetti.jpg",
+      "description": "Tonno in filetti",
+      "available": true,
+      "id": "9332"
+    },
+    {
+      "name": "Salsa di Pomodoro 500g",
+      "price": 0.9,
+      "image": "https://example.com/images/salsa-pomodoro.jpg",
+      "description": "Passata di pomodoro",
+      "available": true,
+      "id": "f160"
+    },
+    {
+      "name": "Uova 10pz",
+      "price": 2.5,
+      "image": "https://example.com/images/uova-10.jpg",
+      "description": "Uova fresche grandi",
+      "available": true,
+      "id": "7795"
+    },
+    {
+      "name": "Detersivo Bucato 1L",
+      "price": 4,
+      "image": "https://example.com/images/detersivo-bucato.jpg",
+      "description": "Detersivo liquido per lavatrice",
+      "available": true,
+      "id": "aece"
+    },
+    {
+      "name": "Carta da Cucina 2 rotoli",
+      "price": 1.6,
+      "image": "https://example.com/images/carta-cucina.jpg",
+      "description": "Carta assorbente da cucina",
+      "available": true,
+      "id": "be05"
+    },
+    {
+      "name": "Shampoo 400ml",
+      "price": 5,
+      "image": "https://example.com/images/shampoo-400.jpg",
+      "description": "Shampoo rinforzante",
+      "available": true,
+      "id": "bef3"
+    },
+    {
+      "name": "Dentifricio Sbiancante 75ml",
+      "price": 2.5,
+      "image": "https://example.com/images/dentifricio-sbiancante.jpg",
+      "description": "Dentifricio whitening",
+      "available": true,
+      "id": "5b35"
+    },
+    {
+      "name": "Sapone Solido 100g",
+      "price": 1,
+      "image": "https://example.com/images/sapone-solido.jpg",
+      "description": "Sapone classico",
+      "available": true,
+      "id": "aa15"
+    },
+    {
+      "name": "Batterie AAA 4pz",
+      "price": 3.1,
+      "image": "https://example.com/images/batterie-aaa.jpg",
+      "description": "Batterie alcaline AAA",
+      "available": true,
+      "id": "edec"
+    },
+    {
+      "id": "bf30",
+      "name": "faf",
+      "price": null,
+      "image": "fa",
+      "description": "fasfa",
+      "available": false
+    }
   ],
   "carrefour": [
-    { "name": "Pasta Lidl 500g", "price": 0.89, "image": "https://example.com/images/pasta-lidl.jpg", "description": "Pasta secca di semola", "available": true },
-    { "name": "Latte UHT 1L", "price": 1.19, "image": "https://example.com/images/latte-lidl.jpg", "description": "Latte UHT scremato", "available": true },
-    { "name": "Olio EVO 750ml", "price": 3.99, "image": "https://example.com/images/olio-lidl.jpg", "description": "Olio extra vergine Lidl", "available": true },
-    { "name": "Pane Bauletto 400g", "price": 0.99, "image": "https://example.com/images/pane-bauletto.jpg", "description": "Pane a fette morbido", "available": true },
-    { "name": "Riso Basmati 1Kg", "price": 2.10, "image": "https://example.com/images/riso-basmati.jpg", "description": "Riso basmati profumato", "available": true },
-    { "name": "Mozzarella 125g", "price": 0.99, "image": "https://example.com/images/mozzarella-lidl.jpg", "description": "Mozzarella fresca Lidl", "available": true },
-    { "name": "Yogurt Mirtillo 125g", "price": 0.70, "image": "https://example.com/images/yogurt-mirtillo.jpg", "description": "Yogurt cremoso al mirtillo", "available": true },
-    { "name": "Acqua Naturale 1.5L", "price": 0.25, "image": "https://example.com/images/acqua-lidl.jpg", "description": "Acqua minerale naturale Lidl", "available": true },
-    { "name": "Biscotti Secchi 350g", "price": 1.80, "image": "https://example.com/images/biscotti-lidl.jpg", "description": "Biscotti da colazione", "available": true },
-    { "name": "Zucchero 1Kg", "price": 0.80, "image": "https://example.com/images/zucchero-lidl.jpg", "description": "Zucchero bianco Lidl", "available": true },
-    { "name": "Sale Fino 1Kg", "price": 0.65, "image": "https://example.com/images/sale-lidl.jpg", "description": "Sale fino da cucina", "available": true },
-    { "name": "Tonno in Olio 80g", "price": 1.05, "image": "https://example.com/images/tonno-lidl.jpg", "description": "Tonno in scatola Lidl", "available": true },
-    { "name": "Passata di Pomodoro 700g", "price": 0.85, "image": "https://example.com/images/passata-lidl.jpg", "description": "Passata di pomodoro", "available": true },
-    { "name": "Uova Bio 6pz", "price": 2.10, "image": "https://example.com/images/uova-bio.jpg", "description": "Uova biologiche Lidl", "available": true },
-    { "name": "Detersivo Piatti 750ml", "price": 1.40, "image": "https://example.com/images/detersivo-lidl.jpg", "description": "Detersivo per stoviglie Lidl", "available": true },
-    { "name": "Carta Igienica 8 rotoli", "price": 3.50, "image": "https://example.com/images/carta-lidl.jpg", "description": "Carta igienica multi strato", "available": true },
-    { "name": "Shampoo 300ml", "price": 4.00, "image": "https://example.com/images/shampoo-lidl.jpg", "description": "Shampoo Lidl per tutti i capelli", "available": true },
-    { "name": "Dentifricio 100ml", "price": 1.80, "image": "https://example.com/images/dentifricio-lidl.jpg", "description": "Dentifricio protezione carie", "available": true },
-    { "name": "Sapone Liquido 250ml", "price": 1.10, "image": "https://example.com/images/sapone-lidl.jpg", "description": "Sapone igienizzante Lidl", "available": true },
-    { "name": "Batterie D 2pz", "price": 4.20, "image": "https://example.com/images/batterie-d.jpg", "description": "Batterie formato D", "available": true }
+    {
+      "name": "Pasta Lidl 500g",
+      "price": 0.89,
+      "image": "https://example.com/images/pasta-lidl.jpg",
+      "description": "Pasta secca di semola",
+      "available": true,
+      "id": "8232"
+    },
+    {
+      "name": "Latte UHT 1L",
+      "price": 1.19,
+      "image": "https://example.com/images/latte-lidl.jpg",
+      "description": "Latte UHT scremato",
+      "available": true,
+      "id": "bdb3"
+    },
+    {
+      "name": "Olio EVO 750ml",
+      "price": 3.99,
+      "image": "https://example.com/images/olio-lidl.jpg",
+      "description": "Olio extra vergine Lidl",
+      "available": true,
+      "id": "120e"
+    },
+    {
+      "name": "Pane Bauletto 400g",
+      "price": 0.99,
+      "image": "https://example.com/images/pane-bauletto.jpg",
+      "description": "Pane a fette morbido",
+      "available": true,
+      "id": "f16e"
+    },
+    {
+      "name": "Riso Basmati 1Kg",
+      "price": 2.1,
+      "image": "https://example.com/images/riso-basmati.jpg",
+      "description": "Riso basmati profumato",
+      "available": true,
+      "id": "f6fb"
+    },
+    {
+      "name": "Mozzarella 125g",
+      "price": 0.99,
+      "image": "https://example.com/images/mozzarella-lidl.jpg",
+      "description": "Mozzarella fresca Lidl",
+      "available": true,
+      "id": "e93a"
+    },
+    {
+      "name": "Yogurt Mirtillo 125g",
+      "price": 0.7,
+      "image": "https://example.com/images/yogurt-mirtillo.jpg",
+      "description": "Yogurt cremoso al mirtillo",
+      "available": true,
+      "id": "436c"
+    },
+    {
+      "name": "Acqua Naturale 1.5L",
+      "price": 0.25,
+      "image": "https://example.com/images/acqua-lidl.jpg",
+      "description": "Acqua minerale naturale Lidl",
+      "available": true,
+      "id": "c0eb"
+    },
+    {
+      "name": "Biscotti Secchi 350g",
+      "price": 1.8,
+      "image": "https://example.com/images/biscotti-lidl.jpg",
+      "description": "Biscotti da colazione",
+      "available": true,
+      "id": "e774"
+    },
+    {
+      "name": "Zucchero 1Kg",
+      "price": 0.8,
+      "image": "https://example.com/images/zucchero-lidl.jpg",
+      "description": "Zucchero bianco Lidl",
+      "available": true,
+      "id": "5b46"
+    },
+    {
+      "name": "Sale Fino 1Kg",
+      "price": 0.65,
+      "image": "https://example.com/images/sale-lidl.jpg",
+      "description": "Sale fino da cucina",
+      "available": true,
+      "id": "2de1"
+    },
+    {
+      "name": "Tonno in Olio 80g",
+      "price": 1.05,
+      "image": "https://example.com/images/tonno-lidl.jpg",
+      "description": "Tonno in scatola Lidl",
+      "available": true,
+      "id": "cbd9"
+    },
+    {
+      "name": "Passata di Pomodoro 700g",
+      "price": 0.85,
+      "image": "https://example.com/images/passata-lidl.jpg",
+      "description": "Passata di pomodoro",
+      "available": true,
+      "id": "4ccb"
+    },
+    {
+      "name": "Uova Bio 6pz",
+      "price": 2.1,
+      "image": "https://example.com/images/uova-bio.jpg",
+      "description": "Uova biologiche Lidl",
+      "available": true,
+      "id": "f7ee"
+    },
+    {
+      "name": "Detersivo Piatti 750ml",
+      "price": 1.4,
+      "image": "https://example.com/images/detersivo-lidl.jpg",
+      "description": "Detersivo per stoviglie Lidl",
+      "available": true,
+      "id": "1982"
+    },
+    {
+      "name": "Carta Igienica 8 rotoli",
+      "price": 3.5,
+      "image": "https://example.com/images/carta-lidl.jpg",
+      "description": "Carta igienica multi strato",
+      "available": true,
+      "id": "827a"
+    },
+    {
+      "name": "Shampoo 300ml",
+      "price": 4,
+      "image": "https://example.com/images/shampoo-lidl.jpg",
+      "description": "Shampoo Lidl per tutti i capelli",
+      "available": true,
+      "id": "0207"
+    },
+    {
+      "name": "Dentifricio 100ml",
+      "price": 1.8,
+      "image": "https://example.com/images/dentifricio-lidl.jpg",
+      "description": "Dentifricio protezione carie",
+      "available": true,
+      "id": "b73f"
+    },
+    {
+      "name": "Sapone Liquido 250ml",
+      "price": 1.1,
+      "image": "https://example.com/images/sapone-lidl.jpg",
+      "description": "Sapone igienizzante Lidl",
+      "available": true,
+      "id": "2a68"
+    },
+    {
+      "name": "Batterie D 2pz",
+      "price": 4.2,
+      "image": "https://example.com/images/batterie-d.jpg",
+      "description": "Batterie formato D",
+      "available": true,
+      "id": "df0f"
+    }
   ]
 }

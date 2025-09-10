@@ -1,11 +1,28 @@
- <div class="form-container">
-      <p class="title">Login</p>
-      <form class="form">
-        <input type="email" class="input" placeholder="Email">
-        <input type="password" class="input" placeholder="Password">
-        <button class="form-btn">Log in</button>
-      </form>
-      <p class="sign-up-label">
-        Registrati<span class="sign-up-link">Registrati</span>
-      </p>
-    </div>
+<br />
+<div class="form-container">
+  <p class="title">Login</p>
+
+  <form class="form" (ngSubmit)="onLogin()">
+    <input
+      type="email"
+      class="input"
+      placeholder="Email"
+      [(ngModel)]="inputEmail"
+      name="email"
+      required
+    />
+
+    <input
+      type="password"
+      class="input"
+      placeholder="Password"
+      [(ngModel)]="inputPassword"
+      name="password"
+      required
+    />
+
+    <button class="form-btn" type="submit">Log in</button>
+  </form>
+
+  <p>Email: admin PW: admin</p>
+</div>
