@@ -1,0 +1,33 @@
+<h3>Gestione {{ supermarket | titlecase }}</h3>
+<div class="container">
+<mat-card>
+  <mat-card-title>Aggiungi nuovo prodotto</mat-card-title>
+  <mat-card-content>
+    <mat-form-field class="full-width">
+      <mat-label>Nome prodotto</mat-label>
+      <input matInput [(ngModel)]="productName" />
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Descrizione</mat-label>
+      <input matInput [(ngModel)]="productDescription" />
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+        <mat-label>Prezzo</mat-label>
+        <input matInput type="number" [(ngModel)]="productPrice" />
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="addProduct()">Aggiungi</button>
+  </mat-card-content>
+</mat-card>
+
+<h3>Prodotti inseriti:</h3>
+<div *ngFor="let prodotto of prodottiInseriti; let i = index">
+  <span>{{ prodotto.name }} - {{ prodotto.prezzo }}€</span>
+  <span *ngIf="prodotto.offerta"> Offerta: {{ prodotto.offerta }}€</span>
+  <button mat-mini-button (click)="addOffer(i, prodotto.offerta)">Applica Offerta</button>
+  <input type="number" [(ngModel)]="prodotto.offerta" placeholder="Nuovo prezzo...">
+  <button mat-mini-button (click)="removeProduct(i)">Elimina</button>
+
+</div>
