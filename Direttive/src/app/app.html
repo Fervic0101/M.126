@@ -1,28 +1,21 @@
-<div>
-  <h1>Esercizio1</h1>
-  <p [appMydirettive]="'black'">testo</p>
-</div>
 
+<p [appMydirettive] = "'black'" >testo</p>
 <div>
-  <h1>Esercizio2</h1>
-  <input type="text" appUpper placeholder="scrivi ___" />
-</div>
+  <h2>Test della direttiva su paragrafi</h2>
 
-<div>
-  <h1>Esercizio3</h1>
-  <input type="text" appColorNumber placeholder="scrivi un numero ___" />
-</div>
+  <p appMydirettive>
+    testo giallo
+  </p>
 
-<div>
-  <h1>Esercizio4</h1>
-  <input type="text" appClickCounter placeholder="scrivi un numero ___" />
-</div>
+  <p [appMydirettive]="'pink'">
+    sfondo rosa!
+  </p>
 
-<div>
-  <h1>Esercizio5</h1>
-  <input
-    type="text"
-    appPasswordStrength
-    placeholder="scrivi una password ___"
-  />
+  <h2>Test  su input</h2>
+
+  <input type="text" appMydirettive placeholder="Scrivi qualcosa..." />
+
+  <br><br>
+
+  <input type="number" appMydirettive placeholder="Inserisci un numero" />
 </div>
