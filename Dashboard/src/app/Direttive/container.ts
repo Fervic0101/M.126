@@ -1,12 +1,11 @@
 import { AfterViewInit, Directive, ElementRef } from '@angular/core';
 
 @Directive({
-  selector: '[appContainer]'
+  selector: '[appContainer]',
 })
 export class Container implements AfterViewInit {
-
   item: ElementRef<HTMLDivElement>;
-  private size:number=100
+  private size: number = 100;
   constructor(item: ElementRef<HTMLDivElement>) {
     this.item = item;
     this.item.nativeElement.style.display = 'flex';
@@ -15,19 +14,17 @@ export class Container implements AfterViewInit {
     this.item.nativeElement.style.alignItems = 'center';
     this.item.nativeElement.style.width = '100%';
     this.item.nativeElement.style.textAlign = 'center';
-
-
-   }
+  }
   ngAfterViewInit() {
-    this.size = 100/this.item.nativeElement.children.length;
+    this.size = 100 / this.item.nativeElement.children.length;
     console.log(this.size);
-    for(let i=0;i<this.item.nativeElement.children.length;i++)
-    {
+    for (let i = 0; i < this.item.nativeElement.children.length; i++) {
       var children = this.item.nativeElement.children[i] as HTMLDivElement;
-      children.style.width = this.size+'%';
+      children.style.width = this.size + '%';
       children.style.height = '50pc';
-      console.log(this.item.nativeElement.children[i] );
+      console.log(this.item.nativeElement.children[i]);
     }
   }
 
+  // si potrebbe modificare per farla adattiva a num di supermercati ma adesso non si riesce. Sarebbe meglio mettergli le azioni anche al change e non solo all init perchè adesso non ha piu roba hardcoddata, prende da json, quinid fa cose post init in teoria
 }

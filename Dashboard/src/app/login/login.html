@@ -17,6 +17,8 @@
     }
   </mat-form-field>
 
+  <br />
+
   <!-- PASSWORD -->
   <mat-form-field appearance="fill">
     <mat-label>Password</mat-label>
@@ -46,6 +48,17 @@
     password.hasError('minlength')) {
     <mat-error>Minimo 6 caratteri</mat-error>
     }
+  </mat-form-field>
+
+  <br />
+
+  <mat-form-field required>
+    <mat-label>Accedi come..</mat-label>
+    <mat-select>
+      @for (type of userstypes; track type) {
+      <mat-option [value]="type.value">{{ type.viewValue }}</mat-option>
+      }
+    </mat-select>
   </mat-form-field>
 
   <!-- SUBMIT -->

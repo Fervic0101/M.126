@@ -1,81 +1,95 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ProdottiModel } from '../Model/ProdottiModel';
-import { Prodotti } from '../prodotti/prodotti';  
-import {Container} from '../Direttive/container';
-import { HttpClient, HttpClientModule } from '@angular/common/http';  
-import { CommonModule } from '@angular/common';
+import { Prodotti } from '../prodotti/prodotti';
+import { Container } from '../Direttive/container';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { CommonModule, NgFor } from '@angular/common';
 
 type ProductsByMarket = Record<string, ProdottiModel[]>;
-
 
 @Component({
   selector: 'app-parent',
   standalone: true,
-  imports: [FormsModule, Prodotti, HttpClientModule, CommonModule],
-  templateUrl: './home.html'
+  imports: [
+    FormsModule,
+    Prodotti,
+    Container,
+    HttpClientModule,
+    CommonModule,
+    NgFor,
+  ],
+  templateUrl: './home.html',
 })
-export class Home implements OnInit{
+export class Home implements OnInit {
   query = '';
-  
+  onlyAvailable = false;
+  minPrice: number | null = null;
+  maxPrice: number | null = null;
   entries: Array<[string, ProdottiModel[]]> = [];
-  convenients: Array<Array<Boolean>>=[];
+  convenients: Array<Array<Boolean>> = [];
 
   // http: HttpClient = new HttpClient... ;   NON SI FA . LE COSE PER DI NON NE HANNO BISOGNO ( ? sicuro? guardare bene)
   // => si fa nel costructor o con inject (  http = inject(HttpClient);  )
 
   constructor(private http: HttpClient) {}
 
-  ngOnInit(){
-    this.http.get<ProductsByMarket>('assets/prodotti.json')
-      .subscribe(data => {
-        // es: [['coop', [...]], ['esselunga', [...]], ['carrefour', [...]]]  //ma perchè non è un oggetto di key value ? informarsi
-        this.entries = Object.entries(data);
-      });
+  ngOnInit() {
+    this.http.get<ProductsByMarket>('prodotti.json').subscribe((data) => {
+      // es: [['coop', [...]], ['esselunga', [...]], ['carrefour', [...]]]  //ma perchè non è un oggetto di key value ? informarsi
+      this.entries = Object.entries(data);
+      this.markConvenientsByIndex();
+    });
   }
 
-  /*FATTO:
-  per farlo adattabile a piu supermercati fai array di oggetti nomeMarket : array e un sempliice ngFor , come abbiamo già fatto per le card in prodotti . ce l hai già l oggetto, è il json. guarda solo come gettare i nomi delle prop (i nomi dei supermercati a cui ad ognuno sta un array) */
-  
-  /* così no con for in . vede prodotto come stringa. continua spiegazione in chat>ANGULAR 1
-    ci sono vari modi di sfruttare sia il for che la destruttur . 
+  private markConvenientsByIndex() {
+    // se i market non fossero lunghi uguale
+    const maxLen = Math.max(...this.entries.map(([, arr]) => arr.length)); // "..." toglie quadre a array, e l array è l elenco di lunghezze derivanti dalla map ; [,arr] è come dire [alias, arr] se poi alias non lo usi.
 
-  fillConvenients(){
-    for(var supermercato in this.entries){
-      for(var prodotto in this.entries[supermercato]){
+    for (let i = 0; i < maxLen; i++) {
+      //per ogni prodotto (primo record di coop, esselunga, carrrefour)
 
+      let min = Number.POSITIVE_INFINITY; //cerchiamo il min per ognuno. default al massimo   (prezzo minimo di ogni prodotto della stessa categoria ( same pos in array))
+
+      for (const [, arr] of this.entries) {
+        //sto for ci sarà ovviamente per ogni record (for esterno) e (per ognuno)  fa un iterazione per ogni supermercato (per ogni record di entries) , cioè ha iterazioni [supermercato, arrayprod], supermercato non ci serve => [, arr]
+
+        const p = arr[i]; //prende in considerazione solo il record i-esimo a cui siamo nel for esterno (prodotto i-esimo) per ognu supermercato
+        if (p) min = Math.min(min, p.price); // se p non è falsy (prodotto esiste (magari arr lunghi diversi)) mettiamo a min il suo prezzo se è min senno lasciamo com '
+      }
+      // non farti fregare dall indentazione: siamo ancora nel ciclo grande (E min E' ANCORA IN SCOPE)
+      for (const [, arr] of this.entries) {
+        // forriamo uguale a prima , ma sta volta guardiamo se ciascuno dei (es. TRE) prodotti è = min e se si settiamo convenient=true
+        const p = arr[i];
+        if (p) p.convenient = p.price === min; //controlliamo di nuovo che p non sia falsy
       }
     }
   }
-    */
-
-  fillConvenients() {
-  const temp: string[];
-  // entries: [string, ProdottiModel[]][]
-  for (const [market, products] of this.entries) {
-    for (const product of products) {
-      // product è ProdottiModel
-      // es: product.convenient = decideQualcosa(product);
-      
-
-    }
-  }
-}
-
-
 
   filter(list: ProdottiModel[]) {
     const q = this.query.trim().toLowerCase();
-    if (!q) return list;
-    return list.filter(p =>
-      p.name.toLowerCase().includes(q) ||
-      (p.description ?? '').toLowerCase().includes(q)
-    );
+
+    return list.filter((p) => {
+      if (
+        q &&
+        !(
+          p.name.toLowerCase().includes(q) ||
+          (p.description ?? '').toLowerCase().includes(q)
+        )
+      ) {
+        return false;
+      }
+      // adatta il nome del campo se nel tuo model non si chiama "available"
+      if (this.onlyAvailable && !p.available) return false;
+
+      if (this.minPrice != null && p.price < this.minPrice) return false;
+      if (this.maxPrice != null && p.price > this.maxPrice) return false;
+
+      return true;
+    });
   }
 
-
-  trackByMarket = (_: number, e: [string, ProdottiModel[]]) => e[0];  //leggi spiegazione nel tempate. _: alias come un altro , ussato per dire fregaNNiente
-
+  trackByMarket = (_: number, e: [string, ProdottiModel[]]) => e[0]; //leggi spiegazione nel tempate. _: alias come un altro , ussato per dire fregaNNiente
 
   /*
   Coop: ProdottiModel[] = [new ProdottiModel(
@@ -139,5 +153,4 @@ export class Home implements OnInit{
         '',
         true
       )];*/
-
 }

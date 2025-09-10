@@ -1,7 +1,34 @@
 <h1 appTitleElement>Spesa Intelligente</h1>
 
-
 <input [(ngModel)]="query" placeholder="Cerca prodotti..." />
+
+<label>
+  <input type="checkbox" [(ngModel)]="onlyAvailable" />
+  Solo disponibili
+</label>
+
+<label>
+  Prezzo min
+  <input
+    type="number"
+    [ngModel]="minPrice"
+    (ngModelChange)="minPrice = $event === '' ? null : +$event"
+    min="0"
+    step="0.01"
+  />
+</label>
+<!--(ngModelChange) non è l evento dom change (che dovresti fare $event.target.value e parsarlo da stringa a XX ), ma un output della direttiva ngModel che emette il valore già parsato nel type giusto (es. number). il trucco di +$event è l unary plus, che coercizza qualcosa a number (csostituibile con Number($event)); un in più avendo già usato (ngModelChange). Molto probabilmente bastava benissimo un comodissimo "<input type="number" [(ngModel)]="minPrice" min="0" step="0.01">" ma adesso non abbiamo il tempo di approfondire le magie di angular-->
+
+<label>
+  Prezzo max
+  <input
+    type="number"
+    [ngModel]="maxPrice"
+    (ngModelChange)="maxPrice = $event === '' ? null : +$event"
+    min="0"
+    step="0.01"
+  />
+</label>
 
 <div appContainer>
   <section *ngFor="let e of entries; trackBy: trackByMarket">
@@ -12,3 +39,57 @@
 
 <!-- titlecase si usa così : | titlecase ; e rende maiuscola la prima lettera della parola. Le serve CommonModule.Anche a ngFor serve common module.-->
 <!--trackBy è direttiva magica di angular ma di fatto è come il key in React. ti basta usarla e definire nel ts una funzione con firma firma: (index, item) => id  in questo caso e[0] è il nome del supermercato, stabile e unico → perfetto come chiave.-->
+
+<!-- non c'è bellezza nel fare il footer in questo momento . ( ... ) -->
+<footer
+  style="
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: #0d47a1;
+    color: #fff;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    font: 14px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  "
+>
+  <div
+    style="
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 10px 16px;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    "
+  >
+    <div>
+      🛒 <strong>Spesa Intelligente</strong> — the footer nobody asked for.
+    </div>
+
+    <nav style="display: flex; gap: 12px; flex-wrap: wrap">
+      <a href="#" style="color: #bbdefb; text-decoration: none">About</a>
+      <a href="#" style="color: #bbdefb; text-decoration: none">Help</a>
+      <a href="#" style="color: #bbdefb; text-decoration: none">Privacy</a>
+      <a href="#" style="color: #bbdefb; text-decoration: none">Terms</a>
+    </nav>
+
+    <div style="display: flex; gap: 12px; flex-wrap: wrap">
+      <a
+        href="mailto:ciao@spesaintelligente.fake"
+        style="color: #bbdefb; text-decoration: none"
+        >ciao@spesaintelligente.fake</a
+      >
+      <span>·</span>
+      <a href="tel:+39000000000" style="color: #bbdefb; text-decoration: none"
+        >+39 000 000 000</a
+      >
+    </div>
+  </div>
+
+  <div style="background: #09337a; text-align: center; padding: 6px 16px">
+    © 2025 Meme S.p.A. — Made with ❤️ and carbs.
+  </div>
+</footer>
