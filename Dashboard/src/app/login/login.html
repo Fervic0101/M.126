@@ -1,11 +1,48 @@
- <div class="form-container">
-      <p class="title">Login</p>
-      <form class="form">
-        <input type="email" class="input" placeholder="Email">
-        <input type="password" class="input" placeholder="Password">
-        <button class="form-btn">Log in</button>
-      </form>
-      <p class="sign-up-label">
-        Registrati<span class="sign-up-link">Registrati</span>
-      </p>
-    </div>
+<div class="login-container">
+  <div class="form-container">
+    
+    <p class="title">Sign in to your account</p>
+    
+    <form class="form" (ngSubmit)="onSubmit()" #loginForm="ngForm">
+      <div class="input-group">
+        <input 
+          type="email" 
+          class="input" 
+          placeholder="Email"
+          [(ngModel)]="email"
+          name="email"
+          required
+          [class.error]="errors.email"
+          #emailInput="ngModel">
+        <div class="error-message" *ngIf="errors.email">{{ errors.email }}</div>
+      </div>
+      
+      <div class="input-group">
+        <input 
+          type="password" 
+          class="input" 
+          placeholder="Password"
+          [(ngModel)]="password"
+          name="password"
+          required
+          [class.error]="errors.password"
+          #passwordInput="ngModel">
+        <div class="error-message" *ngIf="errors.password">{{ errors.password }}</div>
+      </div>
+      
+      <div class="remember-forgot">
+        <label class="remember-me">
+          <input type="checkbox" [(ngModel)]="rememberMe" name="rememberMe">
+          <span>Remember me</span>
+        </label>
+        <a href="#" class="forgot-password">Forgot password?</a>
+      </div>
+      
+      <button type="submit" class="form-btn">Sign in</button>
+    </form>
+    
+    <p class="sign-up-label">
+      Don't have an account? <a href="#" class="sign-up-link">Sign up</a>
+    </p>
+  </div>
+</div>
