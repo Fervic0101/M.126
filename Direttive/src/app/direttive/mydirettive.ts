@@ -1,102 +1,95 @@
 import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 
+// Direttiva per evidenziare il testo
 @Directive({
   selector: '[appMydirettive]'
 })
 export class Mydirettive {
-  @Input() appMydirettive = '';
+  @Input() appMydirettive = 'red';
 
-  constructor(private htmlElement: ElementRef<HTMLInputElement>) { 
- 
-    this.htmlElement.nativeElement.style.color = this.appMydirettive || 'black';
-   
-  }
+  constructor(private el: ElementRef) {}
 
   @HostListener('mouseenter') onMouseEnter() {
-    console.log(this.appMydirettive);
-    this.htmlElement.nativeElement.style.backgroundColor = this.appMydirettive || 'yellow';
+    this.el.nativeElement.style.backgroundColor = this.appMydirettive;
   }
 
   @HostListener('mouseleave') onMouseLeave() {
-    this.htmlElement.nativeElement.style.backgroundColor = 'lightblue';
-  }
-
-  private highlight(color: string) {
-    this.htmlElement.nativeElement.style.backgroundColor = color;
+    this.el.nativeElement.style.backgroundColor = '';
   }
 }
 
+// Direttiva per convertire in maiuscolo
 @Directive({
   selector: '[appUppercase]'
 })
 export class UppercaseDirective {
+  constructor(private el: ElementRef) {}
+
   @HostListener('input', ['$event']) onInput(event: Event) {
     const input = event.target as HTMLInputElement;
-    const start = input.selectionStart;
-    const end = input.selectionEnd;
-    
+    const cursorPosition = input.selectionStart;
     input.value = input.value.toUpperCase();
-    input.setSelectionRange(start, end);
+    input.setSelectionRange(cursorPosition, cursorPosition);
   }
 }
 
+// Direttiva per cambiare colore in base al numero
 @Directive({
   selector: '[appColorNumber]'
 })
 export class ColorNumberDirective {
   constructor(private el: ElementRef) {}
 
-  @HostListener('input', ['$event']) onInput(event: Event) {
-    const input = event.target as HTMLInputElement;
-    const value = parseInt(input.value) || 0;
-
-    if (value > 10) {
+  @HostListener('input') onInput() {
+    const value = parseFloat(this.el.nativeElement.value);
+    if (isNaN(value)) {
+      this.el.nativeElement.style.borderColor = '#ccc';
+    } else if (value > 10) {
       this.el.nativeElement.style.borderColor = 'green';
     } else if (value < 10) {
       this.el.nativeElement.style.borderColor = 'red';
     } else {
-      this.el.nativeElement.style.borderColor = '';
+      this.el.nativeElement.style.borderColor = 'orange';
     }
   }
 }
 
+// Direttiva per contare i click
 @Directive({
   selector: '[appClickCounter]'
 })
 export class ClickCounterDirective {
-  private count = 0;
+  private clickCount = 0;
 
   @HostListener('click') onClick() {
-    this.count++;
-    console.log(`Element clicked ${this.count} times`);
+    this.clickCount++;
+    console.log(`Elemento cliccato ${this.clickCount} volte`);
   }
 }
 
+// Direttiva per valutare la forza della password
 @Directive({
   selector: '[appPasswordStrength]'
 })
 export class PasswordStrengthDirective {
   constructor(private el: ElementRef) {}
 
-  @HostListener('input', ['$event']) onInput(event: Event) {
-    const input = event.target as HTMLInputElement;
-    const value = input.value;
-    
+  @HostListener('input') onInput() {
+    const value = this.el.nativeElement.value;
     let strength = 'Debole';
     let color = 'red';
 
-    if (value.length >= 6 && value.length <= 10) {
+    if (value.length >= 6) {
       strength = 'Media';
       color = 'orange';
-    } else if (value.length > 10 && /[0-9]/.test(value) && /[a-zA-Z]/.test(value)) {
+    }
+    
+    if (value.length > 10 && /[0-9]/.test(value) && /[a-zA-Z]/.test(value)) {
       strength = 'Forte';
       color = 'green';
     }
 
     this.el.nativeElement.style.borderColor = color;
-    this.el.nativeElement.style.borderWidth = '2px';
-    this.el.nativeElement.style.borderStyle = 'solid';
-    
     console.log(strength);
   }
 }

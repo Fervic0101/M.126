@@ -1,18 +1,15 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { Mydirettive } from './direttive/mydirettive';
+import { Mydirettive, UppercaseDirective, ColorNumberDirective, ClickCounterDirective, PasswordStrengthDirective } from './direttive/mydirettive';
 
 @Component({
   selector: 'app-root',
-  imports: [Mydirettive],
+  imports: [Mydirettive, UppercaseDirective, ColorNumberDirective, ClickCounterDirective, PasswordStrengthDirective],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App  {
-  colore = "red"
+export class App {
+  colore = "lightyellow";
   protected readonly title = signal('Direttive');
-  constructor() {
 
-  }
-
+  constructor() {}
 }
