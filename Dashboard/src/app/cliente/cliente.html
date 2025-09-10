@@ -1,0 +1,26 @@
+<h3>Benvenuto nella tua area personale</h3>
+<div class="cliente-container">
+  <section class="stat-section">
+    <h4>Prodotti acquistati</h4>
+    <ul>
+      <li *ngFor="let prodotto of prodottiAcquistati">
+        {{ prodotto.name }} - {{ prodotto.prezzo }} €
+      </li>
+    </ul>
+  </section>
+
+  <section class="stat-section">
+    <h4>Supermercati più usati</h4>
+    <ul>
+      <li *ngFor="let market of supermercatiUsati">
+        {{ market.name }} - {{ market.count }} acquisti
+      </li>
+    </ul>
+  </section>
+  <div>
+  <section class="stat-section">
+    <h4>Spesa media</h4>
+    <p>{{ spesaMedia }} €</p>
+  </section>
+  
+</div>
