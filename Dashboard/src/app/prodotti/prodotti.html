@@ -1,2 +1,13 @@
-<p>{{Lista[0].name}}</p>
-<p>{{Lista[0].price}}</p>
+<div *ngFor="let p of Lista"
+     [appHighlightCheap]="Lista"
+     [prodotto]="p"
+     style="padding:10px; margin:10px;">
+
+  <h3>{{ p.name }}</h3>
+  <p>{{ p.price }} €</p>
+  <p *ngIf="p.available; else notAvailable">Disponibile</p>
+  <ng-template #notAvailable>
+    <span style="color:red;">N/A - Non disponibile</span>
+  </ng-template>
+
+</div>

@@ -1,0 +1,14 @@
+<h1>Registrati ora!</h1>
+ <div class="form-container" >
+      <p class="title">Registrati</p>
+      <form class="form">
+        <input type="email" id="email" name="email" [(ngModel)]="email" required placeholder="Inserisci la tua email" class="input">
+        <input type="password" id="password" name="password" class="input" placeholder="Password">
+        <option type="tipoUtente" id="tipoUtente" name="tipoUtente" class="option" placeholder="tipoUtente" disabled selected>Seleziona tipo utente</option>
+          <select class="input">
+            <option value="cliente">Cliente</option>
+            <option value="fornitore">Supermercato</option>
+          </select>
+        <button class="form-btn" (click)="salvaDati()">Registrati</button>
+      </form>
+    </div>

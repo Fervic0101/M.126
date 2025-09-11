@@ -1,10 +1,14 @@
 import { Component, Input } from '@angular/core';
 import { ProdottiModel } from '../Model/ProdottiModel';
 import { HttpClient } from '@angular/common/http';
+import { HighlightCheapDirective } from "../Direttive/cheap";
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-prodotti',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule, HighlightCheapDirective],
   templateUrl: './prodotti.html',
   styleUrl: './prodotti.css'
 })

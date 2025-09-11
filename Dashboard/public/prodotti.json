@@ -53,7 +53,7 @@
     { "name": "Yogurt Mirtillo 125g", "price": 0.70, "image": "https://example.com/images/yogurt-mirtillo.jpg", "description": "Yogurt cremoso al mirtillo", "available": true },
     { "name": "Acqua Naturale 1.5L", "price": 0.25, "image": "https://example.com/images/acqua-lidl.jpg", "description": "Acqua minerale naturale Lidl", "available": true },
     { "name": "Biscotti Secchi 350g", "price": 1.80, "image": "https://example.com/images/biscotti-lidl.jpg", "description": "Biscotti da colazione", "available": true },
-    { "name": "Zucchero 1Kg", "price": 0.80, "image": "https://example.com/images/zucchero-lidl.jpg", "description": "Zucchero bianco Lidl", "available": true },
+    { "name": "Zucchero 1Kg", "price": 0.80, "image": "https://example.com/images/zucchero-lidl.jpg", "description": "Zucchero bianco Lidl", "available": false },
     { "name": "Sale Fino 1Kg", "price": 0.65, "image": "https://example.com/images/sale-lidl.jpg", "description": "Sale fino da cucina", "available": true },
     { "name": "Tonno in Olio 80g", "price": 1.05, "image": "https://example.com/images/tonno-lidl.jpg", "description": "Tonno in scatola Lidl", "available": true },
     { "name": "Passata di Pomodoro 700g", "price": 0.85, "image": "https://example.com/images/passata-lidl.jpg", "description": "Passata di pomodoro", "available": true },
@@ -65,8 +65,4 @@
     { "name": "Sapone Liquido 250ml", "price": 1.10, "image": "https://example.com/images/sapone-lidl.jpg", "description": "Sapone igienizzante Lidl", "available": true },
     { "name": "Batterie D 2pz", "price": 4.20, "image": "https://example.com/images/batterie-d.jpg", "description": "Batterie formato D", "available": true }
   ]
-<<<<<<< Updated upstream
 }
-=======
-}
->>>>>>> Stashed changes
