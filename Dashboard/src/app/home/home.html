@@ -4,18 +4,19 @@
 <mat-form-field class="example-form-field">
   <mat-label>Ricerca prodotto</mat-label>
   <input matInput type="text" [(ngModel)]="Ricerca">
-</mat-form-field>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button (click)="cerca()" matFab aria-label="Example icon button with a delete icon">  <mat-icon>search</mat-icon>   </button>
+</mat-form-field>
 </div>      
 <br>
+
 <div appContainer>
     <div>
         <label> COOP</label>
-        <app-prodotti [supermarket]=0 [PrezzoDaModificare]="prezzMod" [ProdottoDaModificare]="prodMod" [SeRicerca]="seRicerca" [ProdottoRicercare]="Ricerca"></app-prodotti>
+        <app-prodotti  [supermarket]=0 [PrezzoDaModificare]="prezzMod" [ProdottoDaModificare]="prodMod"  [ProdottoRicercare]="Ricerca"></app-prodotti>
         
     </div>
     <div>
         <label>Esselunga</label>
-         <app-prodotti [supermarket]=1 [PrezzoDaModificare]="prezzMod" [ProdottoDaModificare]="prodMod" [SeRicerca]="seRicerca" [ProdottoRicercare]="Ricerca"></app-prodotti>
+         <app-prodotti [supermarket]=1 [PrezzoDaModificare]="prezzMod" [ProdottoDaModificare]="prodMod"  [ProdottoRicercare]="Ricerca"></app-prodotti>
             <footer style="font-size: 16px; line-height: 0.7;">
                 <p>Autore: Lorenzo Stocchi</p>
                 <p>Indirizzo: Via Roma 5r</p>
@@ -25,7 +26,7 @@
     
     <div>
         <label>Carrefour</label> 
-         <app-prodotti [supermarket]=2 [PrezzoDaModificare]="prezzMod" [ProdottoDaModificare]="prodMod" [SeRicerca]="seRicerca" [ProdottoRicercare]="Ricerca"></app-prodotti>   
+         <app-prodotti [supermarket]=2 [PrezzoDaModificare]="prezzMod" [ProdottoDaModificare]="prodMod"  [ProdottoRicercare]="Ricerca"></app-prodotti>   
     
     </div>
     

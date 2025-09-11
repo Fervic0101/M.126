@@ -21,8 +21,8 @@ export class Home {
   prodMod : string = ''
   prezzMod : number = 0.0
   Ricerca:string =''
-  seRicerca: boolean = false
-  constructor(private route: ActivatedRoute,private cdr: ChangeDetectorRef)
+  
+  constructor(private route: ActivatedRoute)
   {
       
   }
@@ -51,17 +51,7 @@ export class Home {
 
  }
 
-  cerca()
-  {
-    if(this.Ricerca!=''){
-      this.seRicerca=true;
-     
-      
-    }else{
-      this.seRicerca=false;
-    }
-    
-  }
+  
 
 
 }

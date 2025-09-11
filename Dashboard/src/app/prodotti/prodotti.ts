@@ -26,12 +26,10 @@ export class Prodotti {
   {
       
   }
-
-
   ngOnInit()
   {
       
-       console.log('ok')
+      console.log("init")
 
     this.http.get<any>('/prodotti.json').subscribe(data => {
        this.Coop = data.coop.map((p: ProdottiModel) => new ProdottiModel(p.name, p.price, p.image, p.description, p.available))
@@ -48,30 +46,25 @@ export class Prodotti {
         
         this.Lista = this.Coop;
         this.PrezzoAggiornato()
-       
-        this.Ricerca()
+        
         break;
       case 1:
         this.Lista = this.Esselunga;
         this.PrezzoAggiornato()
-        this.Ricerca()
+     
         break;
       case 2:
         this.Lista = this.Carrefour;
         this.PrezzoAggiornato()
-        this.Ricerca()
+      
         break;
       default:
         this.Lista = this.Coop;
         this.PrezzoAggiornato()
-        this.Ricerca()
+    
         break;
     }
     });
-    
-    
-        
-
 
     }
     PrezzoAggiornato()
@@ -84,21 +77,30 @@ export class Prodotti {
         }
 
     }
-    Ricerca()
-    {
-      if(this.SeRicerca){
-        for(let i=0;i<this.Lista.length;i++){
-          if(this.Lista[i].name==this.ProdottoDaModificare)
-          {
-            this.Lista[0]= this.Lista[i]
-             this.Lista.splice(1, this.Lista.length-1);
-             
-          }else{
-            this.Lista.splice(0, this.Lista.length);
-          }
-        }
-      }
+   
 
-    }
+   ngOnChanges()
+   {
+    //consapevole che  bisognerebbe fare un controllo più elastico
+     var Trovato=false;
+      if(this.ProdottoRicercare!='')
+      {
+        for(let i=0;i<this.Lista.length;i++){
+            if(this.Lista[i].name==this.ProdottoRicercare)
+            {
+              Trovato=true;
+              this.Lista[0]= this.Lista[i]
+              this.Lista.splice(1, this.Lista.length-1);
+              break;
+            }
+          }
+
+          if(!Trovato){this.Lista.splice(0, this.Lista.length);}
+          
+      }else{
+        this.ngOnInit()
+      }
+      
+  }
 
 }
