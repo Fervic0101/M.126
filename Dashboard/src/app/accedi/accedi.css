@@ -1,149 +1,304 @@
-.pannello-controllo {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
-  color: #2d3748;
-  background-color: #f7fafc;
+/* Variabili e reset */
+:root {
+  --primary: #4c51bf;
+  --primary-dark: #434190;
+  --secondary: #667eea;
+  --accent: #7f9cf5;
+  --success: #48bb78;
+  --warning: #ecc94b;
+  --danger: #f56565;
+  --light: #f7fafc;
+  --dark: #2d3748;
+  --gray: #718096;
+  --gray-light: #e2e8f0;
+  --border-radius: 16px;
+  --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --transition: all 0.3s ease;
 }
 
-.intestazione-pannello {
-  background: linear-gradient(135deg, #4c51bf 0%, #6b46c1 100%);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.dashboard-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px;
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  color: var(--dark);
+  background-color: #f8fafc;
+  min-height: 100vh;
+}
+
+/* Intestazione */
+.dashboard-header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
   color: white;
   padding: 28px;
-  border-radius: 14px;
-  margin-bottom: 28px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  border-radius: var(--border-radius);
+  margin-bottom: 32px;
+  box-shadow: var(--shadow);
 }
 
-.intestazione-pannello h1 {
+.header-content h1 {
   margin: 0 0 18px 0;
-  font-size: 30px;
+  font-size: 28px;
   font-weight: 600;
 }
 
-.info-utente {
+.user-info {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
 }
 
-.saluto-utente h2 {
+.user-greeting h2 {
   margin: 0;
   font-size: 24px;
   font-weight: 500;
 }
 
-.saluto-utente p {
+.user-greeting p {
   margin: 6px 0 0 0;
   opacity: 0.85;
 }
 
-.schede-riepilogo {
+.user-badges {
+  display: flex;
+  gap: 12px;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Griglia statistiche */
+.stats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 24px;
   margin-bottom: 32px;
 }
 
-.scheda {
+.stat-card {
   background: white;
-  border-radius: 14px;
+  border-radius: var(--border-radius);
   padding: 24px;
   display: flex;
   align-items: center;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
-  border: 1px solid #edf2f7;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  border: 1px solid var(--gray-light);
 }
 
-.scheda:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
-.icona-scheda {
-  width: 55px;
-  height: 55px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+.stat-icon {
+  width: 60px;
+  height: 60px;
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-right: 18px;
-  font-size: 26px;
-  font-weight: bold;
-  color: white;
+  font-size: 28px;
 }
 
-.contenuto-scheda h3 {
+.stat-icon.total-spent { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+.stat-icon.monthly-avg { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+.stat-icon.transactions { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+.stat-icon.savings { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+
+.stat-content h3 {
   margin: 0;
   font-size: 15px;
   font-weight: 500;
-  color: #718096;
+  color: var(--gray);
 }
 
-.importo {
+.stat-amount {
   margin: 6px 0 0 0;
   font-size: 26px;
   font-weight: 700;
-  color: #2d3748;
+  color: var(--dark);
 }
 
-.contenuto-pannello {
+.stat-description {
+  font-size: 13px;
+  color: var(--gray);
+  margin-top: 4px;
+  display: block;
+}
+
+/* Contenuto principale */
+.main-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 28px;
   margin-bottom: 32px;
 }
 
-.sezione-contenuto {
+.content-section {
   background: white;
-  border-radius: 14px;
+  border-radius: var(--border-radius);
   padding: 24px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
-  border: 1px solid #edf2f7;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--gray-light);
 }
 
-.sezione-contenuto h3 {
-  margin: 0 0 22px 0;
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--gray-light);
+}
+
+.section-header h3 {
+  margin: 0;
   font-size: 20px;
   font-weight: 600;
-  color: #2d3748;
-  padding-bottom: 14px;
-  border-bottom: 2px solid #f7fafc;
+  color: var(--dark);
 }
 
-.lista-prodotti, .lista-supermercati {
+.view-all-btn {
+  background: none;
+  border: none;
+  color: var(--primary);
+  font-weight: 500;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: var(--transition);
+}
+
+.view-all-btn:hover {
+  background-color: rgba(76, 81, 191, 0.1);
+}
+
+/* Lista prodotti */
+.products-list, .supermarkets-list {
   display: flex;
   flex-direction: column;
   gap: 18px;
 }
 
-.voce-prodotto, .voce-supermercato {
+.product-item, .supermarket-item {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--gray-light);
 }
 
-.info-prodotto, .info-supermercato {
+.product-item:last-child, .supermarket-item:last-child {
+  border-bottom: none;
+}
+
+.product-info, .supermarket-main-info {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.nome-prodotto, .nome-supermercato {
+.product-name, .supermarket-name {
   font-weight: 600;
 }
 
-.quantita-prodotto, .visite-supermercato {
-  font-size: 14px;
-  color: #718096;
+.product-category {
+  font-size: 12px;
+  color: var(--gray);
+  background: var(--gray-light);
+  padding: 2px 8px;
+  border-radius: 10px;
 }
 
-.barra-prodotto, .barra-supermercato {
+.product-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-quantity {
+  font-size: 14px;
+  color: var(--gray);
+}
+
+.product-tendency {
+  font-weight: bold;
+}
+
+.tendenza-up {
+  color: var(--success);
+}
+
+.tendenza-down {
+  color: var(--danger);
+}
+
+.tendenza-stable {
+  color: var(--warning);
+}
+
+.supermarket-name-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.favorite-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--gray-light);
+  transition: var(--transition);
+}
+
+.favorite-btn.favorited {
+  color: var(--danger);
+}
+
+.favorite-btn:hover {
+  transform: scale(1.2);
+}
+
+.supermarket-visits {
+  font-size: 14px;
+  color: var(--gray);
+}
+
+.supermarket-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 6px;
+}
+
+.supermarket-amount {
+  font-weight: 600;
+  color: var(--dark);
+}
+
+/* Barre di progressione */
+.product-bar, .supermarket-bar {
   height: 26px;
-  background-color: #f8fafc;
+  background-color: var(--gray-light);
   border-radius: 13px;
   display: flex;
   align-items: center;
@@ -151,46 +306,39 @@
   position: relative;
 }
 
-.riempimento-barra {
+.bar-fill {
   position: absolute;
   left: 0;
   top: 0;
   height: 100%;
-  background: linear-gradient(90deg, #4c51bf 0%, #667eea 100%);
+  background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
   border-radius: 13px;
   opacity: 0.8;
+  transition: width 0.5s ease;
 }
 
-.percentuale {
+.bar-percentage {
   z-index: 1;
   font-size: 13px;
   font-weight: 600;
-  color: #2d3748;
+  color: var(--dark);
 }
 
-.dettagli-supermercato {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 6px;
-}
-
-.importo-supermercato {
-  font-weight: 600;
-  color: #2d3748;
-}
-
-.sezione-grafici {
+/* Sezione grafici e transazioni */
+.charts-transactions-section {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 28px;
+  margin-bottom: 32px;
 }
 
-.contenitore-grafico {
+/* Grafico a barre */
+.chart-container {
   padding: 18px 0;
+  position: relative;
 }
 
-.barre-grafico {
+.chart-bars {
   display: flex;
   align-items: flex-end;
   gap: 22px;
@@ -198,105 +346,310 @@
   padding: 0 12px;
 }
 
-.barra-mese {
+.chart-bar-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
   flex: 1;
+  position: relative;
 }
 
-.barra {
+.bar-tooltip {
+  position: absolute;
+  top: -40px;
+  background: var(--dark);
+  color: white;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  opacity: 0;
+  transition: var(--transition);
+  pointer-events: none;
+}
+
+.chart-bar-item:hover .bar-tooltip {
+  opacity: 1;
+}
+
+.chart-bar {
   width: 32px;
-  background: linear-gradient(0deg, #4c51bf 0%, #667eea 100%);
+  background: linear-gradient(0deg, var(--primary) 0%, var(--secondary) 100%);
   border-radius: 6px 6px 0 0;
   transition: height 0.6s ease;
+  cursor: pointer;
 }
 
-.etichetta-mese {
+.chart-bar:hover {
+  opacity: 0.8;
+}
+
+.chart-bar.tendenza-up {
+  background: linear-gradient(0deg, var(--success) 0%, #68d391 100%);
+}
+
+.chart-bar.tendenza-down {
+  background: linear-gradient(0deg, var(--danger) 0%, #fc8181 100%);
+}
+
+.chart-bar.tendenza-stable {
+  background: linear-gradient(0deg, var(--warning) 0%, #faf089 100%);
+}
+
+.bar-month {
   font-size: 14px;
-  color: #718096;
+  color: var(--gray);
   font-weight: 500;
 }
 
-.etichetta-importo {
+.bar-variance {
   font-size: 12px;
   font-weight: 600;
 }
 
-.lista-transazioni {
+.axis-line {
+  height: 2px;
+  background-color: var(--gray-light);
+  width: 100%;
+  margin-top: 20px;
+}
+
+/* Grafico a torta */
+.categories-chart {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.pie-chart {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: conic-gradient(
+    #4c51bf 0% 45%,
+    #ed64a6 45% 60%,
+    #38b2ac 60% 80%,
+    #ecc94b 80% 92%,
+    #667eea 92% 100%
+  );
+}
+
+.categories-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legend-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+}
+
+.legend-label {
+  font-size: 14px;
+  min-width: 80px;
+}
+
+.legend-percentage {
+  font-weight: 600;
+  color: var(--dark);
+}
+
+/* Transazioni */
+.transactions-list {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
-.voce-transazione {
+.transaction-item {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr auto auto;
   gap: 12px;
   padding: 14px;
-  background-color: #f8fafc;
+  background-color: var(--gray-light);
   border-radius: 10px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--gray-light);
+  transition: var(--transition);
 }
 
-.data-transazione {
+.transaction-item:hover {
+  background-color: #e6fffa;
+  border-color: var(--accent);
+}
+
+.transaction-date {
   font-size: 14px;
-  color: #718096;
+  color: var(--gray);
 }
 
-.supermercato-transazione {
+.transaction-store {
   font-weight: 600;
 }
 
-.importo-transazione {
+.transaction-points {
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.transaction-amount {
   text-align: right;
   font-weight: 700;
-  color: #2d3748;
+  color: var(--dark);
+}
+
+/* Promozioni */
+.promotions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.promotion-card {
+  background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.promotion-card:nth-child(2) {
+  background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+  color: var(--dark);
+}
+
+.promotion-badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.promotion-card h4 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+}
+
+.promotion-card p {
+  margin: 0 0 16px 0;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.promotion-btn {
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  color: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.promotion-btn:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Filtri */
+.time-filter {
+  display: flex;
+  gap: 8px;
+}
+
+.filter-btn {
+  padding: 6px 12px;
+  border: 1px solid var(--gray-light);
+  background: white;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.filter-btn.active, .filter-btn:hover {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
 }
 
 /* Regole responsive */
 @media (max-width: 1024px) {
-  .contenuto-pannello {
+  .main-content {
     grid-template-columns: 1fr;
   }
   
-  .sezione-grafici {
+  .charts-transactions-section {
     grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 768px) {
-  .schede-riepilogo {
+  .stats-grid {
     grid-template-columns: 1fr;
   }
   
-  .voce-transazione {
+  .user-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .transaction-item {
     grid-template-columns: 1fr 1fr;
   }
   
-  .importo-transazione {
+  .transaction-points, .transaction-amount {
     grid-column: span 2;
     text-align: left;
+  }
+  
+  .categories-chart {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 
 @media (max-width: 480px) {
-  .pannello-controllo {
+  .dashboard-container {
     padding: 15px;
   }
   
-  .intestazione-pannello {
+  .dashboard-header {
     padding: 20px;
   }
   
-  .scheda {
+  .stat-card {
     flex-direction: column;
     text-align: center;
   }
   
-  .icona-scheda {
+  .stat-icon {
     margin-right: 0;
     margin-bottom: 15px;
+  }
+  
+  .chart-bars {
+    gap: 12px;
+  }
+  
+  .chart-bar {
+    width: 24px;
   }
 }

@@ -1,57 +1,90 @@
-<div class="pannello-controllo">
+<div class="dashboard-container">
   <!-- Intestazione -->
-  <header class="intestazione-pannello">
-    <h1>La Tua Dashboard Personale</h1>
-    <div class="info-utente">
-      <div class="saluto-utente">
-        <h2>Benvenuto, {{ nomeUtente }}</h2>
-        <p>{{ iscrittoDa }}</p>
+  <header class="dashboard-header">
+    <div class="header-content">
+      <h1>La Tua Area Personale</h1>
+      <div class="user-info">
+        <div class="user-greeting">
+          <h2>Benvenuto, {{ nomeUtente }}</h2>
+          <p>{{ iscrittoDa }}</p>
+        </div>
+        <div class="user-badges">
+          <div class="badge livello-fedelta">
+            <span class="badge-icon">🏆</span>
+            <span class="badge-text">Livello {{ livelloFedelta }}</span>
+          </div>
+          <div class="badge punti-fedelta">
+            <span class="badge-icon">⭐</span>
+            <span class="badge-text">{{ puntiFedelta }} punti</span>
+          </div>
+        </div>
       </div>
     </div>
   </header>
 
   <!-- Riepilogo statistiche -->
-  <div class="schede-riepilogo">
-    <div class="scheda">
-      <div class="icona-scheda">€</div>
-      <div class="contenuto-scheda">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-icon total-spent">💰</div>
+      <div class="stat-content">
         <h3>Spesa Totale</h3>
-        <p class="importo">{{ spesaTotale }} €</p>
+        <p class="stat-amount">{{ spesaTotale }} €</p>
+        <span class="stat-description">Dal primo acquisto</span>
       </div>
     </div>
 
-    <div class="scheda">
-      <div class="icona-scheda">M</div>
-      <div class="contenuto-scheda">
+    <div class="stat-card">
+      <div class="stat-icon monthly-avg">📊</div>
+      <div class="stat-content">
         <h3>Spesa Media Mensile</h3>
-        <p class="importo">{{ mediaMensile }} €</p>
+        <p class="stat-amount">{{ mediaMensile }} €</p>
+        <span class="stat-description">Ultimi 6 mesi</span>
       </div>
     </div>
 
-    <div class="scheda">
-      <div class="icona-scheda">T</div>
-      <div class="contenuto-scheda">
+    <div class="stat-card">
+      <div class="stat-icon transactions">🛒</div>
+      <div class="stat-content">
         <h3>Transazioni</h3>
-        <p class="importo">{{ transazioni }}</p>
+        <p class="stat-amount">{{ transazioni }}</p>
+        <span class="stat-description">Acquisti effettuati</span>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon savings">🎯</div>
+      <div class="stat-content">
+        <h3>Risparmio Totale</h3>
+        <p class="stat-amount">{{ risparmioTotale }} €</p>
+        <span class="stat-description">Grazie alle offerte</span>
       </div>
     </div>
   </div>
 
   <!-- Contenuto principale -->
-  <div class="contenuto-pannello">
-    <!-- Sezione prodotti -->
-    <div class="sezione-contenuto">
-      <h3>Prodotti più acquistati</h3>
-      <div class="lista-prodotti">
+  <div class="main-content">
+    <!-- Sezione grafici e prodotti -->
+    <div class="content-section products-section">
+      <div class="section-header">
+        <h3>Prodotti più acquistati</h3>
+        <button class="view-all-btn">Vedi tutti</button>
+      </div>
+      <div class="products-list">
         @for (prodotto of prodottiAcquistati; track prodotto.nome) {
-          <div class="voce-prodotto">
-            <div class="info-prodotto">
-              <span class="nome-prodotto">{{ prodotto.nome }}</span>
-              <span class="quantita-prodotto">{{ prodotto.quantita }} acquisti</span>
+          <div class="product-item">
+            <div class="product-info">
+              <span class="product-name">{{ prodotto.nome }}</span>
+              <span class="product-category">{{ prodotto.categoria }}</span>
             </div>
-            <div class="barra-prodotto">
-              <div class="riempimento-barra" [style.width.%]="prodotto.percentuale"></div>
-              <span class="percentuale">{{ prodotto.percentuale }}%</span>
+            <div class="product-stats">
+              <span class="product-quantity">{{ prodotto.quantita }} acquisti</span>
+              <span class="product-tendency {{ getTendenzaClasse(prodotto.tendenza) }}">
+                {{ getTendenzaIcona(prodotto.tendenza) }}
+              </span>
+            </div>
+            <div class="product-bar">
+              <div class="bar-fill" [style.width.%]="prodotto.percentuale"></div>
+              <span class="bar-percentage">{{ prodotto.percentuale }}%</span>
             </div>
           </div>
         }
@@ -59,21 +92,31 @@
     </div>
 
     <!-- Sezione supermercati -->
-    <div class="sezione-contenuto">
-      <h3>Supermercati più frequentati</h3>
-      <div class="lista-supermercati">
+    <div class="content-section supermarkets-section">
+      <div class="section-header">
+        <h3>Supermercati più frequentati</h3>
+        <button class="view-all-btn">Vedi tutti</button>
+      </div>
+      <div class="supermarkets-list">
         @for (supermercato of supermercati; track supermercato.nome) {
-          <div class="voce-supermercato">
-            <div class="info-supermercato">
-              <span class="nome-supermercato">{{ supermercato.nome }}</span>
-              <span class="visite-supermercato">{{ supermercato.visite }} visite</span>
-            </div>
-            <div class="dettagli-supermercato">
-              <div class="barra-supermercato">
-                <div class="riempimento-barra" [style.width.%]="supermercato.percentuale"></div>
-                <span class="percentuale">{{ supermercato.percentuale }}%</span>
+          <div class="supermarket-item">
+            <div class="supermarket-main-info">
+              <div class="supermarket-name-wrapper">
+                <span class="supermarket-name">{{ supermercato.nome }}</span>
+                <button class="favorite-btn" 
+                        [class.favorited]="supermercato.preferito"
+                        (click)="togglePreferito(supermercato)">
+                  ♥
+                </button>
               </div>
-              <span class="importo-supermercato">{{ supermercato.importo }} €</span>
+              <span class="supermarket-visits">{{ supermercato.visite }} visite</span>
+            </div>
+            <div class="supermarket-details">
+              <div class="supermarket-bar">
+                <div class="bar-fill" [style.width.%]="supermercato.percentuale"></div>
+                <span class="bar-percentage">{{ supermercato.percentuale }}%</span>
+              </div>
+              <span class="supermarket-amount">{{ supermercato.importo }} €</span>
             </div>
           </div>
         }
@@ -81,17 +124,55 @@
     </div>
   </div>
 
-  <!-- Sezione grafici -->
-  <div class="sezione-grafici">
-    <div class="sezione-contenuto">
-      <h3>Andamento della spesa mensile</h3>
-      <div class="contenitore-grafico">
-        <div class="barre-grafico">
+  <!-- Sezione grafici e transazioni -->
+  <div class="charts-transactions-section">
+    <!-- Grafico andamento spesa -->
+    <div class="content-section chart-section">
+      <div class="section-header">
+        <h3>Andamento della spesa mensile</h3>
+        <div class="time-filter">
+          <button class="filter-btn active">6M</button>
+          <button class="filter-btn">1Y</button>
+          <button class="filter-btn">ALL</button>
+        </div>
+      </div>
+      <div class="chart-container">
+        <div class="chart-bars">
           @for (mese of spesaMensile; track mese.mese) {
-            <div class="barra-mese">
-              <div class="barra" [style.height]="(mese.importo / 400 * 100) + 'px'"></div>
-              <span class="etichetta-mese">{{ mese.mese }}</span>
-              <span class="etichetta-importo">{{ mese.importo }} €</span>
+            <div class="chart-bar-item">
+              <div class="bar-tooltip">{{ mese.importo }} €</div>
+              <div class="chart-bar" 
+                   [style.height]="(mese.importo / 400 * 100) + 'px'"
+                   [class]="getTendenzaClasse(mese.tendenza)">
+              </div>
+              <div class="bar-month">{{ mese.mese }}</div>
+              <div class="bar-variance {{ getTendenzaClasse(mese.tendenza) }}">
+                {{ getTendenzaIcona(mese.tendenza) }} {{ mese.variazione }}%
+              </div>
+            </div>
+          }
+        </div>
+        <div class="chart-axis">
+          <div class="axis-line"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Categorie di spesa -->
+    <div class="content-section categories-section">
+      <div class="section-header">
+        <h3>Categorie di spesa</h3>
+      </div>
+      <div class="categories-chart">
+        <div class="pie-chart">
+          <div class="pie" #pieChart></div>
+        </div>
+        <div class="categories-legend">
+          @for (categoria of categorieSpesa; track categoria.nome) {
+            <div class="legend-item">
+              <div class="legend-color" [style.background]="categoria.colore"></div>
+              <span class="legend-label">{{ categoria.nome }}</span>
+              <span class="legend-percentage">{{ categoria.percentuale }}%</span>
             </div>
           }
         </div>
@@ -99,16 +180,41 @@
     </div>
 
     <!-- Transazioni recenti -->
-    <div class="sezione-contenuto">
-      <h3>Transazioni recenti</h3>
-      <div class="lista-transazioni">
+    <div class="content-section transactions-section">
+      <div class="section-header">
+        <h3>Transazioni recenti</h3>
+        <button class="view-all-btn">Vedi tutti</button>
+      </div>
+      <div class="transactions-list">
         @for (transazione of transazioniRecenti; track transazione.data) {
-          <div class="voce-transazione">
-            <div class="data-transazione">{{ transazione.data }}</div>
-            <div class="supermercato-transazione">{{ transazione.supermercato }}</div>
-            <div class="importo-transazione">{{ transazione.importo }} €</div>
+          <div class="transaction-item">
+            <div class="transaction-date">{{ transazione.data }}</div>
+            <div class="transaction-store">{{ transazione.supermercato }}</div>
+            <div class="transaction-points">+{{ transazione.punti }} pts</div>
+            <div class="transaction-amount">{{ transazione.importo }} €</div>
           </div>
         }
+      </div>
+    </div>
+  </div>
+
+  <!-- Promozioni personalizzate -->
+  <div class="content-section promotions-section">
+    <div class="section-header">
+      <h3>Offerte personalizzate per te</h3>
+    </div>
+    <div class="promotions-grid">
+      <div class="promotion-card">
+        <div class="promotion-badge">20%</div>
+        <h4>Sconto sulla Pasta</h4>
+        <p>Su tutti i prodotti Barilla fino a domenica</p>
+        <button class="promotion-btn">Scopri di più</button>
+      </div>
+      <div class="promotion-card">
+        <div class="promotion-badge">X2</div>
+        <h4>Punti Doppi</h4>
+        <p>Acquisti al Coop questo weekend</p>
+        <button class="promotion-btn">Scopri di più</button>
       </div>
     </div>
   </div>
