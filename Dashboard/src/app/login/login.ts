@@ -37,6 +37,7 @@ export class Login {
     Validators.minLength(6),
   ]);
 
+  // inutilizzato ma capire come funzionava signal piuttosto guardando su main com era 
   errorMessage = signal(''); //forse se non fosse signal quando cambia non lo aggiornerebbe nell html.. o magari si ma facendo con workaround piu sbatta. approfondire
 
   toggleHide(event: MouseEvent) {
