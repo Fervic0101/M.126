@@ -1,0 +1,18 @@
+app-prodotti mat-card.example-card img[mat-card-image] {
+  height: 200px !important;
+  width: 100% !important;
+  object-fit: cover !important;
+  border-radius: 8px 8px 0 0 !important;
+}
+
+@media (max-width: 768px) {
+  app-prodotti mat-card.example-card img[mat-card-image] {
+    height: 150px !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  app-prodotti mat-card.example-card img[mat-card-image] {
+    height: 250px !important;
+  }
+}
