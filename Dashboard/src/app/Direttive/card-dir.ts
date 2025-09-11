@@ -14,7 +14,7 @@ export class CardDir implements AfterViewInit {
   ngAfterViewInit() {
     if (this.appCardDir === true) {
       console.log(this);
-      this.item.nativeElement.style.backgroundColor = 'red';
+      this.item.nativeElement.style.backgroundColor = 'green';
     }
 
     const p = this.item.nativeElement.querySelector(

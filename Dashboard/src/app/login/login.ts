@@ -11,6 +11,12 @@ import {
   Validators,
 } from '@angular/forms';
 import { merge } from 'rxjs';
+import { MatSelectModule } from '@angular/material/select';
+
+interface User {
+  value: string;
+  viewValue: string;
+}
 
 @Component({
   selector: 'app-login',
@@ -21,6 +27,10 @@ import { merge } from 'rxjs';
     MatIconModule,
     FormsModule,
     ReactiveFormsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
+    FormsModule,
   ],
   templateUrl: './login.html',
   styleUrl: './login.css',
@@ -39,6 +49,11 @@ export class Login {
 
   // inutilizzato ma capire come funzionava signal piuttosto guardando su main com era 
   errorMessage = signal(''); //forse se non fosse signal quando cambia non lo aggiornerebbe nell html.. o magari si ma facendo con workaround piu sbatta. approfondire
+
+  userstypes: User[] = [
+    { value: 'admin', viewValue: 'log in as admin' },
+    { value: 'host', viewValue: 'log in as host' },
+  ];
 
   toggleHide(event: MouseEvent) {
     // funziona giustamente solo con click ma li c'è scritto mouseEvent .. perch?
